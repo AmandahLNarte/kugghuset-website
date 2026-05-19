@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const perks = [
+  'Experter på BI',
+  'Få en översikt',
+  'Sekretessplikt',
+  'Effektiv datavisualisering',
+  'Inga krav',
+  'Snabbt svar',
+];
+---
+<Layout
+  title="En timme gratis BI-konsultation | Kugghuset"
+  description="Boka en timme kostnadsfri BI-konsultation med Kugghusets experter. Inga krav, snabbt svar."
+>
+  <Header />
+
+  <div class="relative bg-navy-dark pt-32 pb-20 px-6 overflow-hidden">
+    <div class="pointer-events-none absolute left-1/2 top-0 w-[500px] h-[500px] -translate-x-1/2 rounded-full opacity-20" style="background:radial-gradient(circle,#5BA8E0 0%,transparent 70%);filter:blur(60px)"></div>
+    <div class="relative max-w-7xl mx-auto text-center">
+      <p class="font-mono text-xs tracking-[0.28em] uppercase text-fg/30 mb-4">Gratis konsultation</p>
+      <h1 class="font-display font-light text-fg" style="font-size:clamp(2.5rem,6vw,5rem);line-height:1;letter-spacing:-0.03em;">
+        Få en timme<br /><em style="font-style:italic;color:#E5B8CB;">kostnadsfri</em><br />BI-konsultation.
+      </h1>
+    </div>
+  </div>
+
+  <main class="bg-cream py-20 px-6">
+    <div class="max-w-3xl mx-auto">
+
+      <!-- perks -->
+      <div class="grid sm:grid-cols-2 gap-3 mb-14">
+        {perks.map(item => (
+          <div class="flex items-center gap-3 bg-white border border-navy/10 px-5 py-4">
+            <span class="text-pink-deep font-bold">✔</span>
+            <span class="font-mono text-xs tracking-widest uppercase text-navy">{item}</span>
+          </div>
+        ))}
+      </div>
+
+      <!-- form -->
+      <div class="bg-white border border-navy/10 p-10">
+        <h2 class="font-display font-medium text-navy text-2xl mb-8 text-center">Boka din kostnadsfria timme</h2>
+        <form action="https://formspree.io/f/xdkewgnl" method="POST" class="space-y-5">
+          <div>
+            <label for="email" class="block font-mono text-xs tracking-widest uppercase text-navy/70 mb-2">E-postadress</label>
+            <input id="email" type="email" name="email" placeholder="din@epost.se"
+              class="w-full border border-navy/20 bg-cream text-ink text-sm px-4 py-3 focus:outline-none focus:border-navy transition-colors"/>
+          </div>
+          <div>
+            <label for="phone" class="block font-mono text-xs tracking-widest uppercase text-navy/70 mb-2">Telefonnummer</label>
+            <input id="phone" type="tel" name="telefon" placeholder="070-000 00 00"
+              class="w-full border border-navy/20 bg-cream text-ink text-sm px-4 py-3 focus:outline-none focus:border-navy transition-colors"/>
+          </div>
+          <div>
+            <label for="when" class="block font-mono text-xs tracking-widest uppercase text-navy/70 mb-2">När passar det dig?</label>
+            <input id="when" type="text" name="nar_passar" placeholder="t.ex. tisdag eftermiddag"
+              class="w-full border border-navy/20 bg-cream text-ink text-sm px-4 py-3 focus:outline-none focus:border-navy transition-colors"/>
+          </div>
+          <div>
+            <label for="challenge" class="block font-mono text-xs tracking-widest uppercase text-navy/70 mb-2">Beskriv din utmaning</label>
+            <textarea id="challenge" name="utmaning" rows="4"
+              class="w-full border border-navy/20 bg-cream text-ink text-sm px-4 py-3 focus:outline-none focus:border-navy transition-colors resize-none"></textarea>
+          </div>
+          <button type="submit"
+            class="w-full bg-navy text-fg font-body font-semibold uppercase tracking-widest text-sm py-4 hover:bg-navy-deep transition-colors">
+            Skicka
+          </button>
+        </form>
+        <p class="font-mono text-[10px] text-ink/30 mt-5 text-center leading-relaxed">
+          Dina uppgifter används enbart för att kontakta dig inför genomgången.<br />
+          <a href="/dataskyddspolicy-kugghuset" class="underline hover:text-ink">Kugghusets dataskyddspolicy</a>
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

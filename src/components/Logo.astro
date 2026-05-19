@@ -1,0 +1,48 @@
+---
+interface Props {
+  size?: 'sm' | 'md' | 'lg';
+  theme?: 'dark' | 'light';
+  class?: string;
+}
+const { size = 'md', theme = 'dark', class: className = '' } = Astro.props;
+
+const clusterPx = size === 'lg' ? 72 : size === 'md' ? 48 : 30;
+const wordPx    = size === 'lg' ? 34 : size === 'md' ? 22 : 14;
+const gap       = size === 'lg' ? 16 : size === 'md' ? 10 : 7;
+
+const navyColor = '#2C3464';
+const pinkColor = '#E5B8CB';
+const blueColor = '#B5CCE0';
+const hubColor  = theme === 'dark' ? '#F0EFFA' : '#FFFFFF';
+const textColor = theme === 'dark' ? '#F0EFFA' : '#2C3464';
+
+// Pre-computed cog paths (8-tooth, r*0.55 outer, r*0.55*0.78 inner)
+const cog0 = "M 31.7 36.1 L 31.7 39.9 L 29.6 39.5 L 28.4 42.3 L 30.2 43.5 L 27.5 46.2 L 26.3 44.4 L 23.5 45.6 L 23.9 47.7 L 20.1 47.7 L 20.5 45.6 L 17.7 44.4 L 16.5 46.2 L 13.8 43.5 L 15.6 42.3 L 14.4 39.5 L 12.3 39.9 L 12.3 36.1 L 14.4 36.5 L 15.6 33.7 L 13.8 32.5 L 16.5 29.8 L 17.7 31.6 L 20.5 30.4 L 20.1 28.3 L 23.9 28.3 L 23.5 30.4 L 26.3 31.6 L 27.5 29.8 L 30.2 32.5 L 28.4 33.7 L 29.6 36.5 Z";
+const cog1 = "M 63.6 20.5 L 63.6 23.5 L 61.9 23.2 L 61.0 25.3 L 62.4 26.3 L 60.3 28.4 L 59.3 27.0 L 57.2 27.9 L 57.5 29.6 L 54.5 29.6 L 54.8 27.9 L 52.7 27.0 L 51.7 28.4 L 49.6 26.3 L 51.0 25.3 L 50.1 23.2 L 48.4 23.5 L 48.4 20.5 L 50.1 20.8 L 51.0 18.7 L 49.6 17.7 L 51.7 15.6 L 52.7 17.0 L 54.8 16.1 L 54.5 14.4 L 57.5 14.4 L 57.2 16.1 L 59.3 17.0 L 60.3 15.6 L 62.4 17.7 L 61.0 18.7 L 61.9 20.8 Z";
+const cog2 = "M 69.2 54.2 L 69.2 57.8 L 67.2 57.4 L 66.1 60.1 L 67.8 61.2 L 65.2 63.8 L 64.1 62.1 L 61.4 63.2 L 61.8 65.2 L 58.2 65.2 L 58.6 63.2 L 55.9 62.1 L 54.8 63.8 L 52.2 61.2 L 53.9 60.1 L 52.8 57.4 L 50.8 57.8 L 50.8 54.2 L 52.8 54.6 L 53.9 51.9 L 52.2 50.8 L 54.8 48.2 L 55.9 49.9 L 58.6 48.8 L 58.2 46.8 L 61.8 46.8 L 61.4 48.8 L 64.1 49.9 L 65.2 48.2 L 67.8 50.8 L 66.1 51.9 L 67.2 54.6 Z";
+const cog3 = "M 39.0 70.6 L 39.0 73.4 L 37.5 73.1 L 36.6 75.1 L 37.9 76.0 L 36.0 77.9 L 35.1 76.6 L 33.1 77.5 L 33.4 79.0 L 30.6 79.0 L 30.9 77.5 L 28.9 76.6 L 28.0 77.9 L 26.1 76.0 L 27.4 75.1 L 26.5 73.1 L 25.0 73.4 L 25.0 70.6 L 26.5 70.9 L 27.4 68.9 L 26.1 68.0 L 28.0 66.1 L 28.9 67.4 L 30.9 66.5 L 30.6 65.0 L 33.4 65.0 L 33.1 66.5 L 35.1 67.4 L 36.0 66.1 L 37.9 68.0 L 36.6 68.9 L 37.5 70.9 Z";
+---
+
+<div class={`flex items-center ${className}`} style={`gap:${gap}px`}>
+  <svg width={clusterPx} height={clusterPx} viewBox="0 0 100 100" aria-hidden="true">
+    <!-- capsule links -->
+    <line x1="22" y1="38" x2="56" y2="22" stroke={navyColor} stroke-width="7" stroke-linecap="round" opacity="0.95"/>
+    <line x1="22" y1="38" x2="60" y2="56" stroke={navyColor} stroke-width="7" stroke-linecap="round" opacity="0.95"/>
+    <line x1="56" y1="22" x2="60" y2="56" stroke={pinkColor} stroke-width="6" stroke-linecap="round" opacity="0.95"/>
+    <line x1="22" y1="38" x2="32" y2="72" stroke={navyColor} stroke-width="6" stroke-linecap="round" opacity="0.95"/>
+    <line x1="60" y1="56" x2="32" y2="72" stroke={pinkColor} stroke-width="5" stroke-linecap="round" opacity="0.95"/>
+    <!-- node circles -->
+    <circle cx="22" cy="38" r="18" fill={navyColor}/>
+    <circle cx="56" cy="22" r="14" fill={pinkColor}/>
+    <circle cx="60" cy="56" r="17" fill={pinkColor}/>
+    <circle cx="32" cy="72" r="13" fill={blueColor}/>
+    <!-- mini cogs -->
+    <path d={cog0} fill={hubColor}/>
+    <path d={cog1} fill={hubColor}/>
+    <path d={cog2} fill={hubColor}/>
+    <path d={cog3} fill={hubColor}/>
+  </svg>
+  <span style={`font-family:'Cormorant Garamond',serif;font-weight:300;font-size:${wordPx}px;color:${textColor};letter-spacing:0.18em;line-height:1;text-transform:uppercase;white-space:nowrap`}>
+    KUGGHUSET
+  </span>
+</div>

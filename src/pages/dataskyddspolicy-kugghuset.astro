@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<Layout title="Dataskyddspolicy kugghuset bi-konsulter | Kugghuset">
+  <Header />
+  <div class="bg-navy-dark pt-32 pb-12 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="font-mono text-xs tracking-[0.28em] uppercase text-fg/30 mb-4">Juridik</p>
+      <h1 class="font-display font-light text-fg text-4xl md:text-5xl" style="letter-spacing:-0.025em;">Dataskyddspolicy</h1>
+    </div>
+  </div>
+  <main class="py-16 px-6 bg-cream">
+    <div class="max-w-3xl mx-auto">
+      <p class="font-body text-ink text-sm leading-relaxed mb-10">
+        Hantering av dina personuppgifter hos Kugghuset AB. För att kunna erbjuda dig våra tjänster/produkter behöver vi behandla vissa personuppgifter/data om dig eller ditt besök på vår webbplats. Vi värnar om din integritet och säkerhet, och samlar inte in fler uppgifter än vi behöver. Uppgifterna säljs aldrig vidare till tredjepart.
+      </p>
+      <div class="space-y-8">
+        {[
+          { title: 'Insamling och användning av data', body: 'Denna dataskyddspolicy täcker all data som vi samlar in, till exempel från hemsidan, sociala media, kontakt per telefon eller mail. Informationen kan innefatta: person- och kontaktinformation (namn, adressinformation, e-postadress, mobiltelefonnummer, yrkesroll, arbetsplats), betalningsinformation samt enhetsinformation (t.ex. IP-adress).' },
+          { title: 'Din information stannar hos oss', body: 'Vi kommer aldrig sälja eller delge din information till tredjepart utan din tillåtelse. Ibland delar vi personuppgifter till leverantörer för att kunna slutföra/leverera vårt åtagande gentemot dig. Alla våra partners ingår sekretessavtal och följer lagliga krav.' },
+          { title: 'Var behandlar vi dina personuppgifter?', body: 'Vi strävar alltid efter att lagra dina personuppgifter inom Sverige/EU/EES. Vissa situationer kan kräva att uppgifter hanteras av tredjepart. Vi kommer alltid vidta åtgärder för att data hanteras på samma säkerhetsnivå som inom EU/EES.' },
+          { title: 'Hur länge sparar vi dina personuppgifter?', body: 'Vi sparar data så länge som det är nödvändigt för att uppfylla det syfte för vilket informationen samlades in, eller för att utföra våra åtaganden och så länge det krävs enligt lagstadgade lagringstider.' },
+          { title: 'Dina rättigheter', body: 'Du har rätt att kostnadsfritt begära ut ett registerunderlag för vilka uppgifter vi har om dig. Du har rätt att få dina uppgifter korrigerade om de är felaktiga. Du har rätten att bli bortglömd (radering), med undantag för uppgifter som krävs för att slutföra avtal eller som annan lag kräver.' },
+          { title: 'Cookies', body: 'Vi använder cookies och liknande spårningstekniker för att leverera en smidig onlineupplevelse.' },
+        ].map(s => (
+          <div class="border-t border-navy/10 pt-6">
+            <h2 class="font-display font-medium text-navy text-xl mb-2">{s.title}</h2>
+            <p class="font-body text-ink text-sm leading-relaxed">{s.body}</p>
+          </div>
+        ))}
+        <div class="border-t border-navy/10 pt-6">
+          <h2 class="font-display font-medium text-navy text-xl mb-2">Kontakta oss</h2>
+          <p class="font-body text-ink text-sm leading-relaxed">
+            Vid frågor kring integritet och dataskydd, vänligen <a href="/om-kugghuset" class="text-navy hover:underline">kontakta oss</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>

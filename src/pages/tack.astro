@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<Layout title="Tack! | Kugghuset">
+  <Header />
+  <main class="bg-navy-dark min-h-[80vh] flex items-center justify-center px-6 relative overflow-hidden">
+    <div class="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full opacity-25" style="background:radial-gradient(circle,#5BA8E0 0%,transparent 70%);filter:blur(60px)"></div>
+    <div class="relative text-center max-w-md">
+      <p class="font-mono text-xs tracking-[0.28em] uppercase text-fg/30 mb-6">Meddelande skickat</p>
+      <h1 class="font-display font-light text-fg mb-4" style="font-size:clamp(3rem,8vw,6rem);line-height:1;letter-spacing:-0.03em;">
+        <em style="font-style:italic;color:#E5B8CB;">Tack!</em>
+      </h1>
+      <p class="font-body text-fg/60 mb-10 text-lg">Vi återkommer så snart vi kan.</p>
+      <a href="/"
+        class="inline-block border border-glow text-glow font-mono text-xs tracking-widest uppercase px-8 py-3.5 hover:bg-glow hover:text-navy-dark transition-all">
+        Tillbaka till startsidan
+      </a>
+    </div>
+  </main>
+  <Footer />
+</Layout>

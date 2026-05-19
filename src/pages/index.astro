@@ -1,0 +1,450 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+const serviceSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Power BI konsulting och Business Intelligence",
+  "provider": { "@id": "https://www.kugghuset.se/#organization" },
+  "serviceType": "Business Intelligence konsulting",
+  "description": "Kugghuset erbjuder Power BI-konsulting, datamodellering, datalager, systemintegration och interaktiva dashboards för ekonomichefer och controllers i Stockholm.",
+  "areaServed": { "@type": "Country", "name": "Sweden" }
+});
+
+const services = [
+  {
+    title: 'Datatrolleri för smartare beslut',
+    body: 'Våra datatrollkarlar levererar smarta Power BI-lösningar med fokus på användbarhet, hållbarhet och professionella leveranser. Vi är experter på datamodellering samt att hämta och sammanställa data från affärssystem.',
+  },
+  {
+    title: 'Ekonomichefer och controllers',
+    body: 'Vi arbetar primärt med ekonomiavdelningar och pratar samma språk som ekonomichefer och controllers. Vi kan snabbt sätta oss in i hur verksamheter hanterar sin data för att spara tid och fatta smartare beslut.',
+  },
+  {
+    title: 'Skräddarsydda BI-lösningar',
+    body: 'Vi är inte låsta till någon systemleverantör utan bygger skräddarsydda rapporterings- och BI-miljöer med marknadens främsta verktyg — oavsett om du behöver hjälp med projektplanering, uppföljning eller rapportering.',
+  },
+  {
+    title: '15 års erfarenhet av BI',
+    body: 'Tack vare 15+ års erfarenhet och nördigt bra koll på Power BI, Excel och marknadens affärssystem hittar vi tillsammans en passande lösning och levererar med korta ledtider.',
+  },
+  {
+    title: 'Auto-magiska rapporter',
+    body: 'Många företag skapar mängder av rapporter som kräver manuell handpåläggning. Vi automatiserar rapporterna så att dessa skapas auto-magiskt med en knapptryckning — datalager med schemalagda uppdateringar gör jobbet åt er.',
+  },
+  {
+    title: 'Interaktiva dashboards',
+    body: 'Glöm tråkiga rapporter med standardiserade grafer. Vi gör er data klickbar och interaktiv och hjälper er definiera och lyfta fram era viktigaste KPI:er samlat på en plats.',
+  },
+];
+
+const team = [
+  { name: 'Konrad Leffler',   role: 'Grundare & CEO',           skills: ['Power BI','BI-strategi','Finansiell analys','Ledarskap'],                   photo: '/images/team-konrad.jpg' },
+  { name: 'Elis Lindström',   role: 'BI-arkitekt',              skills: ['Data Modeling','DAX','Azure','SQL'],                                          photo: '/images/team-elis.jpg' },
+  { name: 'Tobias Törnblom',  role: 'Data Engineer',            skills: ['Azure Data Factory','SQL','Python','ETL/ELT'],                                photo: '/images/team-tobias.jpg' },
+  { name: 'Alexander Öhberg', role: 'AI-specialist',            skills: ['Machine Learning','Python','Azure AI','Automatisering'],                     photo: '/images/team-alexander.jpg' },
+  { name: 'Evgenia Nordholm', role: 'Dataanalytiker',           skills: ['Dataanalys','Power BI','DAX','Statistik'],                                   photo: '/images/team-evgenia.jpg' },
+  { name: 'Daniel Brooks',    role: 'Visualiseringsexpert',     skills: ['Power BI','UX/design','Dataviz','Rapportdesign'],                            photo: '/images/team-daniel.jpg' },
+  { name: 'Amandah LNarte',   role: 'Strategi & kommunikation', skills: ['Kommunikation','Affärsutveckling','Varumärke','Strategi'],                   photo: '/images/team-amandah.jpg' },
+];
+
+const clientLogos = [
+  { file: 'image-asset-01.webp', name: 'Bambora' },
+  { file: 'image-asset-15.webp', name: 'Humana' },
+  { file: 'image-asset-06.webp', name: 'Spotify' },
+  { file: 'image-asset-03.webp', name: 'Berns' },
+  { file: 'image-asset-04.webp', name: 'Grant Thornton' },
+  { file: 'image-asset-02.webp', name: 'Friskis & Svettis' },
+  { file: 'image-asset-12.webp', name: 'Midroc' },
+  { file: 'image-asset-08.webp', name: 'Europcar' },
+  { file: 'image-asset-09.webp', name: 'Fredells' },
+  { file: 'image-asset-10.webp', name: 'Dedicare' },
+  { file: 'image-asset-05.webp', name: 'Betsson' },
+  { file: 'image-asset-16.webp', name: 'Formpipe' },
+  { file: 'image-asset-07.webp', name: 'Hästens' },
+  { file: 'image-asset-11.webp', name: 'Metro' },
+  { file: 'image-asset-13.webp', name: 'Kanal 5' },
+  { file: 'image-asset-14.webp', name: 'Nobis' },
+];
+
+const testimonials = [
+  {
+    quote: 'The Kugghuset team always behave as a trusted business partner and has done magics with data which has tremendously improved our business intelligence and ability to make smart decisions.',
+    name: 'Ulric Delamare',
+    title: 'Group CFO, Bambora',
+  },
+  {
+    quote: 'Kugghusets kreativa förmåga och breda kompetens inom BI möjliggjorde vår önskerapport.',
+    name: 'Christer Hansson',
+    title: 'Ekonomichef, Humana-koncernen',
+    link: '/humana',
+  },
+  {
+    quote: 'Kugghuset kan faktiskt trolla med data. På nolltid bygger de avancerade och skräddarsydda BI-miljöer.',
+    name: 'Mattias Elfgren',
+    title: 'VD, Tiego',
+  },
+  {
+    quote: 'Enkel koppling mellan ekonomisystem och rapportering i Excel. Snabbt och enkelt.',
+    name: 'Lia Sandström',
+    title: 'Dedicare',
+  },
+];
+---
+
+<Layout
+  title="Power BI & AI-konsult Stockholm | Business Intelligence | Kugghuset"
+  description="Power BI och AI-konsult i Stockholm. Kugghuset hjälper ekonomichefer och controllers med business intelligence, AI-integrering och datamodellering – 15+ års erfarenhet, 100+ kunder."
+  schemaJson={serviceSchema}
+>
+  <Header />
+
+  <!-- ═══════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════ -->
+  <section id="hem" class="relative min-h-screen flex flex-col justify-between overflow-hidden bg-navy-dark">
+    <!-- full-bleed background image -->
+    <img
+      src="/images/hero.png"
+      alt="BI-konsult med datadashboards – Kugghuset Power BI Stockholm"
+      class="absolute inset-0 w-full h-full object-cover object-center"
+      loading="eager"
+      decoding="async"
+      style="object-position: center center;"
+    />
+    <!-- dark overlay for text legibility -->
+    <div class="absolute inset-0" style="background: rgba(14,21,48,0.65);"></div>
+
+    <!-- main content -->
+    <div class="relative flex-1 flex flex-col">
+      <!-- spacer for fixed header -->
+      <div class="h-16"></div>
+
+      <div class="flex-1 flex items-center justify-center w-full px-6 py-16 md:py-24">
+        <div class="animate-fade-up text-center max-w-3xl" style="animation-delay:0.1s">
+          <!-- transparent navy backdrop -->
+          <div class="rounded-2xl px-10 py-12 md:px-16 md:py-14" style="background: rgba(14,21,48,0.72); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
+            <p class="font-mono text-xs tracking-[0.28em] uppercase text-glow flex items-center justify-center gap-2 mb-6">
+              <span class="inline-block w-5 h-px bg-glow"></span>
+              Power BI & AI · Stockholm · sedan 2013
+            </p>
+            <h1 class="font-display font-light text-white" style="font-size: clamp(3.5rem,9vw,8rem); line-height:0.92; letter-spacing:-0.03em;">
+              Vi <em class="font-normal not-italic" style="font-style:italic; color:#E5B8CB;">trollar</em><br />med data.
+            </h1>
+            <p class="font-body font-medium text-fg/90 mt-8 text-xl md:text-2xl leading-relaxed max-w-xl mx-auto">
+              Skräddarsydda BI-miljöer och AI-integrering för ekonomichefer som hellre fattar beslut än bygger pivottabeller.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 mt-10">
+              <a
+                href="/en-timme-gratis-bikonsultation"
+                class="inline-flex items-center gap-2 bg-glow text-white font-body font-semibold text-sm px-8 py-4 hover:bg-powder-deep transition-colors"
+              >
+                Boka gratis konsultation
+              </a>
+              <a
+                href="/referenscase"
+                class="inline-flex items-center gap-2 border border-white/50 text-white font-body font-medium text-sm px-8 py-4 hover:border-white hover:bg-white/10 transition-colors"
+              >
+                Se referenscase →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ticker bar -->
+      <div class="border-t border-fg/10 px-6 py-4 relative">
+        <div class="max-w-7xl mx-auto flex flex-wrap gap-x-8 gap-y-2 font-mono text-[10px] tracking-[0.2em] uppercase">
+          <span class="text-fg">100+ implementationer</span>
+          {clientLogos.map(c => <span class="text-fg/35">{c.name}</span>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       OM OSS / TJÄNSTER
+  ═══════════════════════════════════════════ -->
+  <section id="om-oss" class="bg-cream py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-2xl mb-16">
+        <p class="font-mono text-xs tracking-[0.28em] uppercase text-navy/80 flex items-center gap-2 mb-4">
+          <span class="inline-block w-5 h-px bg-navy/30"></span>
+          Tjänster
+        </p>
+        <h2 class="font-display font-light text-navy text-5xl md:text-6xl" style="line-height:1; letter-spacing:-0.025em;">
+          Vi trollar<br /><em class="font-normal" style="font-style:italic; color:#D49AB4;">med data.</em>
+        </h2>
+        <p class="mt-6 font-body text-navy text-lg leading-relaxed max-w-xl">
+          Vi är ett konsultföretag specialiserade på Business Intelligence, framförallt Power BI — 15+ år av datatrolleri i svenska bolag.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-navy/10">
+        {services.map(s => (
+          <div class="bg-cream p-8 group hover:bg-paper transition-colors">
+            <div class="w-8 h-px bg-pink-deep mb-5 group-hover:w-12 transition-all"></div>
+            <h3 class="font-display font-medium text-navy text-xl mb-3 leading-tight">{s.title}</h3>
+            <p class="font-body text-navy text-sm leading-relaxed">{s.body}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-14 pt-14 border-t border-navy/10 text-center">
+        <p class="font-display text-navy text-2xl md:text-3xl font-light mb-2">
+          Har du fastnat i Power BI och vill ha support?
+        </p>
+        <p class="font-body font-semibold text-navy mb-6">Kostnadsfri första telefongenomgång</p>
+        <a href="tel:0704545531" class="inline-block border-2 border-pink text-navy font-body font-semibold uppercase tracking-widest text-sm px-10 py-3.5 hover:bg-pink transition-colors">
+          Ring 070-454 55 31
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       STATS
+  ═══════════════════════════════════════════ -->
+  <section class="relative bg-navy py-20 px-6 overflow-hidden">
+    <div class="pointer-events-none absolute inset-0">
+      <div class="absolute -right-20 top-0 w-80 h-80 rounded-full opacity-20" style="background: radial-gradient(circle, #5BA8E0 0%, transparent 70%); filter: blur(50px);"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-10">
+      {[
+        { value: '100+', label: 'Implementationer', sub: 'i svenska bolag' },
+        { value: '15+',  label: 'Års erfarenhet',   sub: 'av BI sedan 2010' },
+        { value: '7',    label: 'Experter',          sub: 'i teamet' },
+        { value: '40h',  label: 'Sparade/mån',       sub: 'typisk tidsvinst' },
+      ].map(s => (
+        <div class="text-center">
+          <div class="font-display font-light text-fg" style="font-size:clamp(2.5rem,5vw,4rem); line-height:1; letter-spacing:-0.03em;">{s.value}</div>
+          <div class="font-body font-semibold text-powder text-sm mt-1">{s.label}</div>
+          <div class="font-mono text-xs text-fg/30 mt-0.5 tracking-widest">{s.sub}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       TESTIMONIALS
+  ═══════════════════════════════════════════ -->
+  <section id="kunder" class="bg-navy-dark py-24 px-6 relative overflow-hidden">
+    <div class="pointer-events-none absolute inset-0">
+      <div class="absolute -right-32 top-0 w-[500px] h-[500px] rounded-full opacity-15" style="background: radial-gradient(circle, #E5B8CB 0%, transparent 70%); filter: blur(70px);"></div>
+      <div class="absolute left-0 bottom-0 w-96 h-96 rounded-full opacity-10" style="background: radial-gradient(circle, #5BA8E0 0%, transparent 70%); filter: blur(60px);"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="font-mono text-xs tracking-[0.28em] uppercase text-fg/30 mb-4">Kundberättelser</p>
+        <h2 class="font-display font-light text-fg text-5xl md:text-6xl" style="line-height:1; letter-spacing:-0.025em;">
+          Vad våra kunder<br /><em style="font-style:italic; color:#E5B8CB;">säger om oss.</em>
+        </h2>
+      </div>
+
+      <!-- 2×2 testimonial grid -->
+      <div class="grid md:grid-cols-2 gap-px bg-fg/10">
+        {testimonials.map(t => (
+          <div class="bg-navy-dark p-10 md:p-12 flex flex-col gap-8 group hover:bg-navy-deep transition-colors">
+            <!-- large opening quote mark -->
+            <div class="font-display text-pink/30 leading-none select-none" style="font-size:5rem; line-height:1;">"</div>
+            <blockquote class="font-display italic text-fg/90 leading-snug flex-1" style="font-size:clamp(1.25rem, 2.2vw, 1.6rem);">
+              {t.quote}
+            </blockquote>
+            <div class="border-t border-fg/10 pt-6 flex items-end justify-between">
+              <div>
+                <p class="font-body font-semibold text-fg text-sm">— {t.name}</p>
+                <p class="font-mono text-xs text-fg/40 mt-1 tracking-wide">{t.title}</p>
+              </div>
+              {t.link && (
+                <a href={t.link} class="font-mono text-xs tracking-widest uppercase text-pink hover:text-pink-deep transition-colors">
+                  Läs case →
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       KUNDER / LOGOTYPER
+  ═══════════════════════════════════════════ -->
+  <section class="bg-white py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+      <p class="font-mono text-xs tracking-[0.28em] uppercase text-navy/60 text-center mb-12">Anförtrott av</p>
+      <div class="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-6 items-center justify-items-center">
+        {clientLogos.map(c => (
+          <div class="w-full flex items-center justify-center px-2 py-3 grayscale opacity-40 hover:opacity-80 hover:grayscale-0 transition-all duration-300">
+            <img
+              src={`/images/clients/${c.file}`}
+              alt={c.name}
+              class="max-h-10 w-auto object-contain"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-10">
+        <a href="/kunder" class="font-mono text-xs tracking-widest uppercase text-navy hover:underline">Se alla kunder →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       BI VERKTYG
+  ═══════════════════════════════════════════ -->
+  <section id="verktyg" class="bg-navy-dark py-24 px-6 relative overflow-hidden">
+    <div class="pointer-events-none absolute bottom-0 left-1/4 w-96 h-96 rounded-full opacity-15" style="background: radial-gradient(circle, #E5B8CB 0%, transparent 70%); filter: blur(60px);"></div>
+    <div class="relative max-w-7xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="font-mono text-xs tracking-[0.28em] uppercase text-fg/30 mb-4">Teknisk expertis</p>
+        <h2 class="font-display font-light text-fg text-5xl md:text-6xl" style="line-height:1; letter-spacing:-0.025em;">
+          BI-system<br /><em class="font-normal" style="font-style:italic; color:#B5CCE0;">och verktyg.</em>
+        </h2>
+        <p class="mt-4 font-mono text-xs text-fg/40">Några av de affärssystem och verktyg vi jobbar med</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8 font-mono text-xs text-fg/60">
+        <ul class="space-y-2.5">
+          {['Microsoft Dynamics AX (Axapta)','Microsoft Dynamics NAV (Navision)','Jeeves','Scala','Visma','Hogia','SPCS','Palette (Baltzar)','Ex-flow','Quinyx','Kontek'].map(i => (
+            <li class="flex items-start gap-2"><span class="text-glow mt-0.5">→</span>{i}</li>
+          ))}
+        </ul>
+        <ul class="space-y-2.5">
+          {['Movex (Lawson M3)','3L','Maconomy','IFS','Agresso','IBS Enterprise (ASW)','Monitor','ASE Accounting','AARO','Ocra Tiego Lease Accounting'].map(i => (
+            <li class="flex items-start gap-2"><span class="text-pink mt-0.5">→</span>{i}</li>
+          ))}
+        </ul>
+        <ul class="space-y-2.5">
+          {['Microsoft Power BI','Microsoft Excel','Microsoft Power Query','Microsoft SQL Server','Azure Data Factory','Python','Tableau','Open Sequel','Exopen Web Reports','Exopen Forecast'].map(i => (
+            <li class="flex items-start gap-2"><span class="text-powder mt-0.5">→</span>{i}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       TEAM
+  ═══════════════════════════════════════════ -->
+  <section id="team" class="bg-navy-dark py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="font-mono text-xs tracking-[0.28em] uppercase text-fg/50 mb-4">Teamet</p>
+        <h2 class="font-display font-light text-fg text-5xl md:text-6xl" style="line-height:1; letter-spacing:-0.025em;">
+          Sju datatrollkarlar.<br /><em style="font-style:italic; color:#E5B8CB;">Ett fokus.</em>
+        </h2>
+        <p class="mt-6 font-body text-fg/80 max-w-md mx-auto">AbraKadabra, Simsalabim. Möt Kugghusets BI-konsulter.</p>
+      </div>
+
+      <!-- rad 1: 4 personer -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        {team.slice(0, 4).map(member => (
+          <div class="group">
+            <div class="aspect-[3/4] overflow-hidden bg-fg/5 mb-4 relative">
+              <img
+                src={member.photo}
+                alt={`${member.name}, ${member.role} – Kugghuset`}
+                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="absolute inset-0 bg-navy/20 group-hover:bg-navy/0 transition-colors"></div>
+            </div>
+            <h3 class="font-display font-medium text-fg text-xl">{member.name}</h3>
+            <p class="font-mono text-xs tracking-widest uppercase text-pink mt-0.5 mb-3">{member.role}</p>
+            <div class="flex flex-wrap gap-1.5">
+              {member.skills.map(skill => (
+                <span class="font-mono text-[10px] tracking-wide text-fg/60 border border-fg/20 px-2 py-0.5">{skill}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- rad 2: 3 personer, centrerad -->
+      <div class="grid grid-cols-2 lg:grid-cols-3 gap-8 lg:w-3/4 mx-auto">
+        {team.slice(4).map(member => (
+          <div class="group">
+            <div class="aspect-[3/4] overflow-hidden bg-fg/5 mb-4 relative">
+              <img
+                src={member.photo}
+                alt={`${member.name}, ${member.role} – Kugghuset`}
+                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="absolute inset-0 bg-navy/20 group-hover:bg-navy/0 transition-colors"></div>
+            </div>
+            <h3 class="font-display font-medium text-fg text-xl">{member.name}</h3>
+            <p class="font-mono text-xs tracking-widest uppercase text-pink mt-0.5 mb-3">{member.role}</p>
+            <div class="flex flex-wrap gap-1.5">
+              {member.skills.map(skill => (
+                <span class="font-mono text-[10px] tracking-wide text-fg/60 border border-fg/20 px-2 py-0.5">{skill}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       KONTAKT
+  ═══════════════════════════════════════════ -->
+  <section id="kontakt" class="relative bg-navy-dark py-24 px-6 overflow-hidden">
+    <div class="pointer-events-none absolute -right-20 -top-20 w-[500px] h-[500px] rounded-full opacity-20" style="background: radial-gradient(circle, #5BA8E0 0%, transparent 70%); filter: blur(60px);"></div>
+    <div class="relative max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-start">
+
+      <div>
+        <p class="font-mono text-xs tracking-[0.28em] uppercase text-fg/30 flex items-center gap-2 mb-6">
+          <span class="inline-block w-5 h-px bg-fg/20"></span>
+          Kontakt
+        </p>
+        <h2 class="font-display font-light text-fg" style="font-size:clamp(2.5rem,5vw,4.5rem); line-height:1; letter-spacing:-0.03em;">
+          Låt oss skapa<br /><em class="font-normal" style="font-style:italic; color:#E5B8CB;">datatrolleri.</em>
+        </h2>
+        <p class="mt-6 font-body text-fg/60 text-lg leading-relaxed max-w-sm">
+          Skicka ett meddelande eller boka en timme kostnadsfri BI-konsultation.
+        </p>
+        <div class="mt-8 space-y-3 font-mono text-sm text-fg/50">
+          <p><a href="tel:+46704545531" class="hover:text-glow transition-colors">070-454 55 31</a></p>
+          <p><a href="mailto:konrad@kugghuset.se" class="hover:text-glow transition-colors">konrad@kugghuset.se</a></p>
+          <p class="text-fg/30">Sickla Strand 45, 131 34 Nacka</p>
+        </div>
+        <a
+          href="/en-timme-gratis-bikonsultation"
+          class="mt-8 inline-block border border-glow text-glow font-mono text-xs tracking-widest uppercase px-6 py-3 hover:bg-glow hover:text-navy-dark transition-all"
+        >
+          Boka gratis BI-timme →
+        </a>
+      </div>
+
+      <form action="https://formspree.io/f/xdkewgnl" method="POST" class="space-y-5">
+        <div>
+          <label for="email" class="block font-mono text-xs tracking-widest uppercase text-fg/40 mb-2">E-postadress</label>
+          <input id="email" type="email" name="email" placeholder="din@epost.se"
+            class="w-full bg-fg/5 border border-fg/15 text-fg placeholder-fg/20 font-body text-sm px-4 py-3 focus:outline-none focus:border-glow transition-colors"/>
+        </div>
+        <div>
+          <label for="phone" class="block font-mono text-xs tracking-widest uppercase text-fg/40 mb-2">Telefon</label>
+          <input id="phone" type="tel" name="telefon" placeholder="070-000 00 00"
+            class="w-full bg-fg/5 border border-fg/15 text-fg placeholder-fg/20 font-body text-sm px-4 py-3 focus:outline-none focus:border-glow transition-colors"/>
+        </div>
+        <div>
+          <label for="message" class="block font-mono text-xs tracking-widest uppercase text-fg/40 mb-2">Hur kan vi hjälpa dig?</label>
+          <textarea id="message" name="meddelande" rows="4"
+            class="w-full bg-fg/5 border border-fg/15 text-fg placeholder-fg/20 font-body text-sm px-4 py-3 focus:outline-none focus:border-glow transition-colors resize-none"></textarea>
+        </div>
+        <button type="submit"
+          class="w-full bg-glow text-navy-dark font-body font-semibold uppercase tracking-widest text-sm py-4 hover:bg-powder-deep transition-colors">
+          Skicka
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

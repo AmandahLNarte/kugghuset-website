@@ -1,0 +1,120 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const caseSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Kundcase: Kugghuset förkortade implementationstid av koncernredovisningssystem för Humana med flera månader",
+  "description": "Kugghuset förkortade implementationstiden av Humanas koncernredovisningssystem med flera månader genom systemintegration i SQL Server och Power Pivot-lösning.",
+  "author": { "@id": "https://www.kugghuset.se/#organization" },
+  "publisher": { "@id": "https://www.kugghuset.se/#organization" },
+  "review": {
+    "@type": "Review",
+    "reviewBody": "Kugghusets kreativa förmåga och breda kompetens inom BI möjliggjorde vår önskerapport",
+    "author": { "@type": "Person", "name": "Christer Hansson", "jobTitle": "Ekonomichef", "worksFor": { "@type": "Organization", "name": "Humana" } },
+    "itemReviewed": { "@id": "https://www.kugghuset.se/#organization" }
+  }
+});
+---
+<Layout
+  title="Kundcase Humana – koncernredovisningssystem | Kugghuset"
+  description="Läs hur Kugghuset förkortade implementationstiden av Humanas koncernredovisningssystem med flera månader och eliminerade manuellt rapporteringsarbete för ekonomichefer."
+  ogType="article"
+  schemaJson={caseSchema}
+>
+  <Header />
+
+  <div class="relative bg-navy-dark pt-32 pb-20 px-6 overflow-hidden">
+    <div class="pointer-events-none absolute right-0 top-0 w-96 h-96 rounded-full opacity-20" style="background:radial-gradient(circle,#5BA8E0 0%,transparent 70%);filter:blur(60px)"></div>
+    <div class="relative max-w-7xl mx-auto">
+      <p class="font-mono text-xs tracking-[0.28em] uppercase text-fg/30 mb-4">Kundcase</p>
+      <h1 class="font-display font-light text-fg" style="font-size:clamp(2.5rem,6vw,5rem);line-height:1;letter-spacing:-0.03em;">
+        Humana —<br /><em style="font-style:italic;color:#E5B8CB;">koncernredovisning.</em>
+      </h1>
+    </div>
+  </div>
+
+  <main class="bg-cream py-20 px-6">
+    <div class="max-w-3xl mx-auto">
+
+      <!-- lead quote -->
+      <div class="border-l-2 border-pink pl-8 mb-14">
+        <blockquote class="font-display italic text-ink text-2xl leading-snug">
+          "Kugghusets kreativa förmåga och breda kompetens inom BI möjliggjorde vår önskerapport."
+        </blockquote>
+        <cite class="mt-4 block font-mono text-xs text-ink/70 not-italic">— Christer Hansson, Ekonomichef, Humana-koncernen</cite>
+      </div>
+
+      <div class="space-y-12 mb-14">
+        {[
+          {
+            label: 'Utmaning',
+            color: 'text-pink-deep',
+            items: [
+              'Humana hade sedan många år gjort sin konsolidering i Excel och skulle med pressad tidsplan implementera ett koncernredovisningssystem',
+              'Organisationen genomgick under implementationsfasen stora omstruktureringar som behövde bli korrekta i koncernredovisningen',
+              'Ett bokslut skulle mitt i sommaren levereras direkt efter implementation ur det nya systemet',
+            ],
+          },
+          {
+            label: 'Lösning',
+            color: 'text-navy',
+            items: [
+              'En integration mellan MS Dynamics NAV och koncernredovisningssystemet AARO byggdes i SQL Server',
+              'En modell i Power Pivot skapades för att från första dag ge en överblick av organisationsstrukturen',
+              'Finansiella rapporter för operativ uppföljning togs fram med ExOpen Report',
+            ],
+          },
+          {
+            label: 'Effekt',
+            color: 'text-navy',
+            items: [
+              'Implementationstiden förkortades rejält med 2–3 månader',
+              'Tid för löpande inrapportering från ekonomichefer i dotterbolag har eliminerats',
+              'Det första bokslutet levererades i tid och kommande bokslutsprocesser har optimerats',
+              'Verksamheten kunde från första dag använda systemet för operativ rapportering',
+            ],
+          },
+        ].map(section => (
+          <div>
+            <p class={`font-mono text-xs tracking-[0.28em] uppercase mb-4 ${section.color}`}>{section.label}</p>
+            <ul class="space-y-3">
+              {section.items.map(item => (
+                <li class="flex items-start gap-3 font-body text-sm text-ink leading-relaxed">
+                  <span class="text-pink-deep mt-0.5 shrink-0">·</span>{item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <!-- extended quotes -->
+      <div class="border-t border-navy/10 pt-12 space-y-5 mb-10">
+        <p class="font-mono text-xs tracking-[0.28em] uppercase text-navy/70">Detaljer</p>
+        <p class="font-body text-ink text-sm leading-relaxed">
+          Humana är ett privat omsorgsföretag som har vuxit kraftigt. Inom koncernen finns idag 60 juridiska bolag och omsättningen ligger på cirka 5 miljarder kronor. Christer Hansson lyfter fram Kugghusets förmåga att kombinera teknisk kompetens med en bred ekonomisk och affärsmässig förståelse.
+        </p>
+        <blockquote class="border-l-2 border-navy/20 pl-6 font-display italic text-ink text-base leading-relaxed">
+          "Vi arbetade med koncernkonsolideringar i Excel och behövde lägga in nya förvärvade bolag manuellt. Kugghuset hjälpte oss att bygga integrationen mellan våra system, vilket tagit bort i princip alla manuella moment."
+        </blockquote>
+        <blockquote class="border-l-2 border-navy/20 pl-6 font-display italic text-ink text-base leading-relaxed">
+          "Det räcker oftast inte med enbart teknisk kompetens — det behövs en ekonomisk och affärsmässig förståelse för att få till helheten, vilket Kugghuset har. När vi ger dem ett uppdrag vet jag att de kommer lösa våra problem och det går fort."
+        </blockquote>
+      </div>
+
+      <div class="flex flex-wrap gap-4">
+        <a href="/referenscase" class="font-mono text-xs tracking-widest uppercase text-navy hover:underline">← Tillbaka till referenscase</a>
+        <a href="/om-kugghuset"
+          class="inline-block bg-navy text-fg font-body font-semibold uppercase tracking-widest text-xs px-7 py-3 hover:bg-navy-deep transition-colors">
+          Kontakta oss
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

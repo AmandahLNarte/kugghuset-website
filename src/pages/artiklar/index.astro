@@ -1,0 +1,215 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { articles } from '../../data/articles';
+
+const allTags = ['Alla', ...new Set(articles.flatMap(a => [a.category, ...a.tags]))];
+const filters = allTags;
+---
+
+<Layout
+  title="Insikter om Power BI, AI och Business Intelligence | Kugghuset"
+  description="Insikter och nyheter från Kugghusets konsulter – om Power BI, AI-integrering, datamodellering och smart planering för ekonomichefer och controllers."
+>
+  <Header />
+
+  <!-- Hero -->
+  <section class="relative bg-navy-dark pt-32 pb-16 px-6 overflow-hidden">
+    <div class="pointer-events-none absolute -left-24 top-8 w-[560px] h-[560px] rounded-full opacity-20" style="background:radial-gradient(circle,#5BA8E0 0%,transparent 70%);filter:blur(90px)"></div>
+    <div class="pointer-events-none absolute right-0 bottom-0 w-80 h-80 rounded-full opacity-15" style="background:radial-gradient(circle,#E5B8CB 0%,transparent 70%);filter:blur(60px)"></div>
+    <div class="relative max-w-7xl mx-auto text-center">
+      <h1
+        class="font-display font-light text-fg"
+        style="font-size:clamp(2.5rem,6vw,5.5rem);line-height:1.05;letter-spacing:-0.03em;"
+      >
+        Insikter & nyheter<em style="font-style:italic;color:#B5CCE0;">.</em>
+      </h1>
+    </div>
+  </section>
+
+  <!-- Filter row -->
+  <div class="bg-navy-dark px-6 pb-16">
+    <div class="max-w-7xl mx-auto flex justify-center items-center gap-10 flex-wrap">
+      {filters.map((f, i) => (
+        <button
+          data-filter={f.toLowerCase()}
+          class={`filter-btn font-mono text-[11px] tracking-[0.2em] uppercase py-4 whitespace-nowrap border-b-2 transition-colors ${
+            i === 0
+              ? 'border-fg/60 text-fg'
+              : 'border-transparent text-fg/30 hover:text-fg/60'
+          }`}
+        >
+          {f}
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <!-- Article list -->
+  <main class="bg-navy-dark">
+    <div class="max-w-7xl mx-auto">
+      {articles.map((a, i) => {
+        const imageLeft = i % 2 === 0;
+        const href = a.fullText ? `/artiklar/${a.slug}` : '#';
+        return (
+          <article class="article-card grid md:grid-cols-2 group cursor-pointer mb-8" data-tags={[a.category, ...a.tags].map(t => t.toLowerCase()).join(',')}>
+
+            <!-- Image -->
+            <div
+              class={`relative overflow-hidden ${imageLeft ? 'md:order-1' : 'md:order-2'}`}
+              style={`background: ${a.gradient}; min-height: 320px;`}
+            >
+              {a.image && (
+                <img
+                  src={a.image}
+                  alt={a.imageAlt ?? a.title}
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                />
+              )}
+              {a.gridLines && !a.image && (
+                <div
+                  class="absolute inset-0"
+                  style="background-image: linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px); background-size: 52px 52px;"
+                />
+              )}
+            </div>
+
+            <!-- Content -->
+            <div
+              class={`flex flex-col justify-between p-10 md:p-14 ${
+                imageLeft ? 'md:order-2' : 'md:order-1'
+              }`}
+            >
+              <div>
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-fg/50 px-2.5 py-1">
+                    {a.category}
+                  </span>
+                  {a.tags.map(tag => (
+                    <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-fg/35 px-2.5 py-1">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <a href={href}>
+                  <h2
+                    class="font-display font-light text-fg leading-snug mb-5 group-hover:text-powder transition-colors duration-300 hover:text-powder"
+                    style="font-size: clamp(1.5rem, 2.5vw, 2rem); letter-spacing: -0.02em;"
+                  >
+                    {a.title}
+                  </h2>
+                </a>
+
+                <p class="font-body text-fg/50 text-base leading-relaxed max-w-xs">
+                  {a.body}
+                </p>
+              </div>
+
+              <div class="flex items-center justify-between mt-8 pt-6">
+                <p class="font-mono text-xs text-fg/25 tracking-widest">
+                  {a.date} · {a.readTime}{a.author ? ` · ${a.author}` : ''}
+                </p>
+                <a
+                  href={href}
+                  class="font-mono text-xs tracking-widest uppercase text-fg/70 hover:text-fg transition-colors group-hover:text-powder"
+                >
+                  Läs artikeln →
+                </a>
+              </div>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+
+  </main>
+
+  <!-- Newsletter -->
+  <section class="relative bg-navy-deep py-20 px-6 overflow-hidden">
+    <div class="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full opacity-15" style="background:radial-gradient(circle,#E5B8CB 0%,transparent 70%);filter:blur(60px)"></div>
+    <div class="relative max-w-7xl mx-auto md:flex items-center justify-between gap-16">
+      <div class="mb-8 md:mb-0">
+        <p class="font-mono text-xs tracking-[0.28em] uppercase text-fg/30 mb-3">◇ Prenumerera</p>
+        <h2 class="font-display font-light text-fg text-3xl md:text-4xl mb-3" style="letter-spacing:-0.025em;">
+          En artikel i månaden.<br /><em style="font-style:italic;color:#E5B8CB;">Inget mer.</em>
+        </h2>
+        <p class="font-body text-fg/60 text-sm max-w-sm leading-relaxed">
+          Vi skickar en kort artikel per månad. Ingen säljmässa. Bara en bra tanke och en kodbit.
+        </p>
+        <p class="font-mono text-xs text-fg/30 mt-4 tracking-wide">846 läsare · 0 avhopp senaste kvartalet</p>
+      </div>
+      <form action="https://formspree.io/f/xdkewgnl" method="POST" class="flex flex-col sm:flex-row gap-3 w-full max-w-md">
+        <input
+          type="email"
+          name="email"
+          placeholder="din@epost.se"
+          required
+          class="flex-1 bg-fg/5 border border-fg/15 text-fg placeholder-fg/20 font-body text-sm px-4 py-3 focus:outline-none focus:border-glow transition-colors"
+        />
+        <button type="submit" class="bg-glow text-white font-body font-semibold text-sm px-6 py-3 hover:bg-powder-deep transition-colors whitespace-nowrap">
+          Prenumerera →
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .article-card {
+    opacity: 0;
+    transform: translateY(100px) scale(0.97);
+    transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .article-card.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+</style>
+
+<script>
+  const cards = document.querySelectorAll<HTMLElement>('.article-card');
+  const btns = document.querySelectorAll<HTMLElement>('.filter-btn');
+
+  // Scroll-in animation
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.05 }
+  );
+  cards.forEach((card, i) => {
+    card.style.transitionDelay = `${i * 0.2}s`;
+    observer.observe(card);
+  });
+
+  // Filter logic
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter!;
+
+      // Update active button style
+      btns.forEach(b => {
+        b.classList.remove('border-fg/60', 'text-fg');
+        b.classList.add('border-transparent', 'text-fg/30');
+      });
+      btn.classList.remove('border-transparent', 'text-fg/30');
+      btn.classList.add('border-fg/60', 'text-fg');
+
+      // Show/hide articles
+      cards.forEach(card => {
+        const tags = card.dataset.tags ?? '';
+        const match = filter === 'alla' || tags.split(',').includes(filter);
+        card.style.display = match ? '' : 'none';
+      });
+    });
+  });
+</script>

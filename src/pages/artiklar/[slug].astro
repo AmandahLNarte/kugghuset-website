@@ -1,0 +1,124 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { articles } from '../../data/articles';
+
+export function getStaticPaths() {
+  return articles
+    .filter(a => a.fullText)
+    .map(a => ({ params: { slug: a.slug } }));
+}
+
+const { slug } = Astro.params;
+const article = articles.find(a => a.slug === slug)!;
+
+const paragraphs = article.fullText.split('\n\n').filter(p => p.trim());
+---
+
+<Layout
+  title={`${article.title} | Kugghuset`}
+  description={article.body}
+>
+  <Header />
+
+  <div class="bg-navy-dark min-h-screen pt-32 pb-24 px-10">
+
+    <!-- Back link -->
+    <div class="max-w-7xl mx-auto mb-10">
+      <a href="/artiklar" class="inline-flex items-center gap-2 font-body text-base text-fg/50 hover:text-fg transition-colors">
+        ← Alla artiklar
+      </a>
+    </div>
+
+    <!-- Header block -->
+    <div class="max-w-7xl mx-auto mb-12">
+
+      <!-- Tags -->
+      <div class="flex flex-wrap gap-2 mb-8">
+        <span class="font-mono text-xs tracking-[0.2em] uppercase text-fg/60 border border-fg/20 px-3 py-1.5">
+          {article.category}
+        </span>
+        {article.tags.map(tag => (
+          <span class="font-mono text-xs tracking-[0.2em] uppercase text-fg/40 border border-fg/10 px-3 py-1.5">
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      <!-- Title -->
+      <h1
+        class="font-display font-light text-fg leading-tight mb-8"
+        style="font-size: clamp(2.8rem, 5.5vw, 5rem); letter-spacing: -0.02em;"
+      >
+        {article.title}
+      </h1>
+
+      <!-- Author + meta -->
+      <div class="flex items-center gap-6 pb-8 border-b border-fg/10">
+        {article.author && (
+          <span class="font-body text-base text-fg/70">
+            / <span class="text-fg font-medium">{article.author}</span>
+          </span>
+        )}
+        <span class="font-body text-base text-fg/40">{article.readTime} läsning</span>
+        <span class="font-mono text-sm text-fg/25 tracking-widest">{article.date}</span>
+      </div>
+    </div>
+
+    <!-- Hero image — full width within max-w-7xl -->
+    {article.image && (
+      <div class="max-w-7xl mx-auto mb-14">
+        <img
+          src={article.image}
+          alt={article.imageAlt ?? article.title}
+          class="w-full object-cover"
+          style="max-height: 600px;"
+        />
+      </div>
+    )}
+
+    <!-- Body text -->
+    <div class="max-w-7xl mx-auto space-y-8">
+      {paragraphs.map(p => {
+        const lines = p.split('\n');
+        const hasBullets = lines.some(l => l.startsWith('- '));
+        if (hasBullets) {
+          const heading = lines.find(l => !l.startsWith('- '));
+          const bullets = lines.filter(l => l.startsWith('- ')).map(l => l.slice(2));
+          return (
+            <div>
+              {heading && <p class="font-body text-fg/80 text-xl leading-relaxed mb-4">{heading}</p>}
+              <ul class="space-y-3 pl-2">
+                {bullets.map(b => (
+                  <li class="font-body text-fg/80 text-xl leading-relaxed flex items-start gap-3">
+                    <span class="text-glow mt-1.5 shrink-0">–</span>
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        }
+        return (
+          <p class="font-body text-fg/80 text-xl leading-relaxed">
+            {p}
+          </p>
+        );
+      })}
+
+      <!-- Footer nav -->
+      <div class="mt-16 pt-8 border-t border-fg/10 flex items-center justify-between">
+        <a href="/artiklar" class="font-body text-base text-fg/50 hover:text-fg transition-colors">
+          ← Tillbaka till artiklar
+        </a>
+        {article.author && (
+          <span class="font-mono text-sm text-fg/30 tracking-widest">/{article.author}</span>
+        )}
+      </div>
+    </div>
+
+  </div>
+
+  <Footer />
+</Layout>

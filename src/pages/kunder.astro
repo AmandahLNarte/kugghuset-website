@@ -1,0 +1,82 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const clientLogos = [
+  { file: 'image-asset-01.webp', name: 'Bambora' },
+  { file: 'image-asset-15.webp', name: 'Humana' },
+  { file: 'image-asset-06.webp', name: 'Spotify' },
+  { file: 'image-asset-03.webp', name: 'Berns' },
+  { file: 'image-asset-04.webp', name: 'Grant Thornton' },
+  { file: 'image-asset-02.webp', name: 'Friskis & Svettis' },
+  { file: 'image-asset-12.webp', name: 'Midroc' },
+  { file: 'image-asset-08.webp', name: 'Europcar' },
+  { file: 'image-asset-09.webp', name: 'Fredells' },
+  { file: 'image-asset-10.webp', name: 'Dedicare' },
+  { file: 'image-asset-05.webp', name: 'Betsson' },
+  { file: 'image-asset-16.webp', name: 'Formpipe' },
+  { file: 'image-asset-07.webp', name: 'Hästens' },
+  { file: 'image-asset-11.webp', name: 'Metro' },
+  { file: 'image-asset-13.webp', name: 'Kanal 5' },
+  { file: 'image-asset-14.webp', name: 'Nobis' },
+];
+---
+<Layout
+  title="Våra kunder inom business intelligence | Kugghuset"
+  description="Vi hjälper företag med att effektivisera och förenkla komplexa hanteringsbehov av interna informationsflöden – 100+ implementationer i svenska bolag."
+>
+  <Header />
+
+  <div class="relative bg-navy-dark pt-32 pb-20 px-6 overflow-hidden">
+    <div class="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full opacity-20" style="background:radial-gradient(circle,#E5B8CB 0%,transparent 70%);filter:blur(60px)"></div>
+    <div class="relative max-w-7xl mx-auto">
+      <p class="font-mono text-xs tracking-[0.28em] uppercase text-fg/30 mb-4">Kunder</p>
+      <h1 class="font-display font-light text-fg" style="font-size:clamp(2.5rem,6vw,5rem);line-height:1;letter-spacing:-0.03em;">
+        Gör som våra kunder —<br /><em style="font-style:italic;color:#E5B8CB;">få ut mer av er data.</em>
+      </h1>
+    </div>
+  </div>
+
+  <main class="bg-white py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+
+      <div class="max-w-2xl mb-16">
+        <p class="font-body text-ink text-lg leading-relaxed">
+          Vi hjälper företag med att effektivisera och förenkla komplexa hanteringsbehov av interna informationsflöden samt visualisera dessa på bästa sätt som underlag för uppföljning och beslut. Vi har samlad erfarenhet av implementation hos 100+ unika företag och organisationer.
+        </p>
+      </div>
+
+      <div class="border-t border-navy/10 pt-14 mb-16">
+        <h2 class="font-display font-medium text-navy text-3xl mb-5">Hur jobbar vi?</h2>
+        <p class="font-body text-ink leading-relaxed mb-6 max-w-xl">
+          För att du bättre ska förstå vad vi menar med datatrolleri har vi publicerat ett urval av referenser. Resultatet är ofta enorma tidsbesparingar och nya smarta rapporter för effektivare beslut.
+        </p>
+        <a href="/referenscase"
+          class="inline-block bg-navy text-fg font-body font-semibold uppercase tracking-widest text-xs px-7 py-3.5 hover:bg-navy-deep transition-colors">
+          Se referenscase →
+        </a>
+      </div>
+
+      <div class="border-t border-navy/10 pt-14">
+        <p class="font-mono text-xs tracking-[0.28em] uppercase text-navy/60 mb-10">Anförtrott av</p>
+        <div class="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-6 items-center justify-items-center mb-10">
+          {clientLogos.map(c => (
+            <div class="w-full flex items-center justify-center px-2 py-3 grayscale opacity-40 hover:opacity-80 hover:grayscale-0 transition-all duration-300">
+              <img
+                src={`/images/clients/${c.file}`}
+                alt={c.name}
+                class="max-h-10 w-auto object-contain"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

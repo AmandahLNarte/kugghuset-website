@@ -1,0 +1,59 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-navy-dark border-t border-fg/10 pt-16 pb-10">
+  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
+
+    <div class="md:col-span-2">
+      <img src="/images/logo-white-04.png" alt="Kugghuset" class="h-8 w-auto" />
+      <p class="mt-5 font-body text-sm text-fg/50 leading-relaxed max-w-xs">
+        Skräddarsydda BI-miljöer, AI-automationer och systemintegrationer för ekonomichefer och controllers. Vi trollar med data sedan 2013.
+      </p>
+      <div class="mt-5 font-mono text-xs text-fg/40 space-y-1">
+        <p>Sickla Strand 45, 131 34 Nacka</p>
+        <p>Org.nr 556934-0531</p>
+      </div>
+      <div class="flex gap-4 mt-5">
+        <a href="https://www.linkedin.com/company/kugghuset-ab" target="_blank" rel="noopener" aria-label="LinkedIn" class="text-fg/40 hover:text-glow transition-colors">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://www.facebook.com/kugghuset" target="_blank" rel="noopener" aria-label="Facebook" class="text-fg/40 hover:text-glow transition-colors">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <p class="font-mono text-xs tracking-widest uppercase text-fg/30 mb-4">Sidor</p>
+      <ul class="space-y-2.5 font-body text-sm text-fg/60">
+        <li><a href="/referenscase" class="hover:text-fg transition-colors">Referenscase</a></li>
+        <li><a href="/artiklar" class="hover:text-fg transition-colors">Artiklar</a></li>
+        <li><a href="/kunder" class="hover:text-fg transition-colors">Kunder</a></li>
+        <li><a href="/vad-ar-en-bi-konsult" class="hover:text-fg transition-colors">Vad är en BI-konsult?</a></li>
+        <li><a href="/en-timme-gratis-bikonsultation" class="hover:text-fg transition-colors">Gratis BI-timme</a></li>
+        <li><a href="/dataskyddspolicy-kugghuset" class="hover:text-fg transition-colors">Dataskyddspolicy</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="font-mono text-xs tracking-widest uppercase text-fg/30 mb-4">Kontakt</p>
+      <ul class="space-y-2.5 font-body text-sm text-fg/60">
+        <li><a href="tel:+46704545531" class="hover:text-fg transition-colors">070-454 55 31</a></li>
+        <li><a href="mailto:konrad@kugghuset.se" class="hover:text-fg transition-colors">konrad@kugghuset.se</a></li>
+      </ul>
+      <a
+        href="/en-timme-gratis-bikonsultation"
+        class="mt-6 inline-block border border-glow text-glow font-mono text-xs tracking-widest uppercase px-4 py-2.5 hover:bg-glow hover:text-navy-dark transition-all"
+      >
+        Boka gratis →
+      </a>
+    </div>
+
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 mt-12 pt-6 border-t border-fg/10 flex flex-col sm:flex-row justify-between gap-2">
+    <p class="font-mono text-xs text-fg/25">© {year} Kugghuset AB</p>
+    <p class="font-mono text-xs text-fg/25">Power BI & AI · Business Intelligence · Stockholm</p>
+  </div>
+</footer>

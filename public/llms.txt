@@ -1,0 +1,54 @@
+# Kugghuset AB
+
+> Power BI-konsulter i Stockholm. Vi hjälper ekonomichefer och controllers med business intelligence, datamodellering, datalager och interaktiva dashboards. 15+ års erfarenhet. 100+ implementerade BI-lösningar.
+
+Kugghuset AB är ett specialiserat konsultbolag inom Business Intelligence (BI) med fokus på Microsoft Power BI. Vi arbetar primärt med ekonomiavdelningar och pratar samma språk som ekonomichefer och controllers. Vi är inte låsta till någon systemleverantör utan bygger skräddarsydda rapporterings- och BI-miljöer med marknadens främsta verktyg.
+
+## Tjänster
+
+- Power BI-konsulting, implementering och utbildning
+- Datamodellering enligt Kimball-metodologi och best practice för Power BI
+- Datalager och ETL-lösningar med Microsoft SQL Server Integration Services
+- Systemintegration mellan affärssystem och BI-plattformar
+- Interaktiva dashboards och KPI-rapporter
+- Automatiserade rapporter med schemalagda uppdateringar
+- Koncernredovisning och finansiell rapportering
+- Skräddarsydda rapporterings- och BI-miljöer
+
+## Affärssystem vi integrerar med
+
+Microsoft Dynamics AX (Axapta), Microsoft Dynamics NAV (Navision), Jeeves, Scala, Visma, Hogia, SPCS, Movex (Lawson M3), IFS, Agresso, IBS Enterprise (ASW), Monitor, Maconomy, 3L, Palette (Baltzar), Ex-flow, Quinyx, Kontek
+
+## BI-verktyg och teknologier
+
+Microsoft Power BI, Microsoft Power Pivot, Microsoft Power View, Microsoft Power Query, Microsoft SQL Server Integration Services (SSIS), Microsoft SQL Server Analysis Services (SSAS), Microsoft Excel, Tableau, Exopen Web Reports, Exopen Report, Exopen Forecast, Open Sequel, AARO, Ocra Tiego Lease Accounting
+
+## Kunder och referenscase
+
+Kugghuset har implementerat BI-lösningar för 100+ organisationer.
+
+- Bambora – "Kugghuset has done magic with our data and has tremendously improved our business intelligence and ability to make smart decisions." (Ulric Delamare, Group CFO)
+- Humana – Förkortade implementationstid av koncernredovisningssystem med flera månader. "Kugghusets kreativa förmåga och breda kompetens inom BI möjliggjorde vår önskerapport." (Christer Hansson, Ekonomichef)
+- Tiego – "Kugghuset kan faktiskt trolla med data. På nolltid bygger de avancerade och skräddarsydda BI-miljöer." (Mattias Elfgren, VD)
+- Övriga kunder: Midroc, Europcar, Friskis & Svettis, Fredells, Berns, Grant Thornton, Dedicare, Betsson, Spotify, Formpipe
+
+## Kontakt
+
+- Webbplats: https://www.kugghuset.se
+- Kontaktperson: Konrad Leffler
+- Telefon: 070-454 55 31
+- E-post: konrad@kugghuset.se
+- Adress: Magnus Ladulåsgatan 3, 118 65 Stockholm, Sverige
+- Org.nr: 556934-0531
+- LinkedIn: https://www.linkedin.com/company/kugghuset-ab
+- Facebook: https://www.facebook.com/kugghuset
+
+## Sidor
+
+- [Startsida – Power BI konsult Stockholm](https://www.kugghuset.se/)
+- [Vad är en BI-konsult?](https://www.kugghuset.se/vad-ar-en-bi-konsult)
+- [Referenscase – Business Intelligence](https://www.kugghuset.se/referenscase)
+- [Kundcase: Humana – koncernredovisningssystem](https://www.kugghuset.se/humana)
+- [En timme gratis BI-konsultation](https://www.kugghuset.se/en-timme-gratis-bikonsultation)
+- [Kunder](https://www.kugghuset.se/kunder)
+- [Kontakt och om oss](https://www.kugghuset.se/om-kugghuset)

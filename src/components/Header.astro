@@ -1,0 +1,87 @@
+---
+const navLinks = [
+  { href: '/#om-oss',    label: 'Tjänster' },
+  { href: '/#kunder',    label: 'Kunder' },
+  { href: '/#team',      label: 'Om oss' },
+  { href: '/referenscase', label: 'Kundcase' },
+  { href: '/artiklar',    label: 'Artiklar' },
+];
+---
+
+<header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background: transparent;">
+  <div class="w-full px-10 flex items-center justify-between h-20">
+    <!-- Left: logo -->
+    <a href="/" aria-label="Kugghuset – startsida">
+      <img src="/images/logo-white-04.png" alt="Kugghuset" class="h-14 w-auto" />
+    </a>
+
+    <!-- Right: nav + CTA + mobile toggle -->
+    <div class="flex items-center gap-8">
+      <nav class="hidden md:flex items-center gap-8">
+        {navLinks.map(link => (
+          <a
+            href={link.href}
+            class="font-display font-bold text-base tracking-widest uppercase text-fg/70 hover:text-fg transition-colors"
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
+      <a
+        href="/en-timme-gratis-bikonsultation"
+        class="hidden md:inline-flex items-center gap-2 border border-glow text-glow font-mono text-xs tracking-widest uppercase px-4 py-2.5 hover:bg-glow hover:text-navy-dark transition-all"
+      >
+        Gratis BI-timme →
+      </a>
+
+    <button id="menu-toggle" class="md:hidden text-fg p-1" aria-label="Öppna meny">
+      <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+      <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-fg/10 px-6 pb-6 pt-4" style="background: #0E1530;">
+    {navLinks.map(link => (
+      <a href={link.href} class="block py-3 font-mono text-xs tracking-widest uppercase text-fg/70 hover:text-fg border-b border-fg/10">
+        {link.label}
+      </a>
+    ))}
+    <a href="/en-timme-gratis-bikonsultation" class="mt-4 block text-center border border-glow text-glow font-mono text-xs tracking-widest uppercase px-4 py-3 hover:bg-glow hover:text-navy-dark transition-all">
+      Gratis BI-timme →
+    </a>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('site-header')!;
+  const toggle = document.getElementById('menu-toggle')!;
+  const menu   = document.getElementById('mobile-menu')!;
+  const iconOpen  = document.getElementById('icon-open')!;
+  const iconClose = document.getElementById('icon-close')!;
+
+  // Scroll behaviour: transparent → solid
+  function updateHeader() {
+    if (window.scrollY > 60) {
+      header.style.background = '#0E1530';
+      header.style.borderBottom = '1px solid rgba(240,239,250,0.08)';
+    } else {
+      header.style.background = 'transparent';
+      header.style.borderBottom = 'none';
+    }
+  }
+  window.addEventListener('scroll', updateHeader, { passive: true });
+  updateHeader();
+
+  // Mobile toggle
+  toggle.addEventListener('click', () => {
+    const open = menu.classList.toggle('hidden');
+    iconOpen.classList.toggle('hidden', !open);
+    iconClose.classList.toggle('hidden', open);
+  });
+</script>

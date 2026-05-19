@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Vad är en BI-konsult?", "acceptedAnswer": { "@type": "Answer", "text": "En BI-konsult bygger, förvaltar och implementerar business intelligence-lösningar. En BI-konsult hjälper företag att hantera, analysera, förstå och visualisera sin data för att kunna fatta informerade beslut om sin verksamhet." } },
+    { "@type": "Question", "name": "Vad gör en BI-konsult konkret?", "acceptedAnswer": { "@type": "Answer", "text": "En BI-konsult analyserar affärssystem och dataflöden, bygger datalager, skapar datamodeller enligt Kimball-metodologi, utvecklar interaktiva dashboards och KPI-rapporter i Power BI, och automatiserar rapporter med schemalagda uppdateringar." } },
+    { "@type": "Question", "name": "Hur arbetar en BI-konsult med datamodellering?", "acceptedAnswer": { "@type": "Answer", "text": "Kugghuset använder etablerad teori kring datamodellering och strävar efter att bygga lösningar i linje med best practice för Power BI enligt Kimball-metodologi." } },
+    { "@type": "Question", "name": "Vilka affärssystem kan en BI-konsult integrera med Power BI?", "acceptedAnswer": { "@type": "Answer", "text": "Kugghuset integrerar Power BI med Microsoft Dynamics AX, Microsoft Dynamics NAV, Jeeves, Scala, Visma, Hogia, Movex (Lawson M3), IFS, Agresso, Monitor, Maconomy och många fler affärssystem." } },
+    { "@type": "Question", "name": "Hur samarbetar en BI-konsult med kunden?", "acceptedAnswer": { "@type": "Answer", "text": "Ju tätare samarbete med beställaren, desto bättre leverans. Kugghuset arbetar nära kunden så att de får djup förståelse för hur BI-lösningen är uppbyggd." } }
+  ]
+});
+
+const guidelines = [
+  { title: 'Hållbarhet', body: 'Det vi bygger ska hålla ihop med minimal support och utan att behöva vidareutveckling. Om ett projekt stannar av någon anledning är det viktigt att det vi byggt ska kunna gå att använda. Att göra saker på detta sätt kan ibland till synes ta mer tid, men lägger man en ordentlig grund blir allt mer stabilt.' },
+  { title: 'Datamodellering enligt Kimball och best practice för Power BI', body: 'I arbetet med att knyta ihop informationen och bygga uppföljningen använder vi etablerad teori kring datamodellering och strävar ständigt efter att bygga lösningar i linje med vad branschen anser vara best practice för Power BI. När datamodelleringen är korrekt gjord är det lätt för er att förstå hur allt funkar och enkelt att ta in en annan konsult om det skulle behövas.' },
+  { title: 'Namngivning av modeller', body: 'Vi jobbar noggrant med en tydlig och konsekvent namngivning av tabeller, fält och mätvärden. Vi anstränger oss för att förstå beställarens behov och döper med tydliga prefix och ett korrekt språk.' },
+  { title: 'Göra rättningar så nära källan som möjligt', body: 'Istället för quick fixes tar vi oss alltid tid att gå tillbaka så nära källan som möjligt och göra rättningen där. På detta vis minimeras risken för att man i rapporter glömmer bort tillfälliga lösningar.' },
+  { title: 'Samarbete med beställare av rapporter', body: 'Ju tätare samarbete med beställaren, desto bättre leverans. Ni får en djup förståelse för hur BI-lösningen är uppbyggd. Parallellt med våra tekniska insatser kan ni börja bygga sådant som ska ut till verksamheten och få ordentlig utbildning i Power BI. När samarbetet är tätt blir behovet av löpande konsultinsatser minimalt och nyttan av er BI-lösning maximal.' },
+  { title: 'Initiativtagande kring business intelligence-processer', body: 'Med vår långa erfarenhet av rapportering och uppföljning kan vi ofta se hos våra kunder att det finns möjligheter till förenkling och förbättring av processer. Vid större förändringar är vi proaktiva och tar upp detta till diskussion.' },
+];
+---
+<Layout
+  title="Vad är en BI-konsult? Business intelligence | Kugghuset"
+  description="En BI-konsult bygger och implementerar business intelligence-lösningar. Lär dig vad en BI-konsult gör, vilka verktyg de använder och Kugghusets riktlinjer för professionellt BI-arbete i Power BI."
+  schemaJson={faqSchema}
+>
+  <Header />
+
+  <div class="relative bg-navy-dark pt-32 pb-20 px-6 overflow-hidden">
+    <div class="pointer-events-none absolute left-0 bottom-0 w-80 h-80 rounded-full opacity-20" style="background:radial-gradient(circle,#B5CCE0 0%,transparent 70%);filter:blur(60px)"></div>
+    <div class="relative max-w-7xl mx-auto">
+      <p class="font-mono text-xs tracking-[0.28em] uppercase text-fg/30 mb-4">Kunskap</p>
+      <h1 class="font-display font-light text-fg" style="font-size:clamp(2.5rem,6vw,5rem);line-height:1;letter-spacing:-0.03em;">
+        Vad är en<br /><em style="font-style:italic;color:#B5CCE0;">BI-konsult?</em>
+      </h1>
+    </div>
+  </div>
+
+  <main class="bg-cream py-20 px-6">
+    <div class="max-w-3xl mx-auto">
+
+      <p class="font-body text-ink text-lg leading-relaxed mb-4">
+        En BI-konsult bygger, förvaltar och implementerar business intelligence-lösningar.
+      </p>
+      <blockquote class="border-l-2 border-pink pl-6 font-display italic text-ink text-base leading-relaxed mb-6">
+        "…the set of techniques and tools for the transformation of raw data into meaningful and useful information for business analysis purposes."
+      </blockquote>
+      <p class="font-body text-ink leading-relaxed mb-14">
+        En BI-konsult hjälper företag att hantera, analysera, förstå och visualisera sin data för att kunna fatta informerade beslut om sin verksamhet.
+      </p>
+
+      <div class="border-t border-navy/10 pt-12">
+        <p class="font-mono text-xs tracking-[0.28em] uppercase text-navy/70 mb-10">Riktlinjer för våra BI-konsulter och utvecklare</p>
+        <div class="space-y-10">
+          {guidelines.map((g, i) => (
+            <div class="grid sm:grid-cols-[auto_1fr] gap-6">
+              <div class="font-mono text-xs text-pink-deep pt-1 w-6">0{i+1}</div>
+              <div>
+                <h2 class="font-display font-medium text-navy text-xl mb-2">{g.title}</h2>
+                <p class="font-body text-ink text-sm leading-relaxed">{g.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="mt-14 border-t border-navy/10 pt-10 text-center">
+        <a href="/om-kugghuset"
+          class="inline-block bg-navy text-fg font-body font-semibold uppercase tracking-widest text-sm px-8 py-3.5 hover:bg-navy-deep transition-colors">
+          Skicka ett meddelande
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
