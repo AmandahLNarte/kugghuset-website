@@ -34,21 +34,21 @@ Kugghuset har implementerat BI-lösningar för 100+ organisationer.
 
 ## Kontakt
 
-- Webbplats: https://www.kugghuset.se
+- Webbplats: https://kugghuset.se
 - Kontaktperson: Konrad Leffler
 - Telefon: 070-454 55 31
 - E-post: konrad@kugghuset.se
-- Adress: Magnus Ladulåsgatan 3, 118 65 Stockholm, Sverige
+- Adress: Sickla Strand 45, 131 34 Nacka, Sverige
 - Org.nr: 556934-0531
 - LinkedIn: https://www.linkedin.com/company/kugghuset-ab
 - Facebook: https://www.facebook.com/kugghuset
 
 ## Sidor
 
-- [Startsida – Power BI konsult Stockholm](https://www.kugghuset.se/)
-- [Vad är en BI-konsult?](https://www.kugghuset.se/vad-ar-en-bi-konsult)
-- [Referenscase – Business Intelligence](https://www.kugghuset.se/referenscase)
-- [Kundcase: Humana – koncernredovisningssystem](https://www.kugghuset.se/humana)
-- [En timme gratis BI-konsultation](https://www.kugghuset.se/en-timme-gratis-bikonsultation)
-- [Kunder](https://www.kugghuset.se/kunder)
-- [Kontakt och om oss](https://www.kugghuset.se/om-kugghuset)
+- [Startsida – Power BI konsult Stockholm](https://kugghuset.se/)
+- [Vad är en BI-konsult?](https://kugghuset.se/vad-ar-en-bi-konsult)
+- [Referenscase – Business Intelligence](https://kugghuset.se/referenscase)
+- [Kundcase: Humana – koncernredovisningssystem](https://kugghuset.se/humana)
+- [En timme gratis BI-konsultation](https://kugghuset.se/en-timme-gratis-bikonsultation)
+- [Kunder](https://kugghuset.se/kunder)
+- [Kontakt och om oss](https://kugghuset.se/om-kugghuset)
