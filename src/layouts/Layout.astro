@@ -17,7 +17,7 @@ const {
   schemaJson,
 } = Astro.props;
 
-const siteUrl = 'https://kugghuset-website.vercel.app';
+const siteUrl = Astro.site?.href.replace(/\/$/, '') ?? 'https://kugghuset.se';
 const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
 const ogImageAbsolute = `${siteUrl}${ogImage}`;
 
