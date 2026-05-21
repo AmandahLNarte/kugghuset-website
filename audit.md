@@ -28,7 +28,7 @@ These block indexing, break structured data graphs, and misdirect link equity.
 ### 1. Canonical Domain Mismatch (affects everything)
 **File:** `src/layouts/Layout.astro` line 21
 
-`astro.config.mjs` correctly declares `site: 'https://www.kugghuset.se'`, but `Layout.astro` hardcodes `siteUrl = 'https://kugghuset-website.vercel.app'`. This causes every canonical tag, OG URL, and schema `@id` on the site to point to the Vercel preview domain instead of the production domain. Every other fix in this report builds on the wrong foundation until this is resolved.
+`astro.config.mjs` correctly declares `site: 'https://kugghuset.se'`, but `Layout.astro` hardcodes `siteUrl = 'https://kugghuset-website.vercel.app'`. This causes every canonical tag, OG URL, and schema `@id` on the site to point to the Vercel preview domain instead of the production domain. Every other fix in this report builds on the wrong foundation until this is resolved.
 
 **Fix:**
 ```js
@@ -49,7 +49,7 @@ const siteUrl = Astro.site?.href.replace(/\/$/, '') ?? 'https://www.kugghuset.se
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://www.kugghuset.se',
+  site: 'https://kugghuset.se',
   integrations: [
     tailwind(),
     sitemap({ filter: (page) => !page.includes('/tack') }),
@@ -57,7 +57,7 @@ export default defineConfig({
 });
 ```
 
-After this fix, `robots.txt` Sitemap directive should be updated to `https://www.kugghuset.se/sitemap-index.xml` (which is what it already says — correct once the sitemap is generated).
+After this fix, `robots.txt` Sitemap directive should be updated to `https://kugghuset.se/sitemap-index.xml` (which is what it already says — correct once the sitemap is generated).
 
 ### 3. Wrong Address in llms.txt
 **File:** `public/llms.txt`
@@ -157,7 +157,7 @@ const articleSchema = {
 
 ---
 
-## HIGH Priority — Fix Within 1 Week
+## HIGH Priority — Fix Within a Week
 
 ### 6. H1 Is a Brand Tagline, Not a Keyword
 **File:** `src/pages/index.astro`
@@ -230,7 +230,7 @@ Currently declares `Sitemap: https://www.kugghuset.se/sitemap-index.xml`. This i
 
 ---
 
-## MEDIUM Priority — Fix Within 1 Month
+## MEDIUM Priority — Fix Within 1 Week
 
 | # | Issue | File | Action |
 |---|-------|------|--------|

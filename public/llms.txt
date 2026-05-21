@@ -17,11 +17,11 @@ Kugghuset AB är ett specialiserat konsultbolag inom Business Intelligence (BI) 
 
 ## Affärssystem vi integrerar med
 
-Microsoft Dynamics AX (Axapta), Microsoft Dynamics NAV (Navision), Jeeves, Scala, Visma, Hogia, SPCS, Movex (Lawson M3), IFS, Agresso, IBS Enterprise (ASW), Monitor, Maconomy, 3L, Palette (Baltzar), Ex-flow, Quinyx, Kontek
+Microsoft Dynamics AX (Axapta), Microsoft Dynamics NAV (Navision), Jeeves, Scala, Visma, Fortnox, Hogia, SPCS, Movex (Lawson M3), IFS, Agresso, IBS Enterprise (ASW), Monitor, Maconomy, 3L, Palette (Baltzar), Ex-flow, Quinyx, Kontek
 
 ## BI-verktyg och teknologier
 
-Microsoft Power BI, Microsoft Power Pivot, Microsoft Power View, Microsoft Power Query, Microsoft SQL Server Integration Services (SSIS), Microsoft SQL Server Analysis Services (SSAS), Microsoft Excel, Tableau, Exopen Web Reports, Exopen Report, Exopen Forecast, Open Sequel, AARO, Ocra Tiego Lease Accounting
+Microsoft Power BI, Microsoft Power Pivot, Microsoft Power View, Microsoft Power Query, Microsoft SQL Server Integration Services (SSIS), Microsoft SQL Server Analysis Services (SSAS), SQL Server Management Studio, Microsoft Excel, Tableau, Exopen Web Reports, Exopen Report, Exopen Forecast, Open Sequel, AARO, Ocra Tiego Lease Accounting
 
 ## Kunder och referenscase
 
