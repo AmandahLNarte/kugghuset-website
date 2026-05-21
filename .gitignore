@@ -4,3 +4,9 @@ dist/
 .DS_Store
 *.env
 .env.local
+
+# Astro auto-generated
+.astro/
+
+# Claude Code per-project settings
+.claude/

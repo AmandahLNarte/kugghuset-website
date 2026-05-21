@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /tack
 
-Sitemap: https://www.kugghuset.se/sitemap-index.xml
+Sitemap: https://kugghuset.se/sitemap-index.xml

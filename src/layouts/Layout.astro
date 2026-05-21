@@ -17,7 +17,7 @@ const {
   schemaJson,
 } = Astro.props;
 
-const siteUrl = 'https://kugghuset-website.vercel.app';
+const siteUrl = Astro.site?.href.replace(/\/$/, '') ?? 'https://kugghuset.se';
 const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
 const ogImageAbsolute = `${siteUrl}${ogImage}`;
 
@@ -25,25 +25,38 @@ const organizationSchema = JSON.stringify({
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
+      "@type": ["Organization", "ProfessionalService"],
       "@id": `${siteUrl}/#organization`,
       "name": "Kugghuset AB",
+      "legalName": "Kugghuset AB",
       "url": siteUrl,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${siteUrl}/images/logo-white-04.png`,
+        "width": 512,
+        "height": 512
+      },
       "description": "Power BI-konsulter i Stockholm med 15+ års erfarenhet av business intelligence, datamodellering och interaktiva dashboards för ekonomichefer och controllers.",
+      "foundingDate": "2013",
+      "numberOfEmployees": { "@type": "QuantitativeValue", "value": 7 },
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Sickla Strand 45",
         "postalCode": "131 34",
-        "addressLocality": "Stockholm",
+        "addressLocality": "Nacka",
+        "addressRegion": "Stockholm",
         "addressCountry": "SE"
       },
       "telephone": "+46704545531",
       "email": "konrad@kugghuset.se",
-      "areaServed": { "@type": "Country", "name": "Sweden" },
+      "areaServed": [
+        { "@type": "Country", "name": "Sweden" },
+        { "@type": "City", "name": "Stockholm" }
+      ],
       "knowsAbout": ["Power BI", "Business Intelligence", "Datamodellering", "SQL Server", "Microsoft Excel", "Datavisualisering", "Datalager"],
       "sameAs": [
-        "https://www.facebook.com/kugghuset",
-        "https://www.linkedin.com/company/kugghuset-ab"
+        "https://www.linkedin.com/company/kugghuset-ab",
+        "https://www.facebook.com/kugghuset"
       ]
     },
     {
