@@ -30,7 +30,8 @@ const contactSchema = JSON.stringify({
   </div>
 
   <main class="bg-cream py-20 px-6">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
+    <div class="max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-16">
 
       <!-- Kontaktinfo -->
       <div>
@@ -85,37 +86,43 @@ const contactSchema = JSON.stringify({
         </form>
       </div>
 
-      <!-- Karta -->
-      <div class="mt-16 border-t border-navy/10 pt-12">
-        <p class="font-mono text-xs tracking-[0.28em] uppercase text-navy/70 mb-6">Hitta hit</p>
-        <figure>
+    </div>
+
+    <!-- Karta – full bredd, centrerad -->
+    <div class="mt-16 border-t border-navy/10 pt-12">
+      <p class="font-mono text-xs tracking-[0.28em] uppercase text-navy/70 mb-6 text-center">Hitta hit</p>
+      <figure class="max-w-4xl mx-auto">
+        <div class="relative">
           <iframe
             title="Kugghuset AB – Sickla Strand 45, 131 34 Nacka"
             src="https://maps.google.com/maps?q=Sickla+Strand+45,+131+34+Nacka,+Sweden&output=embed"
             width="100%"
-            height="420"
+            height="440"
             style="border:0;"
             allowfullscreen
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             aria-label="Karta över Kugghusets kontor på Sickla Strand 45 i Nacka"
-            class="w-full"
+            class="w-full block"
           ></iframe>
-          <figcaption class="mt-4 flex flex-wrap items-center justify-between gap-4">
-            <address class="font-body text-sm text-ink not-italic">
-              Kugghuset AB · Sickla Strand 45 · 131 34 Nacka
-            </address>
-            <a
-              href="https://maps.google.com/maps?q=Sickla+Strand+45,+131+34+Nacka,+Sweden"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="font-mono text-xs tracking-widest uppercase text-navy hover:underline"
-            >
-              Vägbeskrivning i Google Maps →
-            </a>
-          </figcaption>
-        </figure>
-      </div>
+          <!-- rosa overlay -->
+          <div class="absolute inset-0 pointer-events-none" style="background:rgba(229,184,203,0.28);mix-blend-mode:multiply;"></div>
+        </div>
+        <figcaption class="mt-4 flex flex-wrap items-center justify-between gap-4">
+          <address class="font-body text-sm text-ink not-italic">
+            Kugghuset AB · Sickla Strand 45 · 131 34 Nacka
+          </address>
+          <a
+            href="https://maps.google.com/maps?q=Sickla+Strand+45,+131+34+Nacka,+Sweden"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-mono text-xs tracking-widest uppercase text-navy hover:underline"
+          >
+            Vägbeskrivning i Google Maps →
+          </a>
+        </figcaption>
+      </figure>
+    </div>
 
     </div>
   </main>
