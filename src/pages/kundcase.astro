@@ -1,0 +1,187 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const clientLogos = [
+  { file: 'image-asset-01.webp', name: 'Bambora' },
+  { file: 'image-asset-15.webp', name: 'Humana' },
+  { file: 'image-asset-06.webp', name: 'Spotify' },
+  { file: 'image-asset-03.webp', name: 'Berns' },
+  { file: 'image-asset-04.webp', name: 'Grant Thornton' },
+  { file: 'image-asset-02.webp', name: 'Friskis & Svettis' },
+  { file: 'image-asset-12.webp', name: 'Midroc' },
+  { file: 'image-asset-08.webp', name: 'Europcar' },
+  { file: 'image-asset-09.webp', name: 'Fredells' },
+  { file: 'image-asset-10.webp', name: 'Dedicare' },
+  { file: 'image-asset-05.webp', name: 'Betsson' },
+  { file: 'image-asset-16.webp', name: 'Formpipe' },
+  { file: 'image-asset-07.webp', name: 'Hästens' },
+  { file: 'image-asset-11.webp', name: 'Metro' },
+  { file: 'image-asset-13.webp', name: 'Kanal 5' },
+  { file: 'image-asset-14.webp', name: 'Nobis' },
+];
+---
+<Layout
+  title="Kunder & Kundcase – Business Intelligence Stockholm | Kugghuset"
+  description="Se hur Kugghuset skapat datatrolleri hos 100+ företag i Sverige. Referenscase inom Power BI, datamodellering och Business Intelligence."
+>
+  <Header />
+
+  <div class="relative bg-navy-dark pt-32 pb-20 px-6 overflow-hidden">
+    <div class="pointer-events-none absolute -right-20 top-0 w-96 h-96 rounded-full opacity-25" style="background:radial-gradient(circle,#E5B8CB 0%,transparent 70%);filter:blur(60px)"></div>
+    <div class="relative max-w-7xl mx-auto">
+      <p class="font-mono text-xs tracking-[0.28em] uppercase text-fg/30 mb-4">Kunder & Cases</p>
+      <h1 class="font-display font-light text-fg" style="font-size:clamp(2.5rem,6vw,5rem);line-height:1;letter-spacing:-0.03em;">
+        Gör som våra kunder —<br /><em style="font-style:italic;color:#E5B8CB;">få ut mer av er data.</em>
+      </h1>
+      <p class="mt-6 font-body text-fg/60 max-w-xl text-lg leading-relaxed">
+        Vi hjälper företag med att effektivisera och förenkla komplexa hanteringsbehov av interna informationsflöden samt visualisera dessa som underlag för uppföljning och beslut. Vi har samlad erfarenhet av implementation hos 100+ unika företag och organisationer.
+      </p>
+    </div>
+  </div>
+
+  <main class="bg-cream py-20 px-6">
+    <div class="max-w-7xl mx-auto space-y-0">
+
+      <!-- Case 1: Humana -->
+      <article class="border-t border-navy/15 pt-14 pb-14">
+        <div class="grid md:grid-cols-[2fr_3fr] gap-10 mb-10">
+          <div>
+            <h2 class="font-display font-medium text-navy text-3xl md:text-4xl">Humana</h2>
+            <p class="font-body text-navy mt-1 mb-4">Sveriges ledande privata omsorgsföretag</p>
+            <a href="/humana" class="font-mono text-xs tracking-widest uppercase text-navy hover:underline">
+              Läs hela caset →
+            </a>
+          </div>
+          <p class="font-body text-navy leading-relaxed">
+            Humana skulle implementera ett nytt koncernredovisningssystem och strukturerade i samband med implementationen om sin organisation. Kugghuset förkortade med hjälp av systemintegration och uppföljning implementationstiden med flera månader.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          {[
+            {
+              label: 'Utmaningar',
+              color: 'border-pink',
+              items: [
+                'Konsolidering i Excel med pressad tidsplan för nytt koncernredovisningssystem',
+                'Stora organisationsomstruktureringar under implementationsfasen',
+                'Bokslut skulle levereras direkt efter implementation ur nytt system',
+              ],
+            },
+            {
+              label: 'Lösning',
+              color: 'border-powder',
+              items: [
+                'Integration mellan MS Dynamics NAV och AARO byggdes i SQL Server',
+                'Power Pivot-modell för direkt överblick av organisationsstrukturen',
+                'Finansiella rapporter för operativ uppföljning via ExOpen Report',
+              ],
+            },
+            {
+              label: 'Effekter',
+              color: 'border-glow',
+              items: [
+                'Implementationstiden förkortades med 2–3 månader',
+                'Löpande inrapportering från ekonomichefer i dotterbolag eliminerades',
+                'Bokslutsprocessen optimerades för kommande perioder',
+              ],
+            },
+          ].map(col => (
+            <div class={`border-t-2 ${col.color} pt-5`}>
+              <p class="font-mono text-xs tracking-widest uppercase text-navy mb-4">{col.label}</p>
+              <ul class="space-y-3">
+                {col.items.map(item => (
+                  <li class="flex items-start gap-2 font-body text-sm text-navy leading-relaxed">
+                    <span class="text-pink-deep mt-0.5 shrink-0">·</span>{item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </article>
+
+      <!-- Case 2: Bank -->
+      <article class="border-t border-navy/15 pt-14 pb-14">
+        <div class="grid md:grid-cols-[2fr_3fr] gap-10 mb-10">
+          <div>
+            <h2 class="font-display font-medium text-navy text-3xl md:text-4xl">Stor svensk bank</h2>
+            <p class="font-body text-navy mt-1">Kortverksamhet</p>
+          </div>
+          <p class="font-body text-navy leading-relaxed">
+            Banken hade ett mycket tidskrävande rapporteringsarbete och kunde inte analysera sin verksamhet. Kugghuset byggde en lösning som sparade in 40 timmars rapporteringsarbete per månad.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          {[
+            {
+              label: 'Utmaning',
+              color: 'border-pink',
+              items: [
+                'Mer tid spenderades på att ta fram rapporter än på analys',
+                'Manuella steg i Excel gjorde processen personberoende',
+                'Rapporter gav upphov till fler frågor som krävde tidskrävande analyser',
+              ],
+            },
+            {
+              label: 'Lösning',
+              color: 'border-powder',
+              items: [
+                'Dataflödet analyserades och många steg i rapporteringen eliminerades',
+                'Lättförståelig Power Pivot-modell med relevant kunddata',
+                'Färdiga analyser och KPI:er togs fram',
+              ],
+            },
+            {
+              label: 'Effekter',
+              color: 'border-glow',
+              items: [
+                'Flera dagars rapporteringsarbete sparas in varje månad',
+                'Banken kan nu förstå sin verksamhet och fatta faktabaserade beslut',
+                'Ledningen arbetar med månatlig rapportering med direkta svar',
+              ],
+            },
+          ].map(col => (
+            <div class={`border-t-2 ${col.color} pt-5`}>
+              <p class="font-mono text-xs tracking-widest uppercase text-navy mb-4">{col.label}</p>
+              <ul class="space-y-3">
+                {col.items.map(item => (
+                  <li class="flex items-start gap-2 font-body text-sm text-navy leading-relaxed">
+                    <span class="text-pink-deep mt-0.5 shrink-0">·</span>{item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </article>
+
+      <!-- Logotyper -->
+      <div class="border-t border-navy/15 pt-14">
+        <p class="font-mono text-xs tracking-[0.28em] uppercase text-navy text-center mb-10">Andra organisationer vi trollat med</p>
+        <div class="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-5 items-center justify-items-center mb-10">
+          {clientLogos.map(c => (
+            <div class="w-full flex items-center justify-center px-2 py-3 grayscale opacity-40 hover:opacity-80 hover:grayscale-0 transition-all duration-300">
+              <img
+                src={`/images/clients/${c.file}`}
+                alt={c.name}
+                class="max-h-9 w-auto object-contain"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          ))}
+        </div>
+        <div class="text-center">
+          <a href="/vad-ar-en-bi-konsult" class="font-mono text-xs tracking-widest uppercase text-navy hover:underline">
+            Vad är en BI-konsult? →
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
