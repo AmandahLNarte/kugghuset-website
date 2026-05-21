@@ -15,6 +15,29 @@ const faqSchema = JSON.stringify({
   ]
 });
 
+const faqItems = [
+  {
+    question: 'Vad är en BI-konsult?',
+    answer: 'En BI-konsult bygger, förvaltar och implementerar business intelligence-lösningar. En BI-konsult hjälper företag att hantera, analysera, förstå och visualisera sin data för att kunna fatta informerade beslut om sin verksamhet.',
+  },
+  {
+    question: 'Vad gör en BI-konsult konkret?',
+    answer: 'En BI-konsult analyserar affärssystem och dataflöden, bygger datalager, skapar datamodeller enligt Kimball-metodologi, utvecklar interaktiva dashboards och KPI-rapporter i Power BI, och automatiserar rapporter med schemalagda uppdateringar.',
+  },
+  {
+    question: 'Hur arbetar en BI-konsult med datamodellering?',
+    answer: 'Kugghuset använder etablerad teori kring datamodellering och strävar efter att bygga lösningar i linje med best practice för Power BI enligt Kimball-metodologi.',
+  },
+  {
+    question: 'Vilka affärssystem kan en BI-konsult integrera med Power BI?',
+    answer: 'Kugghuset integrerar Power BI med Microsoft Dynamics AX, Microsoft Dynamics NAV, Jeeves, Scala, Visma, Hogia, Movex (Lawson M3), IFS, Agresso, Monitor, Maconomy och många fler affärssystem.',
+  },
+  {
+    question: 'Hur samarbetar en BI-konsult med kunden?',
+    answer: 'Ju tätare samarbete med beställaren, desto bättre leverans. Kugghuset arbetar nära kunden så att de får djup förståelse för hur BI-lösningen är uppbyggd.',
+  },
+];
+
 const guidelines = [
   { title: 'Hållbarhet', body: 'Det vi bygger ska hålla ihop med minimal support och utan att behöva vidareutveckling. Om ett projekt stannar av någon anledning är det viktigt att det vi byggt ska kunna gå att använda. Att göra saker på detta sätt kan ibland till synes ta mer tid, men lägger man en ordentlig grund blir allt mer stabilt.' },
   { title: 'Datamodellering enligt Kimball och best practice för Power BI', body: 'I arbetet med att knyta ihop informationen och bygga uppföljningen använder vi etablerad teori kring datamodellering och strävar ständigt efter att bygga lösningar i linje med vad branschen anser vara best practice för Power BI. När datamodelleringen är korrekt gjord är det lätt för er att förstå hur allt funkar och enkelt att ta in en annan konsult om det skulle behövas.' },
@@ -69,10 +92,37 @@ const guidelines = [
         </div>
       </div>
 
+      <!-- FAQ -->
+      <div class="mt-16 border-t border-navy/10 pt-12">
+        <p class="font-mono text-xs tracking-[0.28em] uppercase text-navy/70 mb-10">Vanliga frågor</p>
+        <div class="divide-y divide-navy/10">
+          {faqItems.map(faq => (
+            <details class="group py-6">
+              <summary class="font-display font-medium text-navy text-lg cursor-pointer list-none flex items-center justify-between gap-4">
+                {faq.question}
+                <span class="font-mono text-pink-deep shrink-0 transition-transform group-open:rotate-45">+</span>
+              </summary>
+              <p class="mt-4 font-body text-ink text-sm leading-relaxed">{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+
+      <!-- Interna länkar -->
+      <div class="mt-16 border-t border-navy/10 pt-10">
+        <p class="font-mono text-xs tracking-[0.28em] uppercase text-navy/70 mb-6">Läs mer</p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/#om-oss" class="font-body text-sm text-navy hover:underline">→ Våra tjänster</a>
+          <a href="/referenscase" class="font-body text-sm text-navy hover:underline">→ Referenscase</a>
+          <a href="/artiklar" class="font-body text-sm text-navy hover:underline">→ Artiklar & insikter</a>
+          <a href="/kunder" class="font-body text-sm text-navy hover:underline">→ Våra kunder</a>
+        </div>
+      </div>
+
       <div class="mt-14 border-t border-navy/10 pt-10 text-center">
-        <a href="/om-kugghuset"
+        <a href="/en-timme-gratis-bikonsultation"
           class="inline-block bg-navy text-fg font-body font-semibold uppercase tracking-widest text-sm px-8 py-3.5 hover:bg-navy-deep transition-colors">
-          Skicka ett meddelande
+          Boka gratis BI-konsultation
         </a>
       </div>
 
