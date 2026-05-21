@@ -1,0 +1,5 @@
+{
+  "redirects": [
+    { "source": "/hem", "destination": "/", "permanent": true }
+  ]
+}
