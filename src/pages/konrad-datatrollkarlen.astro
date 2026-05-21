@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { team } from '../data/team';
+
+const member = team.find(m => m.slug === 'konrad-datatrollkarlen')!;
+
+const personSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": member.name,
+  "jobTitle": member.roleSv,
+  "url": "https://kugghuset.se/konrad-datatrollkarlen",
+  "image": `https://kugghuset.se${member.photo}`,
+  "worksFor": { "@id": "https://kugghuset.se/#organization" },
+  "knowsAbout": member.skills
+});
+---
+<Layout
+  title={`${member.name} – ${member.roleSv} | Kugghuset`}
+  description={`${member.name} är grundare och ${member.roleSv} på Kugghuset i Stockholm. ${member.bio.slice(0, 120)}…`}
+  ogImage={member.photo}
+  schemaJson={personSchema}
+>
+  <Header />
+
+  <!-- hero -->
+  <div class="relative bg-navy-dark pt-32 pb-0 px-6 overflow-hidden">
+    <div class="pointer-events-none absolute -right-20 top-0 w-96 h-96 rounded-full opacity-20" style="background:radial-gradient(circle,#E5B8CB 0%,transparent 70%);filter:blur(60px)"></div>
+    <div class="relative max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-end">
+      <div class="pb-16">
+        <a href="/team" class="font-mono text-xs tracking-widest uppercase text-fg/40 hover:text-fg transition-colors mb-8 inline-block">← Teamet</a>
+        <p class="font-mono text-xs tracking-[0.28em] uppercase text-pink mb-4">{member.roleSv}</p>
+        <h1 class="font-display font-light text-fg" style="font-size:clamp(2.5rem,6vw,5rem);line-height:1;letter-spacing:-0.03em;">
+          {member.name.split(' ')[0]}<br />
+          <em style="font-style:italic;color:#E5B8CB;">{member.name.split(' ').slice(1).join(' ')}.</em>
+        </h1>
+        <div class="flex flex-wrap gap-2 mt-8">
+          {member.skills.map(skill => (
+            <span class="font-mono text-[10px] tracking-wide text-fg/60 border border-fg/20 px-2 py-0.5">{skill}</span>
+          ))}
+        </div>
+      </div>
+      <div class="aspect-[3/4] max-w-sm overflow-hidden">
+        <img
+          src={member.photo}
+          alt={`${member.name}, ${member.roleSv} – Kugghuset`}
+          class="w-full h-full object-cover"
+          loading="eager"
+          decoding="async"
+        />
+      </div>
+    </div>
+  </div>
+
+  <main class="bg-cream py-20 px-6">
+    <div class="max-w-3xl mx-auto">
+
+      <p class="font-body text-ink text-lg leading-relaxed mb-12">{member.bio}</p>
+
+      <div class="border-t border-navy/10 pt-10">
+        <p class="font-mono text-xs tracking-[0.28em] uppercase text-navy/70 mb-6">Kompetenser</p>
+        <div class="flex flex-wrap gap-2 mb-12">
+          {member.skills.map(skill => (
+            <span class="font-mono text-xs tracking-wide text-navy border border-navy/30 px-3 py-1">{skill}</span>
+          ))}
+        </div>
+      </div>
+
+      <div class="border-t border-navy/10 pt-10 text-center">
+        <p class="font-display font-light text-navy text-2xl mb-6">Vill du jobba med Konrad?</p>
+        <a href="/en-timme-gratis-bikonsultation"
+          class="inline-block bg-navy text-fg font-body font-semibold uppercase tracking-widest text-sm px-8 py-3.5 hover:bg-navy-deep transition-colors">
+          Boka gratis BI-konsultation
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

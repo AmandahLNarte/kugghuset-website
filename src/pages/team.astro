@@ -1,0 +1,100 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { team } from '../data/team';
+
+const teamSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Kugghusets team",
+  "itemListElement": team.map((m, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "item": {
+      "@type": "Person",
+      "name": m.name,
+      "jobTitle": m.roleSv,
+      "url": `https://kugghuset.se${m.profilePath}`,
+      "worksFor": { "@id": "https://kugghuset.se/#organization" }
+    }
+  }))
+});
+---
+<Layout
+  title="Teamet – Kugghusets BI & AI-konsulter | Kugghuset"
+  description="Möt Kugghusets sju BI- och AI-konsulter i Stockholm. Erfarna experter inom Power BI, datamodellering, SQL, Python och AI-integrering."
+  schemaJson={teamSchema}
+>
+  <Header />
+
+  <!-- hero -->
+  <div class="relative bg-navy-dark pt-32 pb-20 px-6 overflow-hidden">
+    <div class="pointer-events-none absolute -left-20 top-0 w-96 h-96 rounded-full opacity-25" style="background:radial-gradient(circle,#E5B8CB 0%,transparent 70%);filter:blur(60px)"></div>
+    <div class="relative max-w-7xl mx-auto">
+      <p class="font-mono text-xs tracking-[0.28em] uppercase text-fg/30 mb-4">Teamet</p>
+      <h1 class="font-display font-light text-fg" style="font-size:clamp(2.5rem,6vw,5rem);line-height:1;letter-spacing:-0.03em;">
+        Sju datatrollkarlar.<br /><em style="font-style:italic;color:#E5B8CB;">Ett fokus.</em>
+      </h1>
+      <p class="mt-6 font-body text-fg/70 text-lg max-w-xl">AbraKadabra, Simsalabim. Möt Kugghusets BI- och AI-konsulter.</p>
+    </div>
+  </div>
+
+  <main class="bg-navy-dark py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+
+      <!-- rad 1: 4 -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        {team.slice(0, 4).map(member => (
+          <a href={member.profilePath} class="group block">
+            <div class="aspect-[3/4] overflow-hidden bg-fg/5 mb-4 relative">
+              <img
+                src={member.photo}
+                alt={`${member.name}, ${member.roleSv} – Kugghuset`}
+                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="absolute inset-0 bg-navy/20 group-hover:bg-navy/0 transition-colors"></div>
+            </div>
+            <h2 class="font-display font-medium text-fg text-xl group-hover:text-pink transition-colors">{member.name}</h2>
+            <p class="font-mono text-xs tracking-widest uppercase text-pink mt-0.5 mb-3">{member.roleSv}</p>
+            <div class="flex flex-wrap gap-1.5">
+              {member.skills.map(skill => (
+                <span class="font-mono text-[10px] tracking-wide text-fg/60 border border-fg/20 px-2 py-0.5">{skill}</span>
+              ))}
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <!-- rad 2: 3 centrerad -->
+      <div class="grid grid-cols-2 lg:grid-cols-3 gap-8 lg:w-3/4 mx-auto">
+        {team.slice(4).map(member => (
+          <a href={member.profilePath} class="group block">
+            <div class="aspect-[3/4] overflow-hidden bg-fg/5 mb-4 relative">
+              <img
+                src={member.photo}
+                alt={`${member.name}, ${member.roleSv} – Kugghuset`}
+                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="absolute inset-0 bg-navy/20 group-hover:bg-navy/0 transition-colors"></div>
+            </div>
+            <h2 class="font-display font-medium text-fg text-xl group-hover:text-pink transition-colors">{member.name}</h2>
+            <p class="font-mono text-xs tracking-widest uppercase text-pink mt-0.5 mb-3">{member.roleSv}</p>
+            <div class="flex flex-wrap gap-1.5">
+              {member.skills.map(skill => (
+                <span class="font-mono text-[10px] tracking-wide text-fg/60 border border-fg/20 px-2 py-0.5">{skill}</span>
+              ))}
+            </div>
+          </a>
+        ))}
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
