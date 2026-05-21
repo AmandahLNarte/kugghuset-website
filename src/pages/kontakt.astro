@@ -1,0 +1,92 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const contactSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Kontakta Kugghuset",
+  "url": "https://kugghuset.se/kontakt",
+  "description": "Kontakta Kugghusets BI-konsulter i Stockholm för Power BI-konsulting och business intelligence.",
+  "mainEntity": { "@id": "https://kugghuset.se/#organization" }
+});
+---
+<Layout
+  title="Kontakt – Kugghuset BI-konsulter Stockholm"
+  description="Kontakta Kugghusets BI-konsulter i Stockholm. Erfarna experter inom Power BI och business intelligence. Org.nr 556934-0531, Sickla Strand 45, Nacka."
+  schemaJson={contactSchema}
+>
+  <Header />
+
+  <div class="relative bg-navy-dark pt-32 pb-20 px-6 overflow-hidden">
+    <div class="pointer-events-none absolute -left-20 top-0 w-96 h-96 rounded-full opacity-30" style="background:radial-gradient(circle,#5BA8E0 0%,transparent 70%);filter:blur(60px)"></div>
+    <div class="relative max-w-7xl mx-auto">
+      <p class="font-mono text-xs tracking-[0.28em] uppercase text-fg/30 mb-4">Kontakt</p>
+      <h1 class="font-display font-light text-fg" style="font-size:clamp(2.5rem,6vw,5rem);line-height:1;letter-spacing:-0.03em;">
+        Kontakta<br /><em style="font-style:italic;color:#E5B8CB;">oss.</em>
+      </h1>
+    </div>
+  </div>
+
+  <main class="bg-cream py-20 px-6">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
+
+      <!-- Kontaktinfo -->
+      <div>
+        <h2 class="font-display font-medium text-navy text-2xl mb-8">Kugghuset AB</h2>
+        <div class="space-y-5 font-body text-sm text-ink">
+          <div>
+            <p class="font-mono text-xs tracking-widest uppercase text-navy/70 mb-1">Org.nr</p>
+            <p>556934-0531</p>
+          </div>
+          <div>
+            <p class="font-mono text-xs tracking-widest uppercase text-navy/70 mb-1">Besöksadress</p>
+            <p>Sickla Strand 45<br/>131 34 Nacka</p>
+          </div>
+          <div>
+            <p class="font-mono text-xs tracking-widest uppercase text-navy/70 mb-1">Telefon</p>
+            <a href="tel:070-454-55-31" class="text-navy hover:underline">070-454 55 31</a>
+          </div>
+          <div>
+            <p class="font-mono text-xs tracking-widest uppercase text-navy/70 mb-1">E-post</p>
+            <a href="mailto:konrad@kugghuset.se" class="text-navy hover:underline">konrad@kugghuset.se</a>
+          </div>
+        </div>
+        <a href="/en-timme-gratis-bikonsultation"
+          class="mt-8 inline-block bg-navy text-fg font-body font-semibold uppercase tracking-widest text-xs px-7 py-3.5 hover:bg-navy-deep transition-colors">
+          Boka gratis BI-konsultation
+        </a>
+      </div>
+
+      <!-- Formulär -->
+      <div>
+        <h2 class="font-display font-medium text-navy text-2xl mb-8">Skicka ett meddelande</h2>
+        <form action="https://formspree.io/f/xdkewgnl" method="POST" class="space-y-5">
+          <div>
+            <label for="name" class="block font-mono text-xs tracking-widest uppercase text-navy/70 mb-2">Namn</label>
+            <input id="name" type="text" name="namn"
+              class="w-full border border-navy/20 bg-white text-ink text-sm px-4 py-3 focus:outline-none focus:border-navy transition-colors"/>
+          </div>
+          <div>
+            <label for="email" class="block font-mono text-xs tracking-widest uppercase text-navy/70 mb-2">E-postadress</label>
+            <input id="email" type="email" name="email"
+              class="w-full border border-navy/20 bg-white text-ink text-sm px-4 py-3 focus:outline-none focus:border-navy transition-colors"/>
+          </div>
+          <div>
+            <label for="message" class="block font-mono text-xs tracking-widest uppercase text-navy/70 mb-2">Meddelande</label>
+            <textarea id="message" name="meddelande" rows="5"
+              class="w-full border border-navy/20 bg-white text-ink text-sm px-4 py-3 focus:outline-none focus:border-navy transition-colors resize-none"></textarea>
+          </div>
+          <button type="submit"
+            class="w-full bg-navy text-fg font-body font-semibold uppercase tracking-widest text-sm py-4 hover:bg-navy-deep transition-colors">
+            Skicka
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
