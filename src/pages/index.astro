@@ -40,13 +40,13 @@ const services = [
 ];
 
 const team = [
-  { name: 'Konrad Leffler',   role: 'Grundare & CEO',           skills: ['Power BI','BI-strategi','Finansiell analys','Ledarskap'],                   photo: '/images/team-konrad.jpg' },
-  { name: 'Elis Lindström',   role: 'BI-arkitekt',              skills: ['Data Modeling','DAX','Azure','SQL'],                                          photo: '/images/team-elis.jpg' },
-  { name: 'Tobias Törnblom',  role: 'Data Engineer',            skills: ['Azure Data Factory','SQL','Python','ETL/ELT'],                                photo: '/images/team-tobias.jpg' },
-  { name: 'Alexander Öhberg', role: 'AI-specialist',            skills: ['Machine Learning','Python','Azure AI','Automatisering'],                     photo: '/images/team-alexander.jpg' },
-  { name: 'Evgenia Nordholm', role: 'Dataanalytiker',           skills: ['Dataanalys','Power BI','DAX','Statistik'],                                   photo: '/images/team-evgenia.jpg' },
-  { name: 'Daniel Brooks',    role: 'Visualiseringsexpert',     skills: ['Power BI','UX/design','Dataviz','Rapportdesign'],                            photo: '/images/team-daniel.jpg' },
-  { name: 'Amandah LNarte',   role: 'Strategi & kommunikation', skills: ['Kommunikation','Affärsutveckling','Varumärke','Strategi'],                   photo: '/images/team-amandah.jpg' },
+  { name: 'Konrad Leffler',   roleSv: 'Grundare & Senior BI & AI-expert',     roleEn: 'Founder & Senior BI & AI Expert',       skills: ['Power BI','BI-konsult','Business Intelligence','Datamodellering','DAX','SQL','Python','ETL','Datatrollkarl'], photo: '/images/team-konrad.jpg' },
+  { name: 'Elis Lindström',   roleSv: 'BI & AI-expert',                        roleEn: 'BI & AI Expert',                         skills: ['SQL','DAX','ETL','BI-konsult','Power BI','Business Intelligence','Datatrollkarl'],                           photo: '/images/team-elis.jpg' },
+  { name: 'Tobias Törnblom',  roleSv: 'Dataanalytiker & fullstackutvecklare',  roleEn: 'Data Analyst & Full-stack Developer',    skills: ['Python','Business Intelligence','Power BI','Datatrollkarl'],                                                 photo: '/images/team-tobias.jpg' },
+  { name: 'Alexander Öhberg', roleSv: 'BI-analytiker & AI-konsult',            roleEn: 'BI Analyst & AI Consultant',             skills: ['SQL','Power BI','Datamodellering','DAX','Datatrollkarl','BI-konsult'],                                      photo: '/images/team-alexander.jpg' },
+  { name: 'Daniel Brooks',    roleSv: 'Strategisk rådgivare & AI-konsult',     roleEn: 'Strategic Advisor & AI Consultant',      skills: ['AI-powered Workflows','Knowledge Management','Governance Development','Meeting Facilitation','AI Zen','Business Intelligence'], photo: '/images/team-daniel.jpg' },
+  { name: 'Evgenia Nordholm', roleSv: 'BI & AI-expert',                        roleEn: 'BI & AI Expert',                         skills: ['Power BI','BI-konsult','Business Intelligence','Datamodellering','DAX','SQL','Python','ETL'],                 photo: '/images/team-evgenia.jpg' },
+  { name: 'Amandah LNarte',   roleSv: 'Ekonomi & kommunikation',               roleEn: 'Finance & Communication',                skills: ['Creative Director','Creative AI','Business Intelligence'],                                                   photo: '/images/team-amandah.jpg' },
 ];
 
 const clientLogos = [
@@ -346,7 +346,7 @@ const testimonials = [
             <div class="aspect-[3/4] overflow-hidden bg-fg/5 mb-4 relative">
               <img
                 src={member.photo}
-                alt={`${member.name}, ${member.role} – Kugghuset`}
+                alt={`${member.name}, ${member.roleSv} – Kugghuset`}
                 class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
                 loading="lazy"
                 decoding="async"
@@ -354,7 +354,7 @@ const testimonials = [
               <div class="absolute inset-0 bg-navy/20 group-hover:bg-navy/0 transition-colors"></div>
             </div>
             <h3 class="font-display font-medium text-fg text-xl">{member.name}</h3>
-            <p class="font-mono text-xs tracking-widest uppercase text-pink mt-0.5 mb-3">{member.role}</p>
+            <p class="font-mono text-xs tracking-widest uppercase text-pink mt-0.5 mb-3" data-lang-sv={member.roleSv} data-lang-en={member.roleEn}>{member.roleSv}</p>
             <div class="flex flex-wrap gap-1.5">
               {member.skills.map(skill => (
                 <span class="font-mono text-[10px] tracking-wide text-fg/60 border border-fg/20 px-2 py-0.5">{skill}</span>
@@ -371,7 +371,7 @@ const testimonials = [
             <div class="aspect-[3/4] overflow-hidden bg-fg/5 mb-4 relative">
               <img
                 src={member.photo}
-                alt={`${member.name}, ${member.role} – Kugghuset`}
+                alt={`${member.name}, ${member.roleSv} – Kugghuset`}
                 class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
                 loading="lazy"
                 decoding="async"
@@ -379,7 +379,7 @@ const testimonials = [
               <div class="absolute inset-0 bg-navy/20 group-hover:bg-navy/0 transition-colors"></div>
             </div>
             <h3 class="font-display font-medium text-fg text-xl">{member.name}</h3>
-            <p class="font-mono text-xs tracking-widest uppercase text-pink mt-0.5 mb-3">{member.role}</p>
+            <p class="font-mono text-xs tracking-widest uppercase text-pink mt-0.5 mb-3" data-lang-sv={member.roleSv} data-lang-en={member.roleEn}>{member.roleSv}</p>
             <div class="flex flex-wrap gap-1.5">
               {member.skills.map(skill => (
                 <span class="font-mono text-[10px] tracking-wide text-fg/60 border border-fg/20 px-2 py-0.5">{skill}</span>
@@ -447,4 +447,28 @@ const testimonials = [
   </section>
 
   <Footer />
+
+  <script>
+    (function () {
+      const roles = document.querySelectorAll<HTMLElement>('[data-lang-sv]');
+      const btn   = document.getElementById('lang-toggle') as HTMLButtonElement | null;
+
+      function applyLang(lang: string) {
+        roles.forEach(el => {
+          el.textContent = lang === 'en'
+            ? (el.dataset.langEn ?? el.dataset.langSv ?? '')
+            : (el.dataset.langSv ?? '');
+        });
+        if (btn) btn.textContent = lang === 'sv' ? 'EN' : 'SV';
+        localStorage.setItem('lang', lang);
+      }
+
+      const saved = localStorage.getItem('lang') ?? 'sv';
+      applyLang(saved);
+
+      btn?.addEventListener('click', () => {
+        applyLang((localStorage.getItem('lang') ?? 'sv') === 'sv' ? 'en' : 'sv');
+      });
+    })();
+  </script>
 </Layout>
