@@ -4,6 +4,8 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { articles } from '../../data/articles';
 
+const siteUrl = Astro.site?.href.replace(/\/$/, '') ?? 'https://kugghuset.se';
+
 export function getStaticPaths() {
   return articles
     .filter(a => a.fullText)
@@ -14,11 +16,33 @@ const { slug } = Astro.params;
 const article = articles.find(a => a.slug === slug)!;
 
 const paragraphs = article.fullText.split('\n\n').filter(p => p.trim());
+
+const articleSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": article.title,
+  "description": article.body,
+  "url": `${siteUrl}/artiklar/${article.slug}`,
+  "datePublished": article.date.replaceAll('.', '-'),
+  "dateModified": article.date.replaceAll('.', '-'),
+  ...(article.image && {
+    "image": { "@type": "ImageObject", "url": `${siteUrl}${article.image}` }
+  }),
+  "author": {
+    "@type": "Person",
+    "name": article.author,
+    "worksFor": { "@id": `${siteUrl}/#organization` }
+  },
+  "publisher": { "@id": `${siteUrl}/#organization` },
+  "inLanguage": "sv-SE",
+  "isPartOf": { "@id": `${siteUrl}/#website` }
+});
 ---
 
 <Layout
   title={`${article.title} | Kugghuset`}
   description={article.body}
+  schemaJson={articleSchema}
 >
   <Header />
 
