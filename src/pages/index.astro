@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { team } from '../data/team';
 const serviceSchema = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Service",
@@ -39,15 +40,6 @@ const services = [
   },
 ];
 
-const team = [
-  { name: 'Konrad Leffler',   roleSv: 'Grundare & Senior BI & AI-expert',     roleEn: 'Founder & Senior BI & AI Expert',       skills: ['Power BI','BI-konsult','Business Intelligence','Datamodellering','DAX','SQL','Python','ETL','Datatrollkarl'], photo: '/images/team-konrad.jpg' },
-  { name: 'Elis Lindström',   roleSv: 'BI & AI-expert',                        roleEn: 'BI & AI Expert',                         skills: ['SQL','DAX','ETL','BI-konsult','Power BI','Business Intelligence','Datatrollkarl'],                           photo: '/images/team-elis.jpg' },
-  { name: 'Tobias Törnblom',  roleSv: 'Dataanalytiker & fullstackutvecklare',  roleEn: 'Data Analyst & Full-stack Developer',    skills: ['Python','Business Intelligence','Power BI','Datatrollkarl'],                                                 photo: '/images/team-tobias.jpg' },
-  { name: 'Alexander Öhberg', roleSv: 'BI-analytiker & AI-konsult',            roleEn: 'BI Analyst & AI Consultant',             skills: ['SQL','Power BI','Datamodellering','DAX','Datatrollkarl','BI-konsult'],                                      photo: '/images/team-alexander.jpg' },
-  { name: 'Daniel Brooks',    roleSv: 'Strategisk rådgivare & AI-konsult',     roleEn: 'Strategic Advisor & AI Consultant',      skills: ['AI-powered Workflows','Knowledge Management','Governance Development','Meeting Facilitation','AI Zen','Business Intelligence'], photo: '/images/team-daniel.jpg' },
-  { name: 'Evgenia Nordholm', roleSv: 'BI & AI-expert',                        roleEn: 'BI & AI Expert',                         skills: ['Power BI','BI-konsult','Business Intelligence','Datamodellering','DAX','SQL','Python','ETL'],                 photo: '/images/team-evgenia.jpg' },
-  { name: 'Amandah LNarte',   roleSv: 'Ekonomi & kommunikation',               roleEn: 'Finance & Communication',                skills: ['Creative Director','Creative AI','Business Intelligence'],                                                   photo: '/images/team-amandah.jpg' },
-];
 
 const clientLogos = [
   { file: 'image-asset-01.webp', name: 'Bambora' },
@@ -342,7 +334,7 @@ const testimonials = [
       <!-- rad 1: 4 personer -->
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
         {team.slice(0, 4).map(member => (
-          <div class="group">
+          <a href={member.profilePath} class="group block">
             <div class="aspect-[3/4] overflow-hidden bg-fg/5 mb-4 relative">
               <img
                 src={member.photo}
@@ -353,21 +345,21 @@ const testimonials = [
               />
               <div class="absolute inset-0 bg-navy/20 group-hover:bg-navy/0 transition-colors"></div>
             </div>
-            <h3 class="font-display font-medium text-fg text-xl">{member.name}</h3>
+            <h3 class="font-display font-medium text-fg text-xl group-hover:text-pink transition-colors">{member.name}</h3>
             <p class="font-mono text-xs tracking-widest uppercase text-pink mt-0.5 mb-3" data-lang-sv={member.roleSv} data-lang-en={member.roleEn}>{member.roleSv}</p>
             <div class="flex flex-wrap gap-1.5">
               {member.skills.map(skill => (
                 <span class="font-mono text-[10px] tracking-wide text-fg/60 border border-fg/20 px-2 py-0.5">{skill}</span>
               ))}
             </div>
-          </div>
+          </a>
         ))}
       </div>
 
       <!-- rad 2: 3 personer, centrerad -->
       <div class="grid grid-cols-2 lg:grid-cols-3 gap-8 lg:w-3/4 mx-auto">
         {team.slice(4).map(member => (
-          <div class="group">
+          <a href={member.profilePath} class="group block">
             <div class="aspect-[3/4] overflow-hidden bg-fg/5 mb-4 relative">
               <img
                 src={member.photo}
@@ -378,14 +370,14 @@ const testimonials = [
               />
               <div class="absolute inset-0 bg-navy/20 group-hover:bg-navy/0 transition-colors"></div>
             </div>
-            <h3 class="font-display font-medium text-fg text-xl">{member.name}</h3>
+            <h3 class="font-display font-medium text-fg text-xl group-hover:text-pink transition-colors">{member.name}</h3>
             <p class="font-mono text-xs tracking-widest uppercase text-pink mt-0.5 mb-3" data-lang-sv={member.roleSv} data-lang-en={member.roleEn}>{member.roleSv}</p>
             <div class="flex flex-wrap gap-1.5">
               {member.skills.map(skill => (
                 <span class="font-mono text-[10px] tracking-wide text-fg/60 border border-fg/20 px-2 py-0.5">{skill}</span>
               ))}
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>
