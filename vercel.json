@@ -1,5 +1,9 @@
 {
   "redirects": [
-    { "source": "/hem", "destination": "/", "permanent": true }
+    { "source": "/hem",            "destination": "/",           "permanent": true },
+    { "source": "/kunder",         "destination": "/kundcase",   "permanent": true },
+    { "source": "/referenscase",   "destination": "/kundcase",   "permanent": true },
+    { "source": "/om-kugghuset",   "destination": "/kontakt",    "permanent": true },
+    { "source": "/about",          "destination": "/team",       "permanent": true }
   ]
 }
