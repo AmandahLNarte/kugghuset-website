@@ -17,8 +17,8 @@ const navLinks = [
     </a>
 
     <!-- Right: nav + CTA + mobile toggle -->
-    <div class="flex items-center gap-4 lg:gap-6">
-      <nav class="hidden lg:flex items-center gap-4 xl:gap-7">
+    <div class="flex items-center gap-4 xl:gap-6">
+      <nav class="hidden xl:flex items-center gap-4 xl:gap-7">
         {navLinks.map(link => (
           <a
             href={link.href}
@@ -31,16 +31,16 @@ const navLinks = [
       <button
         id="lang-toggle"
         aria-label="Switch language"
-        class="hidden lg:inline-flex font-mono text-xs tracking-widest uppercase text-fg/50 hover:text-fg border border-fg/20 hover:border-fg/40 px-2.5 py-1.5 transition-all"
+        class="hidden xl:inline-flex font-mono text-xs tracking-widest uppercase text-fg/50 hover:text-fg border border-fg/20 hover:border-fg/40 px-2.5 py-1.5 transition-all"
       >EN</button>
       <a
         href="/en-timme-gratis-bikonsultation"
-        class="hidden lg:inline-flex items-center gap-2 border border-glow text-glow font-mono text-xs tracking-widest uppercase px-4 py-2.5 hover:bg-glow hover:text-navy-dark transition-all"
+        class="hidden xl:inline-flex items-center gap-2 border border-glow text-glow font-mono text-xs tracking-widest uppercase px-4 py-2.5 hover:bg-glow hover:text-navy-dark transition-all"
       >
         Gratis BI-timme →
       </a>
 
-    <button id="menu-toggle" class="lg:hidden text-fg p-1" aria-label="Öppna meny">
+    <button id="menu-toggle" class="xl:hidden text-fg p-1" aria-label="Öppna meny">
       <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
       </svg>
@@ -52,7 +52,7 @@ const navLinks = [
   </div>
 
   <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden lg:hidden border-t border-fg/10 px-6 pb-6 pt-4" style="background: #0E1530;">
+  <div id="mobile-menu" class="hidden xl:hidden border-t border-fg/10 px-6 pb-6 pt-4" style="background: #0E1530;">
     {navLinks.map(link => (
       <a href={link.href} class="block py-3 font-mono text-xs tracking-widest uppercase text-fg/70 hover:text-fg border-b border-fg/10">
         {link.label}
