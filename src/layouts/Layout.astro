@@ -100,12 +100,15 @@ const organizationSchema = JSON.stringify({
     {schemaJson && <script type="application/ld+json" is:inline set:html={schemaJson}></script>}
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N0ZK02QKVN" is:inline></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-N0ZK02QKVN');
+      var _ga = document.createElement('script');
+      _ga.async = true;
+      _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-N0ZK02QKVN';
+      document.head.appendChild(_ga);
     </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
