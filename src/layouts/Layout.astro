@@ -1,4 +1,6 @@
 ---
+import CookieConsent from '../components/CookieConsent.astro';
+
 export interface Props {
   title: string;
   description?: string;
@@ -99,12 +101,25 @@ const organizationSchema = JSON.stringify({
     <script type="application/ld+json" is:inline set:html={organizationSchema}></script>
     {schemaJson && <script type="application/ld+json" is:inline set:html={schemaJson}></script>}
 
-    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) — Consent Mode v2 -->
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      // Deny all by default; update after consent check below
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied'
+      });
       gtag('js', new Date());
       gtag('config', 'G-N0ZK02QKVN');
+      // Restore previously granted consent without waiting for banner
+      try {
+        if (localStorage.getItem('cookie_consent_v1') === 'granted') {
+          gtag('consent', 'update', { analytics_storage: 'granted' });
+        }
+      } catch (e) {}
       var _ga = document.createElement('script');
       _ga.async = true;
       _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-N0ZK02QKVN';
@@ -142,6 +157,7 @@ const organizationSchema = JSON.stringify({
     </style>
   </head>
   <body class="font-body">
+    <CookieConsent />
     <slot />
   </body>
 </html>
