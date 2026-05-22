@@ -99,6 +99,15 @@ const organizationSchema = JSON.stringify({
     <script type="application/ld+json" is:inline set:html={organizationSchema}></script>
     {schemaJson && <script type="application/ld+json" is:inline set:html={schemaJson}></script>}
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N0ZK02QKVN" is:inline></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-N0ZK02QKVN');
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
