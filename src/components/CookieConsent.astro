@@ -1,0 +1,105 @@
+---
+---
+
+<div
+  id="cookie-banner"
+  role="dialog"
+  aria-label="Cookie-samtycke"
+  aria-live="polite"
+  style="display:none"
+>
+  <p>
+    Vi använder Google Analytics för att förstå hur sajten används. Inga uppgifter
+    delas för reklamändamål.
+    <a href="/dataskyddspolicy-kugghuset">Integritetspolicy</a>.
+  </p>
+  <div class="cookie-actions">
+    <button id="cookie-accept" type="button">Acceptera</button>
+    <button id="cookie-decline" type="button">Avvisa</button>
+  </div>
+</div>
+
+<style>
+  #cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #151c38;
+    border-top: 1px solid #2c3464;
+    padding: 1rem 1.5rem;
+    z-index: 9999;
+    font-family: 'Hanken Grotesk', sans-serif;
+  }
+  #cookie-banner > p {
+    margin: 0 0 0.75rem;
+    font-size: 0.875rem;
+    color: #a8a8c0;
+    max-width: 760px;
+  }
+  #cookie-banner a {
+    color: #5ba8e0;
+    text-decoration: underline;
+  }
+  .cookie-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  #cookie-accept {
+    background: #5ba8e0;
+    color: #0e1530;
+    border: none;
+    padding: 0.45rem 1.25rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  #cookie-accept:hover { background: #4a96ce; }
+  #cookie-decline {
+    background: transparent;
+    color: #a8a8c0;
+    border: 1px solid #2c3464;
+    padding: 0.45rem 1.25rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    cursor: pointer;
+  }
+  #cookie-decline:hover { border-color: #5ba8e0; color: #f0effa; }
+
+  @media (min-width: 640px) {
+    #cookie-banner {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    #cookie-banner > p { margin: 0; flex: 1; }
+    .cookie-actions { flex-shrink: 0; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var KEY = 'cookie_consent_v1';
+    var stored = null;
+    try { stored = localStorage.getItem(KEY); } catch (e) {}
+    if (stored) return; // already decided — banner stays hidden
+
+    var banner = document.getElementById('cookie-banner');
+    if (banner) banner.style.display = 'block';
+
+    function updateConsent(decision) {
+      try { localStorage.setItem(KEY, decision); } catch (e) {}
+      if (banner) banner.style.display = 'none';
+      if (typeof gtag !== 'undefined') {
+        gtag('consent', 'update', { analytics_storage: decision });
+      }
+    }
+
+    var btnAccept = document.getElementById('cookie-accept');
+    var btnDecline = document.getElementById('cookie-decline');
+    if (btnAccept) btnAccept.addEventListener('click', function () { updateConsent('granted'); });
+    if (btnDecline) btnDecline.addEventListener('click', function () { updateConsent('denied'); });
+  })();
+</script>
