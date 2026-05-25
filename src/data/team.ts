@@ -71,13 +71,13 @@ export const team: TeamMember[] = [
     bio: 'Evgenia är en erfaren BI-expert med bred kompetens från datamodellering till Power BI-rapportering. Hon kombinerar teknisk noggrannhet med förmågan att kommunicera komplexa datastrukturer på ett begripligt sätt för beställare utan teknisk bakgrund.',
   },
   {
-    name: 'Amandah LNarte',
+    name: 'Amandah Andersson',
     slug: 'amandah-lnarte',
     profilePath: '/team/amandah-lnarte',
     roleSv: 'Ekonomi & kommunikation',
     roleEn: 'Finance & Communication',
     skills: ['Creative Director', 'Creative AI', 'Business Intelligence'],
     photo: '/images/team-amandah.jpg',
-    bio: 'Amandah ansvarar för Kugghusets ekonomi och kommunikation och säkerställer att företagets erbjudanden når rätt målgrupper. Med bakgrund inom kreativ AI och Business Intelligence binder hon samman affärsutveckling med digital närvaro.',
+    bio: 'Amandah ansvarar för Kugghusets ekonomi och kommunikation. Med bakgrund inom design och företagande binder hon samman affärsutveckling med digital närvaro.',
   },
 ];
