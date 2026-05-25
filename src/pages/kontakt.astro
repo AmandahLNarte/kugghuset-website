@@ -66,17 +66,17 @@ const contactSchema = JSON.stringify({
         <form action="https://formspree.io/f/xdkewgnl" method="POST" class="space-y-5">
           <div>
             <label for="name" class="block font-mono text-xs tracking-widest uppercase text-navy/70 mb-2">Namn</label>
-            <input id="name" type="text" name="namn"
+            <input id="name" type="text" name="namn" required
               class="w-full border border-navy/20 bg-white text-ink text-sm px-4 py-3 focus:outline-none focus:border-navy transition-colors"/>
           </div>
           <div>
             <label for="email" class="block font-mono text-xs tracking-widest uppercase text-navy/70 mb-2">E-postadress</label>
-            <input id="email" type="email" name="email"
+            <input id="email" type="email" name="email" required
               class="w-full border border-navy/20 bg-white text-ink text-sm px-4 py-3 focus:outline-none focus:border-navy transition-colors"/>
           </div>
           <div>
             <label for="message" class="block font-mono text-xs tracking-widest uppercase text-navy/70 mb-2">Meddelande</label>
-            <textarea id="message" name="meddelande" rows="5"
+            <textarea id="message" name="meddelande" rows="5" required
               class="w-full border border-navy/20 bg-white text-ink text-sm px-4 py-3 focus:outline-none focus:border-navy transition-colors resize-none"></textarea>
           </div>
           <button type="submit"
