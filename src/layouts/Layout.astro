@@ -40,7 +40,7 @@ const organizationSchema = JSON.stringify({
       },
       "description": "Power BI-konsulter i Stockholm med 15+ års erfarenhet av business intelligence, datamodellering och interaktiva dashboards för ekonomichefer och controllers.",
       "foundingDate": "2013",
-      "numberOfEmployees": { "@type": "QuantitativeValue", "value": 7 },
+      "numberOfEmployees": { "@type": "QuantitativeValue", "value": 6 },
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Sickla Strand 45",
@@ -80,6 +80,8 @@ const organizationSchema = JSON.stringify({
     <meta name="description" content={description} />
     <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang="sv" href={canonicalURL} />
+    <link rel="alternate" hreflang="x-default" href={canonicalURL} />
 
     <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalURL} />
