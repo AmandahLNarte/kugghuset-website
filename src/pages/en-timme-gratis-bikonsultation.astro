@@ -45,6 +45,7 @@ const perks = [
       <div class="bg-white border border-navy/10 p-10">
         <h2 class="font-display font-medium text-navy text-2xl mb-8 text-center">Boka din kostnadsfria timme</h2>
         <form action="https://formspree.io/f/mzdwaqep" method="POST" class="space-y-5">
+          <input type="hidden" name="_next" value="https://kugghuset.se/tack" />
           <div>
             <label for="email" class="block font-mono text-xs tracking-widest uppercase text-navy/70 mb-2">E-postadress</label>
             <input id="email" type="email" name="email" placeholder="din@epost.se"

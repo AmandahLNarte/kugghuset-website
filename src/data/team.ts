@@ -16,7 +16,7 @@ export const team: TeamMember[] = [
     profilePath: '/konrad-datatrollkarlen',
     roleSv: 'Grundare & Senior BI & AI-expert',
     roleEn: 'Founder & Senior BI & AI Expert',
-    skills: ['Power BI', 'BI-konsult', 'Business Intelligence', 'Datamodellering', 'DAX', 'SQL', 'Python', 'ETL', 'Datatrollkarl'],
+    skills: ['Power BI', 'BI-konsult', 'Business Intelligence', 'Datamodellering', 'DAX', 'SQL', 'Python', 'ETL', 'AI-expert', 'Datatrollkarl'],
     photo: '/images/team-konrad.webp',
     bio: 'Konrad grundade Kugghuset 2013 med visionen att göra avancerad business intelligence tillgänglig för svenska bolag. Med över 15 års erfarenhet av Power BI, datamodellering och affärssystem har han lett hundratals BI-projekt för ekonomichefer och controllers. Han är känd för att kombinera teknisk precision med djup affärsförståelse.',
   },
