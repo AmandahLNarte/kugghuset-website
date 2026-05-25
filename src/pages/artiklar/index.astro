@@ -12,6 +12,7 @@ const filters = allTags;
   title="Insikter om Power BI, AI och Business Intelligence | Kugghuset"
   description="Insikter och nyheter från Kugghusets konsulter – om Power BI, AI-integrering, datamodellering och smart planering för ekonomichefer och controllers."
 >
+  <link slot="head" rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css" />
   <Header />
 
   <!-- Hero -->
@@ -139,22 +140,62 @@ const filters = allTags;
           Skriv upp dig på vårt nyhetsbrev!
         </p>
       </div>
-      <form action="https://formspree.io/f/mzdwaqep" method="POST" class="flex flex-col sm:flex-row gap-3 w-full max-w-md">
-        <input
-          type="email"
-          name="email"
-          placeholder="din@epost.se"
-          required
-          class="flex-1 bg-fg/5 border border-fg/15 text-fg placeholder-fg/20 font-body text-sm px-4 py-3 focus:outline-none focus:border-glow transition-colors"
-        />
-        <button type="submit" class="bg-glow text-white font-body font-semibold text-sm px-6 py-3 hover:bg-powder-deep transition-colors whitespace-nowrap">
-          Prenumerera →
-        </button>
-      </form>
+
+      <div id="sib-form-container" class="sib-form-container w-full max-w-md">
+        <div id="error-message" class="sib-form-message-panel mb-4 px-4 py-3 font-body text-sm text-red-300 border border-red-500/40" style="background:rgba(180,30,30,0.2);">
+          Prenumerationen misslyckades. Försök igen.
+        </div>
+        <div id="success-message" class="sib-form-message-panel mb-4 px-4 py-3 font-body text-sm text-green-300 border border-green-500/40" style="background:rgba(20,120,60,0.2);">
+          Tack! Du är nu prenumerant.
+        </div>
+        <div id="sib-container">
+          <form
+            id="sib-form"
+            method="POST"
+            action="https://e4325c5b.sibforms.com/serve/MUIFADSVhwXwo0RVkDgHgeZBcGTfUANbWXbT44TEDrT5w8GClR1Or1QakR-OxEQiUOGABHD2UxTY13YkQfNHML3MW_ea4kTNdhAeGK7br0azwMCIYsU1xDrSlLJo0WgCm7FCeHh_08e6otaX4UGnCzVPZF0_Owz8HYGUA9susHv1nO6dCV3DWBgMOJfxWdIiUFwlinzfSbiKpfPTbA=="
+            data-type="subscription"
+            class="flex flex-col sm:flex-row gap-3"
+          >
+            <input
+              class="input flex-1 bg-fg/5 border border-fg/15 text-fg placeholder-fg/20 font-body text-sm px-4 py-3 focus:outline-none focus:border-glow transition-colors"
+              type="text"
+              id="EMAIL"
+              name="EMAIL"
+              autocomplete="off"
+              placeholder="din@epost.se"
+              data-required="true"
+              required
+            />
+            <button
+              class="sib-form-block__button bg-glow text-white font-body font-semibold text-sm px-6 py-3 hover:bg-powder-deep transition-colors whitespace-nowrap"
+              form="sib-form"
+              type="submit"
+            >
+              Prenumerera →
+            </button>
+            <input type="text" name="email_address_check" value="" class="input--hidden" />
+            <input type="hidden" name="locale" value="sv" />
+          </form>
+        </div>
+      </div>
     </div>
   </section>
 
   <Footer />
+
+  <script is:inline>
+    window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+    window.LOCALE = 'sv';
+    window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "Ogiltig e-postadress. Kontrollera formatet och försök igen.";
+    window.REQUIRED_ERROR_MESSAGE = "Det här fältet är obligatoriskt.";
+    window.GENERIC_INVALID_MESSAGE = "Ogiltig information. Kontrollera formatet och försök igen.";
+    window.INVALID_NUMBER = "Ogiltig information.";
+    window.INVALID_DATE = "Ange ett giltigt datum.";
+    window.REQUIRED_MULTISELECT_MESSAGE = 'Välj minst ett alternativ';
+    window.translation = { common: { selectedList: '{quantity} list selected', selectedLists: '{quantity} lists selected', selectedOption: '{quantity} selected', selectedOptions: '{quantity} selected' } };
+    var AUTOHIDE = Boolean(0);
+  </script>
+  <script is:inline defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 </Layout>
 
 <style>
