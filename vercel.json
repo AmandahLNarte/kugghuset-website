@@ -6,6 +6,7 @@
     { "source": "/om-kugghuset",         "destination": "/kontakt",               "permanent": true },
     { "source": "/about",                "destination": "/team",                  "permanent": true },
     { "source": "/team/amandah-lnarte",  "destination": "/team/amandah-andersson","permanent": true },
+    { "source": "/team/elis-lindstrom",  "destination": "/team",                  "permanent": true },
     { "source": "/sitemap.xml",          "destination": "/sitemap-index.xml",     "permanent": true }
   ],
   "headers": [
