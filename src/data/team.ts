@@ -41,16 +41,6 @@ export const team: TeamMember[] = [
     bio: 'Alexander specialiserar sig på skärningspunkten mellan traditionell BI och modern AI. Han hjälper företag att bygga datamodeller i Power BI och integrera AI-driven analys i befintliga rapporteringsmiljöer.',
   },
   {
-    name: 'Daniel Brooks',
-    slug: 'daniel-brooks',
-    profilePath: '/team/daniel-brooks',
-    roleSv: 'Strategisk rådgivare & AI-konsult',
-    roleEn: 'Strategic Advisor & AI Consultant',
-    skills: ['AI-powered Workflows', 'Knowledge Management', 'Governance Development', 'Meeting Facilitation', 'AI Zen', 'Business Intelligence'],
-    photo: '/images/team-daniel.webp',
-    bio: 'Daniel är Kugghusets strateg med fokus på AI-drivna arbetsflöden och kunskapshantering. Han hjälper organisationer att implementera AI på ett strukturerat sätt — från governance och processdesign till konkreta verktyg som sparar tid och skapar värde.',
-  },
-  {
     name: 'Evgenia Nordholm',
     slug: 'evgenia-nordholm',
     profilePath: '/team/evgenia-nordholm',
@@ -59,6 +49,16 @@ export const team: TeamMember[] = [
     skills: ['Power BI', 'BI-konsult', 'Business Intelligence', 'Datamodellering', 'DAX', 'SQL', 'Python', 'ETL'],
     photo: '/images/team-evgenia.webp',
     bio: 'Evgenia är en erfaren BI-expert med bred kompetens från datamodellering till Power BI-rapportering. Hon kombinerar teknisk noggrannhet med förmågan att kommunicera komplexa datastrukturer på ett begripligt sätt för beställare utan teknisk bakgrund.',
+  },
+  {
+    name: 'Daniel Brooks',
+    slug: 'daniel-brooks',
+    profilePath: '/team/daniel-brooks',
+    roleSv: 'Strategisk rådgivare & AI-konsult',
+    roleEn: 'Strategic Advisor & AI Consultant',
+    skills: ['AI-powered Workflows', 'Knowledge Management', 'Governance Development', 'Meeting Facilitation', 'AI Zen', 'Business Intelligence'],
+    photo: '/images/team-daniel.webp',
+    bio: 'Daniel är Kugghusets strateg med fokus på AI-drivna arbetsflöden och kunskapshantering. Han hjälper organisationer att implementera AI på ett strukturerat sätt — från governance och processdesign till konkreta verktyg som sparar tid och skapar värde.',
   },
   {
     name: 'Amandah Andersson',
