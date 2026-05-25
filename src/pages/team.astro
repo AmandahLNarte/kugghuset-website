@@ -31,21 +31,23 @@ const teamSchema = JSON.stringify({
   <!-- hero -->
   <div class="relative bg-navy-dark pt-32 pb-20 px-6 overflow-hidden">
     <div class="pointer-events-none absolute -left-20 top-0 w-96 h-96 rounded-full opacity-25" style="background:radial-gradient(circle,#E5B8CB 0%,transparent 70%);filter:blur(60px)"></div>
-    <div class="relative max-w-7xl mx-auto">
+    <div class="relative max-w-7xl mx-auto text-center">
       <p class="font-mono text-xs tracking-[0.28em] uppercase text-fg/30 mb-4">Teamet</p>
       <h1 class="font-display font-light text-fg" style="font-size:clamp(2.5rem,6vw,5rem);line-height:1;letter-spacing:-0.03em;">
-        Sju datatrollkarlar.<br /><em style="font-style:italic;color:#E5B8CB;">Ett fokus.</em>
+        Abrakadabra, simsalabim!
       </h1>
-      <p class="mt-6 font-body text-fg/70 text-lg max-w-xl">AbraKadabra, Simsalabim. Möt Kugghusets BI- och AI-konsulter.</p>
+      <p class="font-display font-light mt-3" style="font-size:clamp(1.5rem,3.5vw,3rem);line-height:1.1;letter-spacing:-0.02em;font-style:italic;color:#E5B8CB;">
+        Möt Kugghusets experter inom BI, AI & datatrolleri.
+      </p>
     </div>
   </div>
 
   <main class="bg-navy-dark py-20 px-6">
     <div class="max-w-7xl mx-auto">
 
-      <!-- rad 1: 4 -->
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-        {team.slice(0, 4).map(member => (
+      <!-- rad 1: 3 -->
+      <div class="grid grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+        {team.slice(0, 3).map(member => (
           <a href={member.profilePath} class="group block">
             <div class="aspect-[3/4] overflow-hidden bg-fg/5 mb-4 relative">
               <img
@@ -68,9 +70,9 @@ const teamSchema = JSON.stringify({
         ))}
       </div>
 
-      <!-- rad 2: 3 centrerad -->
-      <div class="grid grid-cols-2 lg:grid-cols-3 gap-8 lg:w-3/4 mx-auto">
-        {team.slice(4).map(member => (
+      <!-- rad 2: 3 -->
+      <div class="grid grid-cols-2 lg:grid-cols-3 gap-8">
+        {team.slice(3).map(member => (
           <a href={member.profilePath} class="group block">
             <div class="aspect-[3/4] overflow-hidden bg-fg/5 mb-4 relative">
               <img
