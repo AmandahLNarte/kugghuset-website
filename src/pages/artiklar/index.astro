@@ -113,13 +113,13 @@ const filters = allTags;
                 </p>
               </div>
 
-              <div class="flex items-center justify-between mt-8 pt-6">
+              <div class="flex items-center justify-between mt-8 pt-6 gap-4">
                 <p class="font-mono text-xs text-fg/25 tracking-widest">
-                  {a.date} · {a.readTime}{a.author ? ` · ${a.author}` : ''}
+                  {a.date} · {a.readTime}{a.author ? <> · <span class="whitespace-nowrap">{a.author}</span></> : ''}
                 </p>
                 <a
                   href={href}
-                  class="font-mono text-xs tracking-widest uppercase text-fg/70 hover:text-fg transition-colors group-hover:text-powder"
+                  class="font-mono text-xs tracking-widest uppercase text-fg/70 hover:text-fg transition-colors group-hover:text-powder whitespace-nowrap shrink-0"
                 >
                   Läs artikeln →
                 </a>
