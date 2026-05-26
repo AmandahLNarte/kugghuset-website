@@ -7,6 +7,7 @@ import { articles } from '../../data/articles';
 const sorted = [...articles].sort((a, b) => b.date.localeCompare(a.date));
 const allTags = ['Alla', ...new Set(sorted.flatMap(a => [a.category, ...a.tags]))];
 const filters = allTags;
+const authors = ['Alla', ...new Set(sorted.map(a => a.author))];
 ---
 
 <Layout
@@ -33,7 +34,9 @@ const filters = allTags;
 
   <!-- Filter dropdown -->
   <div class="bg-navy-dark pb-10 md:pb-16 px-6">
-    <div class="max-w-7xl mx-auto flex justify-center">
+    <div class="max-w-7xl mx-auto flex justify-center gap-3">
+
+      <!-- Kategorier -->
       <div class="relative" id="filter-wrapper">
         <button
           id="filter-toggle"
@@ -58,6 +61,33 @@ const filters = allTags;
           ))}
         </div>
       </div>
+
+      <!-- Författare -->
+      <div class="relative" id="author-wrapper">
+        <button
+          id="author-toggle"
+          class="font-mono text-[11px] tracking-[0.2em] uppercase text-fg/60 border border-fg/20 px-5 py-2.5 hover:text-fg hover:border-fg/40 transition-colors flex items-center gap-3"
+        >
+          <span id="author-label">Författare</span>
+          <span id="author-arrow" class="transition-transform duration-200">▾</span>
+        </button>
+        <div
+          id="author-menu"
+          class="hidden absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-navy-dark border border-fg/15 min-w-[200px] z-50 shadow-xl"
+        >
+          {authors.map((a, i) => (
+            <button
+              data-author={a.toLowerCase()}
+              class={`author-btn w-full text-left font-mono text-[11px] tracking-[0.2em] uppercase px-5 py-3 transition-colors block ${
+                i === 0 ? 'text-fg bg-fg/5' : 'text-fg/40 hover:text-fg hover:bg-fg/5'
+              }`}
+            >
+              {a}
+            </button>
+          ))}
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -68,7 +98,7 @@ const filters = allTags;
         const imageLeft = i % 2 === 0;
         const href = a.fullText ? `/artiklar/${a.slug}` : '#';
         return (
-          <article class="article-card grid md:grid-cols-2 group cursor-pointer mb-8" data-tags={[a.category, ...a.tags].map(t => t.toLowerCase()).join(',')}>
+          <article class="article-card grid md:grid-cols-2 group cursor-pointer mb-8" data-tags={[a.category, ...a.tags].map(t => t.toLowerCase()).join(',')} data-author={a.author.toLowerCase()}>
 
             <!-- Image -->
             <a
@@ -227,11 +257,6 @@ const filters = allTags;
 
 <script>
   const cards = document.querySelectorAll<HTMLElement>('.article-card');
-  const btns = document.querySelectorAll<HTMLElement>('.filter-btn');
-  const toggle = document.getElementById('filter-toggle')!;
-  const menu = document.getElementById('filter-menu')!;
-  const label = document.getElementById('filter-label')!;
-  const arrow = document.getElementById('filter-arrow')!;
 
   // Scroll-in animation
   const observer = new IntersectionObserver(
@@ -250,46 +275,64 @@ const filters = allTags;
     observer.observe(card);
   });
 
-  // Toggle dropdown
-  toggle.addEventListener('click', () => {
-    const open = !menu.classList.contains('hidden');
-    menu.classList.toggle('hidden', open);
-    arrow.style.transform = open ? '' : 'rotate(180deg)';
-  });
+  let activeFilter = 'alla';
+  let activeAuthor = 'alla';
 
-  // Close on outside click
-  document.addEventListener('click', (e) => {
-    if (!toggle.contains(e.target as Node) && !menu.contains(e.target as Node)) {
-      menu.classList.add('hidden');
-      arrow.style.transform = '';
-    }
-  });
-
-  // Filter logic
-  btns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const filter = btn.dataset.filter!;
-      const filterName = btn.textContent?.trim() ?? 'Kategorier';
-
-      // Update label and active style
-      label.textContent = filter === 'alla' ? 'Kategorier' : filterName;
-      btns.forEach(b => {
-        b.classList.remove('text-fg', 'bg-fg/5');
-        b.classList.add('text-fg/40');
-      });
-      btn.classList.remove('text-fg/40');
-      btn.classList.add('text-fg', 'bg-fg/5');
-
-      // Show/hide articles
-      cards.forEach(card => {
-        const tags = card.dataset.tags ?? '';
-        const match = filter === 'alla' || tags.split(',').includes(filter);
-        card.style.display = match ? '' : 'none';
-      });
-
-      // Close menu
-      menu.classList.add('hidden');
-      arrow.style.transform = '';
+  function applyFilters() {
+    cards.forEach(card => {
+      const tags = card.dataset.tags ?? '';
+      const author = card.dataset.author ?? '';
+      const matchFilter = activeFilter === 'alla' || tags.split(',').includes(activeFilter);
+      const matchAuthor = activeAuthor === 'alla' || author === activeAuthor;
+      card.style.display = matchFilter && matchAuthor ? '' : 'none';
     });
-  });
+  }
+
+  function setupDropdown(
+    toggleId: string, menuId: string, labelId: string, arrowId: string,
+    btnClass: string, dataAttr: string, defaultLabel: string,
+    onSelect: (val: string) => void
+  ) {
+    const toggle = document.getElementById(toggleId)!;
+    const menu = document.getElementById(menuId)!;
+    const label = document.getElementById(labelId)!;
+    const arrow = document.getElementById(arrowId)!;
+    const btns = document.querySelectorAll<HTMLElement>(`.${btnClass}`);
+
+    toggle.addEventListener('click', () => {
+      const open = !menu.classList.contains('hidden');
+      menu.classList.toggle('hidden', open);
+      arrow.style.transform = open ? '' : 'rotate(180deg)';
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!toggle.contains(e.target as Node) && !menu.contains(e.target as Node)) {
+        menu.classList.add('hidden');
+        arrow.style.transform = '';
+      }
+    });
+
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const val = (btn.dataset[dataAttr] ?? 'alla');
+        label.textContent = val === 'alla' ? defaultLabel : btn.textContent?.trim() ?? defaultLabel;
+        btns.forEach(b => { b.classList.remove('text-fg', 'bg-fg/5'); b.classList.add('text-fg/40'); });
+        btn.classList.remove('text-fg/40');
+        btn.classList.add('text-fg', 'bg-fg/5');
+        menu.classList.add('hidden');
+        arrow.style.transform = '';
+        onSelect(val);
+      });
+    });
+  }
+
+  setupDropdown('filter-toggle', 'filter-menu', 'filter-label', 'filter-arrow',
+    'filter-btn', 'filter', 'Kategorier',
+    (val) => { activeFilter = val; applyFilters(); }
+  );
+
+  setupDropdown('author-toggle', 'author-menu', 'author-label', 'author-arrow',
+    'author-btn', 'author', 'Författare',
+    (val) => { activeAuthor = val; applyFilters(); }
+  );
 </script>
