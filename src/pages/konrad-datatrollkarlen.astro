@@ -59,7 +59,13 @@ const personSchema = JSON.stringify({
   <main class="bg-cream py-20 px-6">
     <div class="max-w-3xl mx-auto">
 
-      <p class="font-body text-ink text-lg leading-relaxed mb-12">{member.bio}</p>
+      <p class="font-body text-ink text-lg leading-relaxed mb-8">{member.bio}</p>
+
+      <p class="font-mono text-sm text-navy/50 mb-12">
+        <a href={`mailto:${member.name.split(' ')[0].toLowerCase()}@kugghuset.se`} class="hover:text-navy transition-colors">
+          {member.name.split(' ')[0].toLowerCase()}@kugghuset.se
+        </a>
+      </p>
 
       <div class="border-t border-navy/10 pt-10">
         <p class="font-mono text-xs tracking-[0.28em] uppercase text-navy/70 mb-6">Kompetenser</p>
