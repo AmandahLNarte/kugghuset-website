@@ -20,29 +20,44 @@ export const articles: Article[] = [
     nr: 119,
     slug: '119-xpna-extended-planning-analysis',
     category: 'Strategi',
-    tags: ['xP&A', 'Planering'],
+    tags: ['xP&A', 'Planering', 'FP&A', 'Power BI'],
     date: '2025.11.15',
-    readTime: '4 min',
+    readTime: '3 min',
     author: 'Alexander Öhberg',
-    title: 'xP&A, eller Extended Planning & Analysis – nästa steg för planering och styrning?',
-    body: 'xP&A tar vid där traditionell budgetering och FP&A slutar. Istället för att ekonomifunktionen ensam driver planeringen, integreras data och prognoser från hela verksamheten – försäljning, HR, produktion, marknad och IT.',
-    fullText: `På Kugghuset AB hjälper vi organisationer att fatta bättre beslut genom att skapa tydlighet i data. Nu ser vi en tydlig trend växa fram inom planering och analys – xP&A, eller Extended Planning & Analysis.
+    title: 'xP&A – nästa steg efter FP&A för datadriven planering och styrning',
+    body: 'xP&A, Extended Planning & Analysis, kopplar ihop ekonomi, sälj, HR och produktion i en gemensam planeringsprocess. Så här tar svenska företag första steget.',
+    fullText: `På Kugghuset hjälper vi organisationer att fatta bättre beslut genom att skapa tydlighet i data. Just nu ser vi en tydlig trend växa fram inom planering och analys: xP&A, eller Extended Planning & Analysis. Det är ett sätt att gå från statiska årsbudgetar till en levande, kontinuerlig planering som speglar verksamheten i realtid – och vi tror att det är en av de viktigaste utvecklingarna för ekonomifunktionen de kommande åren.
 
-xP&A tar vid där traditionell budgetering och FP&A slutar. Istället för att ekonomifunktionen ensam driver planeringen, integreras data och prognoser från hela verksamheten – försäljning, HR, produktion, marknad och IT. Resultatet blir en sammanhängande och flexibel planeringsprocess som hela organisationen kan arbeta med.
+## Vad är xP&A?
 
-Det handlar om att gå från statiska årsbudgetar till en levande, kontinuerlig planering som speglar verkligheten i realtid.
+xP&A tar vid där traditionell budgetering och FP&A (Financial Planning & Analysis) slutar. Istället för att ekonomifunktionen ensam driver planeringen, kopplas data och prognoser från hela verksamheten samman – försäljning, HR, produktion, marknad och IT arbetar i samma modell. Resultatet är en sammanhängande och flexibel planeringsprocess som hela organisationen kan bidra till, och som CFO:n kan styra utifrån.
 
-Varför växer intresset för xP&A?
-- Snabbare och mer träffsäkra beslutsunderlag
-- Datadriven samverkan över avdelningsgränser
-- Förmåga att agera proaktivt genom scenarioplanering
-- Effektivare processer och mer tid för analys
+## Skillnaden mellan FP&A och xP&A
 
-Vi på Kugghuset har ännu inte genomfört xP&A-projekt – men vi är nyfikna på utvecklingen och ser stor potential i hur konceptet kan stärka datadrivna organisationer.
+FP&A fokuserar i grunden på den finansiella planeringen: budget, prognos, månadsuppföljning och rapportering. xP&A breddar perspektivet och knyter ihop den finansiella planeringen med operativa planer från andra avdelningar. När säljprognosen uppdateras i CRM:et, justeras automatiskt produktionsplanen, bemanningsbehovet och likviditetsprognosen. Det är samma logik som FP&A – men med fler datakällor, snabbare cykler och bredare ägarskap.
 
-Vi vill lära mer, dela insikter och utforska hur svenska företag kan ta sina första steg mot mer adaptiv planering och styrning.
+## Varför växer intresset för xP&A?
 
-Jag heter Alexander Öhberg 🧙🏻‍♂️ och vill ni vara med i samtalet? Hör gärna av er – vi är redo att utforska framtiden för planering tillsammans.`,
+- **Snabbare och mer träffsäkra beslutsunderlag** – när data från sälj, HR och produktion ligger i samma modell behöver man inte vänta på månadsbokslutet för att se vart verksamheten är på väg.
+- **Datadriven samverkan över avdelningsgränser** – alla planerar mot samma siffror, vilket minskar friktion och tolkningsutrymme mellan avdelningar.
+- **Förmåga att agera proaktivt genom scenarioplanering** – det blir möjligt att simulera "tänk om"-scenarier på minuter istället för veckor.
+- **Effektivare processer och mer tid för analys** – mindre tid läggs på att samla in och stämma av data, mer tid på att förstå vad den säger.
+
+## Vad krävs tekniskt?
+
+För att xP&A ska fungera i praktiken behövs tre saker: en gemensam datagrund (ofta ett datavarulager eller en lakehouse-arkitektur, t.ex. i Microsoft Fabric), integrationer mellan affärssystem, CRM, HR-system och planeringsverktyg, samt ett gränssnitt där olika roller kan arbeta med planer och prognoser – exempelvis Power BI kombinerat med ett dedikerat planeringsverktyg.
+
+Mycket av det vi redan bygger åt våra kunder – tvärfunktionella datamodeller, automatiserade flöden och flexibla rapporter i Power BI – är just de byggstenar som xP&A vilar på. Vi följer utvecklingen nära och ser stor potential i hur konceptet kan stärka datadrivna organisationer.
+
+## Första steget mot xP&A
+
+Du behöver inte byta hela systemlandskapet för att börja. De flesta organisationer kommer långt genom att först samla data från ekonomi och sälj i en gemensam modell, automatisera prognoser och successivt bjuda in fler avdelningar i planeringen. Det är ett evolutionärt steg snarare än ett revolutionärt – och det är där vi gärna kommer in.
+
+## Vill ni vara med i samtalet?
+
+Jag heter Alexander Öhberg och hjälper gärna er att utforska hur xP&A kan se ut i just er organisation. Boka en kostnadsfri BI-timme så pratar vi om var ni står idag och vart ni vill.
+
+[**Boka en gratis BI-timme →**](/en-timme-gratis-bikonsultation)`,
     image: '/images/artiklar/xp&a_analys.jpg',
     imageAlt: 'xP&A – Extended Planning & Analysis',
     gradient: 'radial-gradient(ellipse 90% 80% at 70% 30%, #3a2a5a 0%, #1e1535 55%, #080510 100%)',
