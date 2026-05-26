@@ -17,7 +17,7 @@ const filters = allTags;
   <Header />
 
   <!-- Hero -->
-  <section class="relative bg-navy-dark pt-32 pb-16 px-6 overflow-hidden">
+  <section class="relative bg-navy-dark pt-24 md:pt-32 pb-16 px-6 overflow-hidden">
     <div class="pointer-events-none absolute -left-24 top-8 w-[560px] h-[560px] rounded-full opacity-20" style="background:radial-gradient(circle,#5BA8E0 0%,transparent 70%);filter:blur(90px)"></div>
     <div class="pointer-events-none absolute right-0 bottom-0 w-80 h-80 rounded-full opacity-15" style="background:radial-gradient(circle,#E5B8CB 0%,transparent 70%);filter:blur(60px)"></div>
     <div class="relative max-w-7xl mx-auto text-center">
@@ -25,14 +25,14 @@ const filters = allTags;
         class="font-display font-light text-fg"
         style="font-size:clamp(2.5rem,6vw,5.5rem);line-height:1.05;letter-spacing:-0.03em;"
       >
-        Insikter & nyheter<em style="font-style:italic;color:#B5CCE0;">.</em>
+        Insikter & nyheter<em style="letter-spacing:0.04em;font-style:italic;color:#B5CCE0;">.</em>
       </h1>
     </div>
   </section>
 
   <!-- Filter row -->
   <div class="bg-navy-dark px-6 pb-16">
-    <div class="max-w-7xl mx-auto flex justify-center items-center gap-10 flex-wrap">
+    <div class="max-w-7xl mx-auto flex justify-center items-center gap-4 sm:gap-10 flex-wrap">
       {filters.map((f, i) => (
         <button
           data-filter={f.toLowerCase()}
@@ -79,7 +79,7 @@ const filters = allTags;
 
             <!-- Content -->
             <div
-              class={`flex flex-col justify-between p-10 md:p-14 ${
+              class={`flex flex-col justify-between p-6 md:p-10 lg:p-14 ${
                 imageLeft ? 'md:order-2' : 'md:order-1'
               }`}
             >

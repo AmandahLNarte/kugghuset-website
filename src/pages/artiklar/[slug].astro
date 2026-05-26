@@ -17,6 +17,31 @@ const article = articles.find(a => a.slug === slug)!;
 
 const paragraphs = article.fullText.split('\n\n').filter(p => p.trim());
 
+const authorPhotos: Record<string, string> = {
+  'Alexander Öhberg': '/images/ProfilePhoto-Alexander-Ohberg-bw_03_small.jpg',
+  'Tobias Törnblom': '/images/team-tobias.webp',
+};
+const authorPhoto = authorPhotos[article.author] ?? null;
+
+const firstParaIndex = paragraphs.findIndex(p => !p.startsWith('## ') && !isCTA(p));
+
+function processInline(text: string): string {
+  return text
+    .replace(/\[\*\*([^\]]+)\*\*\]\(([^)]+)\)/g, '<a href="$2" class="font-semibold underline hover:opacity-70 transition-opacity">$1</a>')
+    .replace(/\[([^\]]+)\]\(#\)/g, '$1')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="underline hover:opacity-70 transition-opacity">$1</a>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+}
+
+function isCTA(p: string): boolean {
+  return /^\[.*\]\([^)]+\)$/.test(p.trim());
+}
+
+function extractLink(p: string): { text: string; href: string } | null {
+  const m = p.match(/^\[\*\*([^\]]+)\*\*\]\(([^)]+)\)$/) ?? p.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+  return m ? { text: m[1], href: m[2] } : null;
+}
+
 const articleSchema = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BlogPosting",
@@ -47,99 +72,180 @@ const articleSchema = JSON.stringify({
 >
   <Header />
 
-  <div class="bg-navy-dark min-h-screen pt-32 pb-24 px-10">
+  <div class="bg-cream min-h-screen">
 
-    <!-- Back link -->
-    <div class="max-w-7xl mx-auto mb-10">
-      <a href="/artiklar" class="inline-flex items-center gap-2 font-body text-base text-fg/50 hover:text-fg transition-colors">
-        ← Alla artiklar
-      </a>
-    </div>
-
-    <!-- Header block -->
-    <div class="max-w-7xl mx-auto mb-12">
-
-      <!-- Tags -->
-      <div class="flex flex-wrap gap-2 mb-8">
-        <span class="font-mono text-xs tracking-[0.2em] uppercase text-fg/60 border border-fg/20 px-3 py-1.5">
-          {article.category}
-        </span>
-        {article.tags.map(tag => (
-          <span class="font-mono text-xs tracking-[0.2em] uppercase text-fg/40 border border-fg/10 px-3 py-1.5">
-            {tag}
-          </span>
-        ))}
-      </div>
-
-      <!-- Title -->
-      <h1
-        class="font-display font-light text-fg leading-tight mb-8"
-        style="font-size: clamp(2.8rem, 5.5vw, 5rem); letter-spacing: -0.02em;"
-      >
-        {article.title}
-      </h1>
-
-      <!-- Author + meta -->
-      <div class="flex items-center gap-6 pb-8 border-b border-fg/10">
-        {article.author && (
-          <span class="font-body text-base text-fg/70">
-            / <span class="text-fg font-medium">{article.author}</span>
-          </span>
-        )}
-        <span class="font-body text-base text-fg/40">{article.readTime} läsning</span>
-        <span class="font-mono text-sm text-fg/25 tracking-widest">{article.date}</span>
-      </div>
-    </div>
-
-    <!-- Hero image — full width within max-w-7xl -->
-    {article.image && (
-      <div class="max-w-7xl mx-auto mb-14">
-        <img
-          src={article.image}
-          alt={article.imageAlt ?? article.title}
-          class="w-full object-cover"
-          style="max-height: 600px;"
-        />
-      </div>
-    )}
-
-    <!-- Body text -->
-    <div class="max-w-7xl mx-auto space-y-8">
-      {paragraphs.map(p => {
-        const lines = p.split('\n');
-        const hasBullets = lines.some(l => l.startsWith('- '));
-        if (hasBullets) {
-          const heading = lines.find(l => !l.startsWith('- '));
-          const bullets = lines.filter(l => l.startsWith('- ')).map(l => l.slice(2));
-          return (
-            <div>
-              {heading && <p class="font-body text-fg/80 text-xl leading-relaxed mb-4">{heading}</p>}
-              <ul class="space-y-3 pl-2">
-                {bullets.map(b => (
-                  <li class="font-body text-fg/80 text-xl leading-relaxed flex items-start gap-3">
-                    <span class="text-glow mt-1.5 shrink-0">–</span>
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          );
-        }
-        return (
-          <p class="font-body text-fg/80 text-xl leading-relaxed">
-            {p}
-          </p>
-        );
-      })}
-
-      <!-- Footer nav -->
-      <div class="mt-16 pt-8 border-t border-fg/10 flex items-center justify-between">
-        <a href="/artiklar" class="font-body text-base text-fg/50 hover:text-fg transition-colors">
-          ← Tillbaka till artiklar
+    <!-- ── TOP BAR ── -->
+    <div class="bg-navy-dark pt-24 md:pt-32 pb-8 px-5 md:px-8 lg:px-16">
+      <div class="max-w-5xl mx-auto flex items-center justify-between">
+        <a href="/artiklar" class="font-mono text-xs tracking-widest uppercase text-fg/40 hover:text-fg transition-colors">
+          ← Artiklar
         </a>
-        {article.author && (
-          <span class="font-mono text-sm text-fg/30 tracking-widest">/{article.author}</span>
+        <div class="flex gap-2">
+          <span class="font-mono text-xs tracking-[0.2em] uppercase text-fg/50 border border-fg/20 px-2 py-1">
+            {article.category}
+          </span>
+          {article.tags.slice(0, 2).map(tag => (
+            <span class="font-mono text-xs tracking-[0.2em] uppercase text-fg/30 border border-fg/10 px-2 py-1">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- ── TITLE BLOCK (cream) ── -->
+    <div class="bg-cream px-5 md:px-8 lg:px-16 pt-10 md:pt-14 pb-10">
+      <div class="max-w-5xl mx-auto text-center">
+
+        <!-- Hero image above title if available -->
+        {article.image && (
+          <div class="mb-8 md:mb-10 -mx-5 md:-mx-8 lg:-mx-16">
+            <img
+              src={article.image}
+              alt={article.imageAlt ?? article.title}
+              class="w-full object-cover"
+              style="max-height: clamp(200px, 40vw, 460px);"
+            />
+          </div>
         )}
+
+        <h1
+          class="font-display font-light text-navy leading-tight mb-6"
+          style="font-size: clamp(2.6rem, 5vw, 4.5rem); letter-spacing: -0.02em;"
+        >
+          {article.title}
+        </h1>
+
+        <p class="font-body text-navy/60 text-lg leading-relaxed max-w-2xl mx-auto mb-8">
+          {article.body}
+        </p>
+
+        <!-- Rule -->
+        <div class="flex items-center justify-center gap-4 mb-6">
+          <span class="flex-1 max-w-24 h-px bg-navy/20"></span>
+          <span class="font-mono text-xs tracking-[0.3em] uppercase text-navy/40">
+            {article.date} · {article.readTime} läsning
+          </span>
+          <span class="flex-1 max-w-24 h-px bg-navy/20"></span>
+        </div>
+
+        <!-- Byline -->
+        <p class="font-body text-sm text-navy/60 tracking-wide">
+          Av <span class="font-semibold text-navy">{article.author}</span>
+        </p>
+
+        <!-- Bottom rule -->
+        <div class="mt-10 border-t-2 border-navy/80 border-b border-navy/20 py-px"></div>
+      </div>
+    </div>
+
+    <!-- ── TWO-COLUMN BODY ── -->
+    <div class="bg-cream px-5 md:px-8 lg:px-16 pb-20">
+      <div class="max-w-5xl mx-auto">
+
+        <div class="article-columns">
+          {paragraphs.map((p, i) => {
+            if (p.startsWith('## ')) {
+              return (
+                <h2
+                  class="font-display font-semibold text-navy mt-8 mb-2"
+                  style="font-size: 1.15rem; letter-spacing: 0.02em; break-after: avoid;"
+                >
+                  {p.slice(3)}
+                </h2>
+              );
+            }
+
+            if (isCTA(p)) {
+              const link = extractLink(p);
+              return link ? (
+                <div style="column-span: all;" class="mt-10 mb-2 text-center">
+                  <a
+                    href={link.href}
+                    class="inline-block bg-navy text-fg font-body font-semibold uppercase tracking-widest text-xs px-8 py-4 hover:bg-navy-dark transition-colors"
+                  >
+                    {link.text}
+                  </a>
+                </div>
+              ) : null;
+            }
+
+            const lines = p.split('\n');
+            const hasBullets = lines.some(l => l.startsWith('- '));
+
+            if (hasBullets) {
+              const heading = lines.find(l => !l.startsWith('- '));
+              const bullets = lines.filter(l => l.startsWith('- ')).map(l => l.slice(2));
+              return (
+                <div class="mb-4">
+                  {heading && <p class="font-display text-navy font-semibold leading-snug mb-1" style="font-size:1.05rem;" set:html={processInline(heading)} />}
+                  <ul class="space-y-1.5">
+                    {bullets.map(b => (
+                      <li class="font-display text-navy/85 leading-snug flex items-start gap-2" style="font-size:1.05rem;">
+                        <span class="text-pink-deep mt-1 shrink-0 text-xs">·</span>
+                        <span set:html={processInline(b)} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            }
+
+            if (i === firstParaIndex) {
+              const firstLetter = p[0];
+              const rest = p.slice(1);
+              return (
+                <p class="font-display text-navy/85 leading-relaxed mb-4" style="font-size: 1.1rem;">
+                  <span
+                    class="float-left font-display text-navy leading-none mr-1"
+                    style="font-size: 4.5rem; margin-top: 0.05rem; line-height: 0.82;"
+                  >{firstLetter}</span><span set:html={processInline(rest)} />
+                </p>
+              );
+            }
+
+            return (
+              <p class="font-display text-navy/85 leading-relaxed mb-4" style="font-size: 1.1rem;" set:html={processInline(p)} />
+            );
+          })}
+        </div>
+
+        <style>
+          .article-columns {
+            columns: 1;
+          }
+          @media (min-width: 768px) {
+            .article-columns {
+              columns: 2;
+              column-gap: 3rem;
+              column-rule: 1px solid rgba(15, 30, 60, 0.15);
+            }
+          }
+        </style>
+
+        <!-- Bottom rule -->
+        <div class="mt-12 border-t-2 border-navy/80 border-b border-navy/20 py-px"></div>
+
+        <!-- Author sign-off -->
+        <div class="mt-8 flex flex-wrap items-center justify-between gap-6">
+          <div class="flex items-center gap-5">
+            {authorPhoto && (
+              <img
+                src={authorPhoto}
+                alt={article.author}
+                class="w-14 h-14 rounded-full object-cover grayscale"
+              />
+            )}
+            <div>
+              <p class="font-display font-medium text-navy text-lg">{article.author}</p>
+              <p class="font-mono text-xs text-navy/40 tracking-widest mt-0.5 uppercase">Kugghuset</p>
+            </div>
+          </div>
+          <a href="/artiklar" class="font-mono text-xs tracking-widest uppercase text-navy/40 hover:text-navy transition-colors">
+            ← Tillbaka till artiklar
+          </a>
+        </div>
+
       </div>
     </div>
 
