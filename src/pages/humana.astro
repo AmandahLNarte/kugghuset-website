@@ -27,7 +27,7 @@ const caseSchema = JSON.stringify({
 >
   <Header />
 
-  <div class="relative bg-navy-dark pt-32 pb-24 px-6 overflow-hidden">
+  <div class="relative bg-navy-dark pt-24 md:pt-32 pb-24 px-6 overflow-hidden">
     <div class="pointer-events-none absolute right-0 top-0 w-96 h-96 rounded-full opacity-20" style="background:radial-gradient(circle,#5BA8E0 0%,transparent 70%);filter:blur(60px)"></div>
     <div class="relative max-w-5xl mx-auto text-center">
       <p class="font-mono text-xs tracking-[0.28em] uppercase text-fg/30 mb-4">Kundcase</p>
@@ -41,13 +41,13 @@ const caseSchema = JSON.stringify({
     <div class="max-w-5xl mx-auto">
 
       <!-- lead quote with photo -->
-      <div class="flex items-stretch gap-10 mb-20">
+      <div class="flex flex-col md:flex-row items-stretch gap-6 md:gap-10 mb-12 md:mb-20">
         <img
           src="/images/Christer_Hansson_ekonomichef_humana_koncernen.webp"
           alt="Christer Hansson, Ekonomichef Humana"
-          class="w-28 rounded-xl object-cover shrink-0"
+          class="w-full md:w-28 h-56 md:h-auto rounded-xl object-cover object-top shrink-0"
         />
-        <div class="border-l-4 border-pink pl-10">
+        <div class="border-l-4 border-pink pl-6 md:pl-10">
           <blockquote class="font-display italic text-ink leading-snug" style="font-size:clamp(1.4rem,2.5vw,2rem);">
             "Kugghusets kreativa förmåga och breda kompetens inom BI möjliggjorde vår önskerapport."
           </blockquote>
@@ -59,7 +59,7 @@ const caseSchema = JSON.stringify({
       </div>
 
       <!-- 3-column grid: Utmaning / Lösning / Effekt -->
-      <div class="grid md:grid-cols-3 gap-10 mb-24">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 mb-12 md:mb-24">
         {[
           {
             label: 'Utmaning',
