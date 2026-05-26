@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 
 const clientLogos = [
   { file: 'image-asset-01.webp', name: 'Bambora' },
-  { file: 'image-asset-15.webp', name: 'Humana' },
+  { file: 'image-asset-17-humana.webp', name: 'Humana' },
   { file: 'image-asset-06.webp', name: 'Spotify' },
   { file: 'image-asset-03.webp', name: 'Berns' },
   { file: 'image-asset-04.webp', name: 'Grant Thornton' },
@@ -34,7 +34,7 @@ const clientLogos = [
     <div class="relative max-w-7xl mx-auto text-center">
       <p class="font-mono text-xs tracking-[0.28em] uppercase text-fg/30 mb-4">Kunder & Cases</p>
       <h1 class="font-display font-light text-fg" style="font-size:clamp(2.5rem,6vw,5rem);line-height:1;letter-spacing:-0.03em;">
-        Gör som våra kunder:<br /><em style="font-style:italic;color:#E5B8CB;">få ut mer av er data.</em>
+        Gör som våra kunder:<br /><em style="letter-spacing:0.04em;font-style:italic;color:#E5B8CB;">få ut mer av er data.</em>
       </h1>
       <p class="mt-6 font-body text-fg/60 max-w-xl mx-auto text-lg leading-relaxed">
         Vi hjälper företag med att effektivisera och förenkla komplexa hanteringsbehov av interna informationsflöden samt visualisera dessa som underlag för uppföljning och beslut. Vi har samlad erfarenhet av implementation hos 100+ unika företag och organisationer.
@@ -49,14 +49,19 @@ const clientLogos = [
       <article class="border-t border-navy/15 pt-14 pb-14">
         <div class="grid md:grid-cols-[2fr_3fr] gap-10 mb-10">
           <div>
-            <h2 class="font-display font-medium text-navy text-3xl md:text-4xl">Humana</h2>
-            <p class="font-body text-navy mt-1 mb-4">Sveriges ledande privata omsorgsföretag</p>
-            <a href="/humana" class="font-mono text-xs tracking-widest uppercase text-navy hover:underline">
+            <p class="font-mono text-xs tracking-widest uppercase text-pink-deep mb-2">Kundcase</p>
+            <h2 class="font-display font-medium text-navy text-3xl md:text-4xl mb-1">Humana</h2>
+            <p class="font-body text-navy/70 text-sm mt-1 mb-6">Sveriges ledande privata omsorgsföretag · 60 bolag · ~5 mdr kr omsättning</p>
+            <blockquote class="border-l-2 border-pink pl-4 font-display italic text-navy/80 text-base leading-snug mb-6">
+              "Kugghusets kreativa förmåga och breda kompetens inom BI möjliggjorde vår önskerapport."
+              <cite class="block mt-2 font-mono not-italic text-xs text-navy/50">— Christer Hansson, Ekonomichef</cite>
+            </blockquote>
+            <a href="/humana" class="inline-flex items-center gap-2 bg-navy text-fg font-mono text-xs tracking-widest uppercase px-5 py-3 hover:bg-navy-dark transition-colors">
               Läs hela caset →
             </a>
           </div>
           <p class="font-body text-navy leading-relaxed">
-            Humana skulle implementera ett nytt koncernredovisningssystem och strukturerade i samband med implementationen om sin organisation. Kugghuset förkortade med hjälp av systemintegration och uppföljning implementationstiden med flera månader.
+            Humana skulle implementera ett nytt koncernredovisningssystem och strukturerade i samband med implementationen om sin organisation. Kugghuset förkortade implementationstiden med flera månader genom systemintegration i SQL Server och en Power Pivot-modell som gav direkt överblick av organisationsstrukturen — från dag ett.
           </p>
         </div>
         <div class="grid md:grid-cols-3 gap-8">
