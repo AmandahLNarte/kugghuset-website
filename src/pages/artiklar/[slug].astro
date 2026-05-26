@@ -145,6 +145,14 @@ const articleSchema = JSON.stringify({
 
         <div class="article-columns">
           {paragraphs.map((p, i) => {
+            if (p.startsWith('> ')) {
+              return (
+                <div class="border-l-4 border-navy/30 bg-navy/5 pl-5 py-3 pr-4 mb-5 break-inside-avoid" style="font-size:1rem;">
+                  <p class="font-display text-navy leading-relaxed m-0" set:html={processInline(p.slice(2))} />
+                </div>
+              );
+            }
+
             if (p.startsWith('## ')) {
               return (
                 <h2
@@ -153,6 +161,17 @@ const articleSchema = JSON.stringify({
                 >
                   {p.slice(3)}
                 </h2>
+              );
+            }
+
+            if (p.startsWith('### ')) {
+              return (
+                <h3
+                  class="font-display font-semibold text-navy mt-5 mb-1"
+                  style="font-size: 1rem; letter-spacing: 0.01em; break-after: avoid;"
+                >
+                  {p.slice(4)}
+                </h3>
               );
             }
 
