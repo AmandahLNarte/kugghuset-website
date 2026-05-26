@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const services = [
+  {
+    title: 'Datatrolleri för smartare beslut',
+    body: 'Våra datatrollkarlar levererar smarta Power BI-lösningar med fokus på användbarhet, hållbarhet och professionella leveranser. Vi är experter på datamodellering samt att hämta och sammanställa data från affärssystem.',
+  },
+  {
+    title: 'Ekonomichefer och controllers',
+    body: 'Vi arbetar primärt med ekonomiavdelningar och pratar samma språk som ekonomichefer och controllers. Vi kan snabbt sätta oss in i hur verksamheter hanterar sin data för att spara tid och fatta smartare beslut.',
+  },
+  {
+    title: 'Skräddarsydda BI-lösningar',
+    body: 'Vi är inte låsta till någon systemleverantör utan bygger skräddarsydda rapporterings- och BI-miljöer med marknadens främsta verktyg — oavsett om du behöver hjälp med projektplanering, uppföljning eller rapportering.',
+  },
+  {
+    title: '15 års erfarenhet av BI',
+    body: 'Tack vare 15+ års erfarenhet och nördigt bra koll på Power BI, Excel och marknadens affärssystem hittar vi tillsammans en passande lösning och levererar med korta ledtider.',
+  },
+  {
+    title: 'Auto-magiska rapporter',
+    body: 'Många företag skapar mängder av rapporter som kräver manuell handpåläggning. Vi automatiserar rapporterna så att dessa skapas auto-magiskt med en knapptryckning — datalager med schemalagda uppdateringar gör jobbet åt er.',
+  },
+  {
+    title: 'Interaktiva dashboards',
+    body: 'Glöm tråkiga rapporter med standardiserade grafer. Vi gör er data klickbar och interaktiv och hjälper er definiera och lyfta fram era viktigaste KPI:er samlat på en plats.',
+  },
+];
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Power BI konsulting och Business Intelligence",
+  "provider": { "@id": "https://kugghuset.se/#organization" },
+  "serviceType": "Business Intelligence konsulting",
+  "description": "Kugghuset erbjuder Power BI-konsulting, datamodellering, datalager, systemintegration och interaktiva dashboards för ekonomichefer och controllers i Stockholm.",
+  "areaServed": { "@type": "Country", "name": "Sweden" },
+  "url": "https://kugghuset.se/tjanster"
+});
+---
+<Layout
+  title="Tjänster – Power BI & BI-konsulting Stockholm | Kugghuset"
+  description="Kugghusets BI-tjänster: Power BI-konsulting, datamodellering, interaktiva dashboards och AI-integrering för ekonomichefer och controllers. 15+ års erfarenhet."
+  schemaJson={schemaJson}
+>
+  <Header />
+
+  <!-- Hero -->
+  <div class="relative bg-navy-dark pt-32 pb-20 px-6 overflow-hidden">
+    <div class="pointer-events-none absolute -left-20 top-0 w-96 h-96 rounded-full opacity-25" style="background:radial-gradient(circle,#5BA8E0 0%,transparent 70%);filter:blur(60px)"></div>
+    <div class="relative max-w-7xl mx-auto text-center">
+      <p class="font-mono text-xs tracking-[0.28em] uppercase text-fg/30 mb-4">Tjänster</p>
+      <h1 class="font-display font-light text-fg" style="font-size:clamp(2.5rem,6vw,5rem);line-height:1;letter-spacing:-0.03em;">
+        Vi trollar<br /><em style="font-style:italic;color:#E5B8CB;">med data.</em>
+      </h1>
+      <p class="mt-6 font-body text-fg/70 text-lg max-w-xl mx-auto">
+        Ett konsultföretag specialiserade på Power BI och AI-integrering. Med 15+ års erfarenhet av datatrolleri hjälper vi bolag förstå sin data för att kunna ta beslut grundade i verkligheten.
+      </p>
+    </div>
+  </div>
+
+  <!-- Tjänster grid -->
+  <main class="bg-cream py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-navy/10">
+        {services.map(s => (
+          <div class="bg-cream p-8 group hover:bg-paper transition-colors">
+            <div class="w-8 h-px bg-pink-deep mb-5 group-hover:w-12 transition-all"></div>
+            <h2 class="font-display font-medium text-navy text-xl mb-3 leading-tight">{s.title}</h2>
+            <p class="font-body text-navy text-sm leading-relaxed">{s.body}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-14 pt-14 border-t border-navy/10 text-center">
+        <p class="font-display text-navy text-2xl md:text-3xl font-light mb-2">
+          Har du frågor om Power BI eller AI?
+        </p>
+        <p class="font-body font-semibold text-navy mb-8">Kostnadsfri första telefongenomgång</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="tel:0704545531"
+            class="inline-block border-2 border-pink text-navy font-body font-semibold uppercase tracking-widest text-sm px-10 py-3.5 hover:bg-pink transition-colors">
+            Ring 070-454 55 31
+          </a>
+          <a href="/en-timme-gratis-bikonsultation"
+            class="inline-block bg-navy text-fg font-body font-semibold uppercase tracking-widest text-sm px-10 py-3.5 hover:bg-navy-deep transition-colors">
+            Boka gratis BI-konsultation
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
