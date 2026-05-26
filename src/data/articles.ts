@@ -55,7 +55,7 @@ Du behöver inte byta hela systemlandskapet för att börja. De flesta organisat
 
 ## Vill ni vara med i samtalet?
 
-Jag heter Alexander Öhberg och hjälper gärna er att utforska hur xP&A kan se ut i just er organisation. Boka en kostnadsfri BI-timme så pratar vi om var ni står idag och vart ni vill.
+Jag heter Tobias Törnblom och hjälper gärna er att utforska hur xP&A kan se ut i just er organisation. Boka en kostnadsfri BI-timme så pratar vi om var ni står idag och vart ni vill.
 
 [**Boka en gratis BI-timme →**](/en-timme-gratis-bikonsultation)`,
     image: '/images/artiklar/xp&a_analys.jpg',
