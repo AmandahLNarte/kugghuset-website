@@ -40,7 +40,7 @@ const personSchema = JSON.stringify({
         <p class="font-mono text-xs tracking-[0.28em] uppercase text-pink mb-4">{member.roleSv}</p>
         <h1 class="font-display font-light text-fg" style="font-size:clamp(2.5rem,6vw,5rem);line-height:1;letter-spacing:-0.03em;">
           {member.name.split(' ')[0]}<br />
-          <em style="font-style:italic;color:#E5B8CB;">{member.name.split(' ').slice(1).join(' ')}.</em>
+          <em style="letter-spacing:0.04em;font-style:italic;color:#E5B8CB;">{member.name.split(' ').slice(1).join(' ')}.</em>
         </h1>
         <div class="flex flex-wrap gap-2 mt-8">
           {member.skills.map(skill => (
