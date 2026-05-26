@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { team } from '../../data/team';
+import { articles } from '../../data/articles';
 
 export function getStaticPaths() {
   return team
@@ -11,6 +12,7 @@ export function getStaticPaths() {
 }
 
 const { member } = Astro.props;
+const memberArticles = articles.filter(a => a.author === member.name && a.fullText).sort((a, b) => b.date.localeCompare(a.date));
 
 const personSchema = JSON.stringify({
   "@context": "https://schema.org",
@@ -73,6 +75,26 @@ const personSchema = JSON.stringify({
           ))}
         </div>
       </div>
+
+      {memberArticles.length > 0 && (
+        <div class="border-t border-navy/10 pt-10 mb-12">
+          <p class="font-mono text-xs tracking-[0.28em] uppercase text-navy/70 mb-6">Artiklar av {member.name.split(' ')[0]}</p>
+          <div class="flex flex-col gap-4">
+            {memberArticles.map(a => (
+              <a href={`/artiklar/${a.slug}`} class="group flex items-start gap-5 py-4 border-b border-navy/10 hover:border-navy/30 transition-colors">
+                {a.image && (
+                  <img src={a.image} alt={a.imageAlt ?? a.title} class="w-20 h-14 object-cover shrink-0 grayscale group-hover:grayscale-0 transition-all duration-300" />
+                )}
+                <div class="flex-1 min-w-0">
+                  <p class="font-display font-medium text-navy leading-snug group-hover:text-navy/60 transition-colors mb-1">{a.title}</p>
+                  <p class="font-mono text-[10px] tracking-widest uppercase text-navy/40">{a.date} · {a.readTime} · {a.category}</p>
+                </div>
+                <span class="font-mono text-xs text-navy/30 group-hover:text-navy transition-colors shrink-0 mt-1">→</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div class="border-t border-navy/10 pt-10 text-center">
         <p class="font-display font-light text-navy text-2xl mb-6">Vill du jobba med {member.name.split(' ')[0]}?</p>
