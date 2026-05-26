@@ -21,7 +21,12 @@ const authorPhotos: Record<string, string> = {
   'Alexander Öhberg': '/images/ProfilePhoto-Alexander-Ohberg-bw_03_small.jpg',
   'Tobias Törnblom': '/images/team-tobias.webp',
 };
+const authorProfiles: Record<string, string> = {
+  'Alexander Öhberg': '/team/alexander-ohberg',
+  'Tobias Törnblom': '/team/tobias-tornblom',
+};
 const authorPhoto = authorPhotos[article.author] ?? null;
+const authorProfile = authorProfiles[article.author] ?? null;
 
 const firstParaIndex = paragraphs.findIndex(p => !p.startsWith('## ') && !isCTA(p));
 
@@ -247,19 +252,35 @@ const articleSchema = JSON.stringify({
 
         <!-- Author sign-off -->
         <div class="mt-8 flex flex-wrap items-center justify-between gap-6">
-          <div class="flex items-center gap-5">
-            {authorPhoto && (
-              <img
-                src={authorPhoto}
-                alt={article.author}
-                class="w-14 h-14 rounded-full object-cover grayscale"
-              />
-            )}
-            <div>
-              <p class="font-display font-medium text-navy text-lg">{article.author}</p>
-              <p class="font-mono text-xs text-navy/40 tracking-widest mt-0.5 uppercase">Kugghuset</p>
+          {authorProfile ? (
+            <a href={authorProfile} class="flex items-center gap-5 group">
+              {authorPhoto && (
+                <img
+                  src={authorPhoto}
+                  alt={article.author}
+                  class="w-14 h-14 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+                />
+              )}
+              <div>
+                <p class="font-display font-medium text-navy text-lg group-hover:text-navy/60 transition-colors">{article.author}</p>
+                <p class="font-mono text-xs text-navy/40 tracking-widest mt-0.5 uppercase">Kugghuset</p>
+              </div>
+            </a>
+          ) : (
+            <div class="flex items-center gap-5">
+              {authorPhoto && (
+                <img
+                  src={authorPhoto}
+                  alt={article.author}
+                  class="w-14 h-14 rounded-full object-cover grayscale"
+                />
+              )}
+              <div>
+                <p class="font-display font-medium text-navy text-lg">{article.author}</p>
+                <p class="font-mono text-xs text-navy/40 tracking-widest mt-0.5 uppercase">Kugghuset</p>
+              </div>
             </div>
-          </div>
+          )}
           <a href="/artiklar" class="font-mono text-xs tracking-widest uppercase text-navy/40 hover:text-navy transition-colors">
             ← Tillbaka till artiklar
           </a>
