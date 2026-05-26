@@ -31,22 +31,32 @@ const filters = allTags;
     </div>
   </section>
 
-  <!-- Filter row -->
-  <div class="bg-navy-dark pb-8 md:pb-16">
-    <div class="max-w-7xl mx-auto overflow-x-auto md:overflow-visible scrollbar-hide">
-      <div class="flex md:flex-wrap md:justify-center items-center gap-3 md:gap-4 px-6 min-w-max md:min-w-0">
-        {filters.map((f, i) => (
-          <button
-            data-filter={f.toLowerCase()}
-            class={`filter-btn font-mono text-[11px] tracking-[0.2em] uppercase py-3 md:py-4 whitespace-nowrap border-b-2 transition-colors shrink-0 ${
-              i === 0
-                ? 'border-fg/60 text-fg'
-                : 'border-transparent text-fg/30 hover:text-fg/60'
-            }`}
-          >
-            {f}
-          </button>
-        ))}
+  <!-- Filter dropdown -->
+  <div class="bg-navy-dark pb-10 md:pb-16 px-6">
+    <div class="max-w-7xl mx-auto flex justify-center">
+      <div class="relative" id="filter-wrapper">
+        <button
+          id="filter-toggle"
+          class="font-mono text-[11px] tracking-[0.2em] uppercase text-fg/60 border border-fg/20 px-5 py-2.5 hover:text-fg hover:border-fg/40 transition-colors flex items-center gap-3"
+        >
+          <span id="filter-label">Kategorier</span>
+          <span id="filter-arrow" class="transition-transform duration-200">▾</span>
+        </button>
+        <div
+          id="filter-menu"
+          class="hidden absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-navy-dark border border-fg/15 min-w-[200px] z-50 shadow-xl"
+        >
+          {filters.map((f, i) => (
+            <button
+              data-filter={f.toLowerCase()}
+              class={`filter-btn w-full text-left font-mono text-[11px] tracking-[0.2em] uppercase px-5 py-3 transition-colors block ${
+                i === 0 ? 'text-fg bg-fg/5' : 'text-fg/40 hover:text-fg hover:bg-fg/5'
+              }`}
+            >
+              {f}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   </div>
@@ -218,6 +228,10 @@ const filters = allTags;
 <script>
   const cards = document.querySelectorAll<HTMLElement>('.article-card');
   const btns = document.querySelectorAll<HTMLElement>('.filter-btn');
+  const toggle = document.getElementById('filter-toggle')!;
+  const menu = document.getElementById('filter-menu')!;
+  const label = document.getElementById('filter-label')!;
+  const arrow = document.getElementById('filter-arrow')!;
 
   // Scroll-in animation
   const observer = new IntersectionObserver(
@@ -236,18 +250,35 @@ const filters = allTags;
     observer.observe(card);
   });
 
+  // Toggle dropdown
+  toggle.addEventListener('click', () => {
+    const open = !menu.classList.contains('hidden');
+    menu.classList.toggle('hidden', open);
+    arrow.style.transform = open ? '' : 'rotate(180deg)';
+  });
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (!toggle.contains(e.target as Node) && !menu.contains(e.target as Node)) {
+      menu.classList.add('hidden');
+      arrow.style.transform = '';
+    }
+  });
+
   // Filter logic
   btns.forEach(btn => {
     btn.addEventListener('click', () => {
       const filter = btn.dataset.filter!;
+      const filterName = btn.textContent?.trim() ?? 'Kategorier';
 
-      // Update active button style
+      // Update label and active style
+      label.textContent = filter === 'alla' ? 'Kategorier' : filterName;
       btns.forEach(b => {
-        b.classList.remove('border-fg/60', 'text-fg');
-        b.classList.add('border-transparent', 'text-fg/30');
+        b.classList.remove('text-fg', 'bg-fg/5');
+        b.classList.add('text-fg/40');
       });
-      btn.classList.remove('border-transparent', 'text-fg/30');
-      btn.classList.add('border-fg/60', 'text-fg');
+      btn.classList.remove('text-fg/40');
+      btn.classList.add('text-fg', 'bg-fg/5');
 
       // Show/hide articles
       cards.forEach(card => {
@@ -255,6 +286,10 @@ const filters = allTags;
         const match = filter === 'alla' || tags.split(',').includes(filter);
         card.style.display = match ? '' : 'none';
       });
+
+      // Close menu
+      menu.classList.add('hidden');
+      arrow.style.transform = '';
     });
   });
 </script>
