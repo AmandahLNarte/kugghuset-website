@@ -276,12 +276,12 @@ const testimonials = [
       <p class="font-mono text-xs tracking-[0.28em] uppercase text-navy/60 text-center mb-12">Anförtrott av</p>
       <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 md:gap-6 items-center justify-items-center">
         {clientLogos.map(c => (
-          <div class="w-full flex items-center justify-center px-2 py-3 opacity-50 hover:opacity-90 transition-opacity duration-300">
+          <div class="w-full flex items-center justify-center px-2 py-3 opacity-60 hover:opacity-100 transition-opacity duration-300">
             <img
               src={`/images/clients/${c.file}`}
               alt={c.name}
               class="max-h-14 w-auto object-contain"
-              style="filter: brightness(0) invert(0);"
+              style="mix-blend-mode: multiply; filter: grayscale(1) contrast(1.2);"
               loading="lazy"
               decoding="async"
             />
