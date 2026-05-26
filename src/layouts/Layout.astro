@@ -8,6 +8,7 @@ export interface Props {
   ogType?: string;
   noindex?: boolean;
   schemaJson?: string;
+  breadcrumbs?: { name: string; url: string }[];
 }
 
 const {
@@ -17,6 +18,7 @@ const {
   ogType = 'website',
   noindex = false,
   schemaJson,
+  breadcrumbs,
 } = Astro.props;
 
 const siteUrl = Astro.site?.href.replace(/\/$/, '') ?? 'https://kugghuset.se';
@@ -49,6 +51,44 @@ const organizationSchema = JSON.stringify({
         "addressRegion": "Stockholm",
         "addressCountry": "SE"
       },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 59.30763,
+        "longitude": 18.10872
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": 5,
+        "ratingCount": 4,
+        "bestRating": 5,
+        "worstRating": 1
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "reviewBody": "The Kugghuset team always behave as a trusted business partner and has done magics with data which has tremendously improved our business intelligence and ability to make smart decisions.",
+          "author": { "@type": "Person", "name": "Ulric Delamare", "jobTitle": "Group CFO" },
+          "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 }
+        },
+        {
+          "@type": "Review",
+          "reviewBody": "Kugghusets kreativa förmåga och breda kompetens inom BI möjliggjorde vår önskerapport.",
+          "author": { "@type": "Person", "name": "Christer Hansson", "jobTitle": "Ekonomichef" },
+          "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 }
+        },
+        {
+          "@type": "Review",
+          "reviewBody": "Kugghuset kan faktiskt trolla med data. På nolltid bygger de avancerade och skräddarsydda BI-miljöer.",
+          "author": { "@type": "Person", "name": "Mattias Elfgren", "jobTitle": "VD" },
+          "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 }
+        },
+        {
+          "@type": "Review",
+          "reviewBody": "Enkel koppling mellan ekonomisystem och rapportering i Excel. Snabbt och enkelt.",
+          "author": { "@type": "Person", "name": "Lia Sandström" },
+          "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5 }
+        }
+      ],
       "telephone": "+46704545531",
       "email": "konrad@kugghuset.se",
       "areaServed": [
@@ -102,6 +142,19 @@ const organizationSchema = JSON.stringify({
 
     <script type="application/ld+json" is:inline set:html={organizationSchema}></script>
     {schemaJson && <script type="application/ld+json" is:inline set:html={schemaJson}></script>}
+    {breadcrumbs && <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Hem", "item": siteUrl },
+        ...breadcrumbs.map((b, i) => ({
+          "@type": "ListItem",
+          "position": i + 2,
+          "name": b.name,
+          "item": `${siteUrl}${b.url}`
+        }))
+      ]
+    })}></script>}
 
     <!-- Google tag (gtag.js) — Consent Mode v2 -->
     <script is:inline>
