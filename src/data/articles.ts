@@ -45,7 +45,7 @@ FP&A fokuserar i grunden på den finansiella planeringen: budget, prognos, måna
 
 ## Vad krävs tekniskt?
 
-För att xP&A ska fungera i praktiken behövs tre saker: en gemensam datagrund (ofta ett datavarulager eller en lakehouse-arkitektur, t.ex. i Microsoft Fabric), integrationer mellan affärssystem, CRM, HR-system och planeringsverktyg, samt ett gränssnitt där olika roller kan arbeta med planer och prognoser – exempelvis Power BI kombinerat med ett dedikerat planeringsverktyg.
+För att xP&A ska fungera i praktiken behövs tre saker: en gemensam datagrund (ofta ett datavarulager eller en lakehouse-arkitektur, t.ex. i Azure, SQL eller Snowflake), integrationer mellan affärssystem, CRM, HR-system och planeringsverktyg, samt ett gränssnitt där olika roller kan arbeta med planer och prognoser – exempelvis Power BI kombinerat med ett dedikerat planeringsverktyg.
 
 Mycket av det vi redan bygger åt våra kunder – tvärfunktionella datamodeller, automatiserade flöden och flexibla rapporter i Power BI – är just de byggstenar som xP&A vilar på. Vi följer utvecklingen nära och ser stor potential i hur konceptet kan stärka datadrivna organisationer.
 
@@ -55,9 +55,9 @@ Du behöver inte byta hela systemlandskapet för att börja. De flesta organisat
 
 ## Vill ni vara med i samtalet?
 
-Jag heter Tobias Törnblom och hjälper gärna er att utforska hur xP&A kan se ut i just er organisation. Boka en kostnadsfri BI-timme så pratar vi om var ni står idag och vart ni vill.
+Jag heter Tobias Törnblom och hjälper gärna er att utforska hur xP&A kan se ut i just er organisation. Hör av dig så pratar vi om var ni står idag och vart ni vill.
 
-[**Boka en gratis BI-timme →**](/en-timme-gratis-bikonsultation)`,
+[**Kontakta oss →**](/kontakt)`,
     image: '/images/artiklar/xp&a_analys.jpg',
     imageAlt: 'xP&A – Extended Planning & Analysis',
     gradient: 'radial-gradient(ellipse 90% 80% at 70% 30%, #3a2a5a 0%, #1e1535 55%, #080510 100%)',
