@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 
 const clientLogos = [
   { file: 'image-asset-01.webp', name: 'Bambora' },
-  { file: 'image-asset-15.webp', name: 'Humana' },
+  { file: 'image-asset-17-humana.webp', name: 'Humana' },
   { file: 'image-asset-06.webp', name: 'Spotify' },
   { file: 'image-asset-03.webp', name: 'Berns' },
   { file: 'image-asset-04.webp', name: 'Grant Thornton' },
@@ -29,12 +29,12 @@ const clientLogos = [
 >
   <Header />
 
-  <div class="relative bg-navy-dark pt-32 pb-20 px-6 overflow-hidden">
+  <div class="relative bg-navy-dark pt-24 md:pt-32 pb-20 px-6 overflow-hidden">
     <div class="pointer-events-none absolute -right-20 top-0 w-96 h-96 rounded-full opacity-25" style="background:radial-gradient(circle,#E5B8CB 0%,transparent 70%);filter:blur(60px)"></div>
     <div class="relative max-w-7xl mx-auto">
       <p class="font-mono text-xs tracking-[0.28em] uppercase text-fg/30 mb-4">Cases</p>
       <h1 class="font-display font-light text-fg" style="font-size:clamp(2.5rem,6vw,5rem);line-height:1;letter-spacing:-0.03em;">
-        Business Intelligence<br /><em style="font-style:italic;color:#B5CCE0;">Case.</em>
+        Business Intelligence<br /><em style="letter-spacing:0.04em;font-style:italic;color:#B5CCE0;">Case.</em>
       </h1>
       <p class="mt-6 font-body text-fg/60 max-w-xl text-lg leading-relaxed">
         För att du bättre ska förstå vad vi menar med datatrolleri har vi publicerat ett urval av referenser. Resultatet är ofta enorma tidsbesparingar och nya smarta rapporter.
@@ -161,7 +161,7 @@ const clientLogos = [
       <!-- client list -->
       <div class="border-t border-navy/15 pt-14">
         <p class="font-mono text-xs tracking-[0.28em] uppercase text-navy text-center mb-10">Andra organisationer vi trollat med</p>
-        <div class="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-5 items-center justify-items-center mb-10">
+        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3 md:gap-5 items-center justify-items-center mb-10">
           {clientLogos.map(c => (
             <div class="w-full flex items-center justify-center px-2 py-3 grayscale opacity-40 hover:opacity-80 hover:grayscale-0 transition-all duration-300">
               <img
