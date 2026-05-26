@@ -72,6 +72,8 @@ const articleSchema = JSON.stringify({
 <Layout
   title={`${article.title} | Kugghuset`}
   description={article.body}
+  ogImage={article.image}
+  ogType="article"
   schemaJson={articleSchema}
   breadcrumbs={[{ name: "Artiklar", url: "/artiklar" }, { name: article.title, url: `/artiklar/${article.slug}` }]}
 >
