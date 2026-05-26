@@ -23,7 +23,7 @@ export const articles: Article[] = [
     tags: ['xP&A', 'Planering', 'FP&A', 'Power BI'],
     date: '2025.11.15',
     readTime: '3 min',
-    author: 'Alexander Öhberg',
+    author: 'Tobias Törnblom',
     title: 'xP&A – nästa steg efter FP&A för datadriven planering och styrning',
     body: 'xP&A, Extended Planning & Analysis, kopplar ihop ekonomi, sälj, HR och produktion i en gemensam planeringsprocess. Så här tar svenska företag första steget.',
     fullText: `På Kugghuset hjälper vi organisationer att fatta bättre beslut genom att skapa tydlighet i data. Just nu ser vi en tydlig trend växa fram inom planering och analys: xP&A, eller Extended Planning & Analysis. Det är ett sätt att gå från statiska årsbudgetar till en levande, kontinuerlig planering som speglar verksamheten i realtid – och vi tror att det är en av de viktigaste utvecklingarna för ekonomifunktionen de kommande åren.
