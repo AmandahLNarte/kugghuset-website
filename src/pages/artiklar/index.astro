@@ -32,20 +32,22 @@ const filters = allTags;
   </section>
 
   <!-- Filter row -->
-  <div class="bg-navy-dark px-6 pb-16">
-    <div class="max-w-7xl mx-auto flex justify-center items-center gap-4 sm:gap-10 flex-wrap">
-      {filters.map((f, i) => (
-        <button
-          data-filter={f.toLowerCase()}
-          class={`filter-btn font-mono text-[11px] tracking-[0.2em] uppercase py-4 whitespace-nowrap border-b-2 transition-colors ${
-            i === 0
-              ? 'border-fg/60 text-fg'
-              : 'border-transparent text-fg/30 hover:text-fg/60'
-          }`}
-        >
-          {f}
-        </button>
-      ))}
+  <div class="bg-navy-dark pb-8 md:pb-16">
+    <div class="max-w-7xl mx-auto overflow-x-auto md:overflow-visible scrollbar-hide">
+      <div class="flex md:flex-wrap md:justify-center items-center gap-6 md:gap-10 px-6 min-w-max md:min-w-0">
+        {filters.map((f, i) => (
+          <button
+            data-filter={f.toLowerCase()}
+            class={`filter-btn font-mono text-[11px] tracking-[0.2em] uppercase py-3 md:py-4 whitespace-nowrap border-b-2 transition-colors shrink-0 ${
+              i === 0
+                ? 'border-fg/60 text-fg'
+                : 'border-transparent text-fg/30 hover:text-fg/60'
+            }`}
+          >
+            {f}
+          </button>
+        ))}
+      </div>
     </div>
   </div>
 
