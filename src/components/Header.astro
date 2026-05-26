@@ -39,32 +39,66 @@ const navLinks = [
       <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
       </svg>
-      <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/>
-      </svg>
     </button>
     </div>
   </div>
+</header>
 
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden 2xl:hidden border-t border-fg/10 px-6 pb-6 pt-4" style="background: #0E1530;">
+<!-- Backdrop -->
+<div id="drawer-backdrop" class="fixed inset-0 z-40 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+<!-- Side drawer -->
+<div id="mobile-drawer" class="fixed top-0 right-0 z-50 h-full w-4/5 max-w-xs flex flex-col translate-x-full transition-transform duration-300 ease-in-out" style="background: #0E1530; border-left: 1px solid rgba(240,239,250,0.08);">
+  <div class="flex items-center justify-between px-6 h-16 sm:h-20 shrink-0" style="border-bottom: 1px solid rgba(240,239,250,0.08);">
+    <a href="/" aria-label="Kugghuset – startsida">
+      <img src="/images/logo-white-04.png" alt="Kugghuset" class="h-9 w-auto block" />
+    </a>
+    <button id="drawer-close" class="text-fg/60 hover:text-fg transition-colors p-1" aria-label="Stäng meny">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+  <nav class="flex-1 overflow-y-auto px-6 py-4">
     {navLinks.map(link => (
-      <a href={link.href} class="block py-3 font-mono text-xs tracking-widest uppercase text-fg/70 hover:text-fg border-b border-fg/10">
+      <a href={link.href} class="block py-4 font-mono text-xs tracking-widest uppercase text-fg/70 hover:text-fg transition-colors" style="border-bottom: 1px solid rgba(240,239,250,0.08);">
         {link.label}
       </a>
     ))}
-    <a href="/en-timme-gratis-bikonsultation" class="mt-4 block text-center border border-glow text-glow font-mono text-xs tracking-widest uppercase px-4 py-3 hover:bg-glow hover:text-navy-dark transition-all">
+  </nav>
+  <div class="px-6 pb-8 pt-4 shrink-0">
+    <a href="/en-timme-gratis-bikonsultation" class="block text-center border border-glow text-glow font-mono text-xs tracking-widest uppercase px-4 py-3 hover:bg-glow hover:text-navy-dark transition-all">
       Gratis BI-timme →
     </a>
   </div>
-</header>
+</div>
 
 <script>
-  const header = document.getElementById('site-header')!;
-  const toggle = document.getElementById('menu-toggle')!;
-  const menu   = document.getElementById('mobile-menu')!;
-  const iconOpen  = document.getElementById('icon-open')!;
-  const iconClose = document.getElementById('icon-close')!;
+  const header   = document.getElementById('site-header')!;
+  const toggle   = document.getElementById('menu-toggle')!;
+  const drawer   = document.getElementById('mobile-drawer')!;
+  const backdrop = document.getElementById('drawer-backdrop')!;
+  const closeBtn = document.getElementById('drawer-close')!;
+
+  function openDrawer() {
+    drawer.classList.remove('translate-x-full');
+    backdrop.classList.remove('opacity-0', 'pointer-events-none');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    drawer.classList.add('translate-x-full');
+    backdrop.classList.add('opacity-0', 'pointer-events-none');
+    document.body.style.overflow = '';
+  }
+
+  toggle.addEventListener('click', openDrawer);
+  closeBtn.addEventListener('click', closeDrawer);
+  backdrop.addEventListener('click', closeDrawer);
+
+  drawer.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeDrawer);
+  });
 
   // Scroll behaviour: transparent → solid
   function updateHeader() {
@@ -78,11 +112,4 @@ const navLinks = [
   }
   window.addEventListener('scroll', updateHeader, { passive: true });
   updateHeader();
-
-  // Mobile toggle
-  toggle.addEventListener('click', () => {
-    const open = menu.classList.toggle('hidden');
-    iconOpen.classList.toggle('hidden', !open);
-    iconClose.classList.toggle('hidden', open);
-  });
 </script>
