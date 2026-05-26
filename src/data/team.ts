@@ -14,7 +14,7 @@ export const team: TeamMember[] = [
     name: 'Konrad Leffler',
     slug: 'konrad-datatrollkarlen',
     profilePath: '/konrad-datatrollkarlen',
-    roleSv: 'Grundare & senior datatrollkarl specialiserad på BI & AI',
+    roleSv: 'Grundare & senior datatrollkarl inom BI & AI',
     roleEn: 'Founder & Senior BI & AI Expert',
     skills: ['Power BI', 'BI-konsult', 'Business Intelligence', 'Datamodellering', 'DAX', 'SQL', 'Python', 'ETL', 'AI-expert', 'Datatrollkarl'],
     photo: '/images/team-konrad.webp',
