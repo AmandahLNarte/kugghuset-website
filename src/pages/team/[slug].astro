@@ -96,7 +96,7 @@ const personSchema = JSON.stringify({
         </div>
       )}
 
-      <div class="border-t border-navy/10 pt-10 text-center">
+      <div class={`${memberArticles.length === 0 ? 'border-t border-navy/10 ' : ''}pt-10 text-center`}>
         <p class="font-display font-light text-navy text-2xl mb-6">Vill du jobba med {member.name.split(' ')[0]}?</p>
         <a href="/en-timme-gratis-bikonsultation"
           class="inline-block bg-navy text-fg font-body font-semibold uppercase tracking-widest text-sm px-8 py-3.5 hover:bg-navy-deep transition-colors">
