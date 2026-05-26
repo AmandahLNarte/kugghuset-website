@@ -174,7 +174,7 @@ const testimonials = [
         </p>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-navy/10">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-navy/10">
         {services.map(s => (
           <div class="bg-cream p-8 group hover:bg-paper transition-colors">
             <div class="w-8 h-px bg-pink-deep mb-5 group-hover:w-12 transition-all"></div>
@@ -238,7 +238,7 @@ const testimonials = [
       <!-- 2×2 testimonial grid -->
       <div class="grid md:grid-cols-2 gap-px bg-fg/10">
         {testimonials.map(t => (
-          <div class="bg-navy-dark p-10 md:p-12 flex flex-col gap-8 group hover:bg-navy-deep transition-colors">
+          <div class="bg-navy-dark p-6 md:p-10 lg:p-12 flex flex-col gap-8 group hover:bg-navy-deep transition-colors">
             <div class="flex-1 flex flex-col gap-2">
               <!-- large opening quote mark -->
               <div class="font-display text-pink/30 leading-none select-none" style="font-size:5rem; line-height:1;">"</div>
@@ -274,7 +274,7 @@ const testimonials = [
   <section class="bg-white py-20 px-6">
     <div class="max-w-7xl mx-auto">
       <p class="font-mono text-xs tracking-[0.28em] uppercase text-navy/60 text-center mb-12">Anförtrott av</p>
-      <div class="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-6 items-center justify-items-center">
+      <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 md:gap-6 items-center justify-items-center">
         {clientLogos.map(c => (
           <div class="w-full flex items-center justify-center px-2 py-3 grayscale opacity-40 hover:opacity-80 hover:grayscale-0 transition-all duration-300">
             <img
@@ -306,7 +306,7 @@ const testimonials = [
         </h2>
         <p class="mt-4 font-mono text-xs text-fg/40">Några av de affärssystem och verktyg vi jobbar med</p>
       </div>
-      <div class="grid md:grid-cols-3 gap-8 font-mono text-xs text-fg/60">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 font-mono text-xs text-fg/60">
         <ul class="space-y-2.5">
           {['Microsoft Dynamics AX (Axapta)','Microsoft Dynamics NAV (Navision)','Jeeves','Scala','Visma','Hogia','SPCS','Palette (Baltzar)','Ex-flow','Quinyx','Kontek'].map(i => (
             <li class="flex items-start gap-2"><span class="text-glow mt-0.5">→</span>{i}</li>
@@ -342,7 +342,7 @@ const testimonials = [
       </div>
 
       <!-- rad 1: 3 personer -->
-      <div class="grid grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+      <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mb-8">
         {team.slice(0, 3).map(member => (
           <a href={member.profilePath} class="group block">
             <div class="aspect-[3/4] overflow-hidden bg-fg/5 mb-4 relative">
@@ -367,7 +367,7 @@ const testimonials = [
       </div>
 
       <!-- rad 2: 3 personer -->
-      <div class="grid grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
         {team.slice(3).map(member => (
           <a href={member.profilePath} class="group block">
             <div class="aspect-[3/4] overflow-hidden bg-fg/5 mb-4 relative">
@@ -398,7 +398,7 @@ const testimonials = [
   ═══════════════════════════════════════════ -->
   <section id="kontakt" class="relative bg-navy-dark py-24 px-6 overflow-hidden">
     <div class="pointer-events-none absolute -right-20 -top-20 w-[500px] h-[500px] rounded-full opacity-20" style="background: radial-gradient(circle, #5BA8E0 0%, transparent 70%); filter: blur(60px);"></div>
-    <div class="relative max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-start">
+    <div class="relative max-w-7xl mx-auto grid md:grid-cols-2 gap-8 md:gap-16 items-start">
 
       <div>
         <p class="font-mono text-xs tracking-[0.28em] uppercase text-fg/30 flex items-center gap-2 mb-6">
