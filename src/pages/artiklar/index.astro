@@ -61,8 +61,9 @@ const filters = allTags;
           <article class="article-card grid md:grid-cols-2 group cursor-pointer mb-8" data-tags={[a.category, ...a.tags].map(t => t.toLowerCase()).join(',')}>
 
             <!-- Image -->
-            <div
-              class={`relative overflow-hidden ${imageLeft ? 'md:order-1' : 'md:order-2'}`}
+            <a
+              href={href}
+              class={`relative overflow-hidden block ${imageLeft ? 'md:order-1' : 'md:order-2'}`}
               style={`background: ${a.gradient}; min-height: 320px;`}
             >
               {a.image && (
@@ -78,7 +79,7 @@ const filters = allTags;
                   style="background-image: linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px); background-size: 52px 52px;"
                 />
               )}
-            </div>
+            </a>
 
             <!-- Content -->
             <div
