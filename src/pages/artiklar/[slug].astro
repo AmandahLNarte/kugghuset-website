@@ -43,6 +43,7 @@ const articleSchema = JSON.stringify({
   title={`${article.title} | Kugghuset`}
   description={article.body}
   schemaJson={articleSchema}
+  breadcrumbs={[{ name: "Artiklar", url: "/artiklar" }, { name: article.title, url: `/artiklar/${article.slug}` }]}
 >
   <Header />
 
