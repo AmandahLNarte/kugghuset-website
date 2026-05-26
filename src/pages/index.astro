@@ -65,22 +65,26 @@ const testimonials = [
     quote: 'The Kugghuset team always behave as a trusted business partner and has done magics with data which has tremendously improved our business intelligence and ability to make smart decisions.',
     name: 'Ulric Delamare',
     title: 'Group CFO, Bambora',
+    photo: '/images/Ulric_Delamare_Group_CFO_Bambora.webp',
   },
   {
     quote: 'Kugghusets kreativa förmåga och breda kompetens inom BI möjliggjorde vår önskerapport.',
     name: 'Christer Hansson',
     title: 'Ekonomichef, Humana-koncernen',
     link: '/humana',
+    photo: '/images/Christer_Hansson_ekonomichef_humana_koncernen.webp',
   },
   {
     quote: 'Kugghuset kan faktiskt trolla med data. På nolltid bygger de avancerade och skräddarsydda BI-miljöer.',
     name: 'Mattias Elfgren',
     title: 'VD, Tiego',
+    photo: '/images/Mattias_Elfgren.png',
   },
   {
     quote: 'Enkel koppling mellan ekonomisystem och rapportering i Excel. Snabbt och enkelt.',
     name: 'Lia Sandström',
     title: 'Dedicare',
+    photo: '/images/lia_sandstrom.webp',
   },
 ];
 ---
@@ -238,18 +242,25 @@ const testimonials = [
       <div class="grid md:grid-cols-2 gap-px bg-fg/10">
         {testimonials.map(t => (
           <div class="bg-navy-dark p-10 md:p-12 flex flex-col gap-8 group hover:bg-navy-deep transition-colors">
-            <!-- large opening quote mark -->
-            <div class="font-display text-pink/30 leading-none select-none" style="font-size:5rem; line-height:1;">"</div>
-            <blockquote class="font-display italic text-fg/90 leading-snug flex-1" style="font-size:clamp(1.25rem, 2.2vw, 1.6rem);">
-              {t.quote}
-            </blockquote>
-            <div class="border-t border-fg/10 pt-6 flex items-end justify-between">
-              <div>
-                <p class="font-body font-semibold text-fg text-sm">— {t.name}</p>
-                <p class="font-mono text-xs text-fg/40 mt-1 tracking-wide">{t.title}</p>
+            <div class="flex-1 flex flex-col gap-2">
+              <!-- large opening quote mark -->
+              <div class="font-display text-pink/30 leading-none select-none" style="font-size:5rem; line-height:1;">"</div>
+              <blockquote class="font-display italic text-fg/90 leading-snug" style="font-size:clamp(1.4rem, 2.4vw, 1.8rem);">
+                {t.quote}
+              </blockquote>
+            </div>
+            <div class="border-t border-fg/10 pt-6 flex items-center justify-between gap-4">
+              <div class="flex items-center gap-4">
+                {t.photo && (
+                  <img src={t.photo} alt={t.name} class="w-11 h-11 rounded-full object-cover shrink-0 grayscale" />
+                )}
+                <div>
+                  <p class="font-body font-semibold text-fg text-sm">{t.name}</p>
+                  <p class="font-mono text-xs text-fg/40 mt-1 tracking-wide">{t.title}</p>
+                </div>
               </div>
               {t.link && (
-                <a href={t.link} class="font-mono text-xs tracking-widest uppercase text-pink hover:text-pink-deep transition-colors">
+                <a href={t.link} class="font-mono text-xs tracking-widest uppercase text-pink hover:text-pink-deep transition-colors shrink-0">
                   Läs case →
                 </a>
               )}
