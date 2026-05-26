@@ -271,16 +271,17 @@ const testimonials = [
   <!-- ═══════════════════════════════════════════
        KUNDER / LOGOTYPER
   ═══════════════════════════════════════════ -->
-  <section class="bg-white py-20 px-6">
+  <section class="bg-cream py-20 px-6">
     <div class="max-w-7xl mx-auto">
       <p class="font-mono text-xs tracking-[0.28em] uppercase text-navy/60 text-center mb-12">Anförtrott av</p>
       <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 md:gap-6 items-center justify-items-center">
         {clientLogos.map(c => (
-          <div class="w-full flex items-center justify-center px-2 py-3 grayscale opacity-40 hover:opacity-80 hover:grayscale-0 transition-all duration-300">
+          <div class="w-full flex items-center justify-center px-2 py-3 opacity-50 hover:opacity-90 transition-opacity duration-300">
             <img
               src={`/images/clients/${c.file}`}
               alt={c.name}
-              class="max-h-10 w-auto object-contain"
+              class="max-h-14 w-auto object-contain"
+              style="filter: brightness(0) saturate(100%) invert(7%) sepia(50%) saturate(700%) hue-rotate(200deg) brightness(95%) contrast(110%); mix-blend-mode: multiply;"
               loading="lazy"
               decoding="async"
             />
