@@ -1,12 +1,9 @@
 {
   "redirects": [
-    { "source": "/hem",                  "destination": "/",                       "permanent": true },
-    { "source": "/kunder",               "destination": "/kundcase",               "permanent": true },
-    { "source": "/referenscase",         "destination": "/kundcase",               "permanent": true },
-    { "source": "/about",                "destination": "/om-kugghuset",           "permanent": true },
-    { "source": "/team/amandah-lnarte",  "destination": "/team/amandah-andersson", "permanent": true },
-    { "source": "/team/elis-lindstrom",  "destination": "/om-kugghuset",           "permanent": true },
-    { "source": "/sitemap.xml",          "destination": "/sitemap-index.xml",      "permanent": true }
+    { "source": "/hem",          "destination": "/",                  "permanent": true },
+    { "source": "/referenscase", "destination": "/kundcase",          "permanent": true },
+    { "source": "/about",        "destination": "/om-kugghuset",      "permanent": true },
+    { "source": "/sitemap.xml",  "destination": "/sitemap-index.xml", "permanent": true }
   ],
   "headers": [
     {
