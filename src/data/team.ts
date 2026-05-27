@@ -66,8 +66,8 @@ export const team: TeamMember[] = [
     profilePath: '/team/amandah-andersson',
     roleSv: 'CFO & kommunikation',
     roleEn: 'CFO & Communication',
-    skills: ['Finance', 'Creative Direction', 'Marketing', 'Visual Communication', 'Brand Strategy', 'Creative AI'],
+    skills: ['Finansiell styrning', 'Budgetarbete', 'Visuell kommunikation', 'Kreativ ledning', 'Varumärkesbyggande', 'AI & kreativt skapande'],
     photo: '/images/team-amandah.webp',
-    bio: 'Amandah ansvarar för Kugghusets ekonomi och kommunikation. Med bakgrund inom design och företagande binder hon samman affärsutveckling med digital närvaro.',
+    bio: 'Som CFO på Kugghuset ansvarar Amandah för bolagets ekonomiska styrning — budgetarbete, finansiella översikter och löpande uppföljning av bolagets ekonomiska ställning. Med erfarenhet av att ha grundat och drivit 6+ egna varumärken och företag vet hon vad ekonomisk kontroll betyder i praktiken. Parallellt ansvarar hon för Kugghusets kommunikation, och tar med sig ett konstnärligt öga från sin bakgrund som illustratör, art director och kreativ ledare med utbildning från Beckmans designhögskola och Konstfack — för att göra komplex data begriplig och användbar.',
   },
 ];
