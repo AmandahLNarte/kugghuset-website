@@ -64,8 +64,20 @@ const contactSchema = JSON.stringify({
       <!-- Formulär -->
       <div>
         <h2 class="font-display font-medium text-navy text-2xl mb-8">Skicka ett meddelande</h2>
-        <form action="https://formspree.io/f/mzdwaqep" method="POST" class="space-y-5">
-          <input type="hidden" name="_next" value="https://kugghuset.se/tack" />
+        <form id="contact-form" action="/api/contact" method="POST" class="space-y-5" novalidate>
+          <!-- Internal fields (not visible to users) -->
+          <input type="hidden" name="_form" value="kontakt" />
+          <input type="hidden" name="_lt" id="form-lt" value="" />
+          <!-- Honeypot: real users never see or fill this -->
+          <input
+            type="text"
+            name="_hp"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+            style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;"
+          />
+
           <div>
             <label for="name" class="block font-mono text-xs tracking-widest uppercase text-navy/70 mb-2">Namn</label>
             <input id="name" type="text" name="namn" required
@@ -81,11 +93,66 @@ const contactSchema = JSON.stringify({
             <textarea id="message" name="meddelande" rows="5" required
               class="w-full border border-navy/20 bg-white text-ink text-sm px-4 py-3 focus:outline-none focus:border-navy transition-colors resize-none"></textarea>
           </div>
-          <button type="submit"
-            class="w-full bg-navy text-fg font-body font-semibold uppercase tracking-widest text-sm py-4 hover:bg-navy-deep transition-colors">
+          <p id="form-error" class="hidden font-mono text-xs text-red-600 bg-red-50 border border-red-200 px-4 py-3"></p>
+          <button type="submit" id="form-submit"
+            class="w-full bg-navy text-fg font-body font-semibold uppercase tracking-widest text-sm py-4 hover:bg-navy-deep transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
             Skicka
           </button>
         </form>
+
+        <script>
+          (function () {
+            // Stamp load time for timing check
+            const lt = document.getElementById('form-lt') as HTMLInputElement | null;
+            if (lt) lt.value = String(Date.now());
+
+            const form = document.getElementById('contact-form') as HTMLFormElement | null;
+            const submitBtn = document.getElementById('form-submit') as HTMLButtonElement | null;
+            const errorEl = document.getElementById('form-error');
+
+            if (!form || !submitBtn) return;
+
+            form.addEventListener('submit', async (e) => {
+              e.preventDefault();
+              if (!form.checkValidity()) { form.reportValidity(); return; }
+
+              submitBtn.disabled = true;
+              submitBtn.textContent = 'Skickar…';
+              if (errorEl) errorEl.classList.add('hidden');
+
+              try {
+                const res = await fetch('/api/contact', {
+                  method: 'POST',
+                  body: new FormData(form),
+                });
+
+                if (res.ok) {
+                  window.location.href = '/tack';
+                  return;
+                }
+
+                const payload = await res.json().catch(() => ({})) as { error?: string };
+                const ERROR_MESSAGES: Record<string, string> = {
+                  contact_info_required: 'Vänligen ange minst e-postadress.',
+                  invalid_email:         'Kontrollera att e-postadressen är korrekt.',
+                  bad_request:           'Formuläret kunde inte tolkas. Ladda om sidan och försök igen.',
+                  email_failed:          'Meddelandet kunde inte skickas just nu. Försök igen om en stund eller ring oss direkt på +46 704 545 531.',
+                };
+                const msg = (payload.error && ERROR_MESSAGES[payload.error])
+                  ?? 'Något gick fel. Försök igen eller ring oss direkt på +46 704 545 531.';
+                if (errorEl) { errorEl.textContent = msg; errorEl.classList.remove('hidden'); }
+              } catch {
+                if (errorEl) {
+                  errorEl.textContent = 'Nätverksfel. Kontrollera din anslutning och försök igen.';
+                  errorEl.classList.remove('hidden');
+                }
+              } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Skicka';
+              }
+            });
+          })();
+        </script>
       </div>
 
     </div>
