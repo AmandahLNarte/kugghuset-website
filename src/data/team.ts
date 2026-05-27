@@ -16,9 +16,9 @@ export const team: TeamMember[] = [
     profilePath: '/konrad-datatrollkarlen',
     roleSv: 'Grundare & senior datatrollkarl inom BI & AI',
     roleEn: 'Founder & Senior BI & AI Expert',
-    skills: ['Power BI', 'BI-konsult', 'Business Intelligence', 'Datamodellering', 'DAX', 'SQL', 'Python', 'ETL', 'AI-expert', 'Datatrollkarl'],
+    skills: ['Power BI', 'DAX', 'Datamodellering', 'SQL/T-SQL', 'Koncernredovisning', 'React', 'TypeScript', 'FastAPI', 'Supabase', 'Claude SDK', 'Multi-tenant SaaS', 'ETL/ELT', 'Python', 'Datatrollkarl'],
     photo: '/images/team-konrad.webp',
-    bio: 'Konrad grundade Kugghuset 2013 med visionen att göra avancerad business intelligence tillgänglig för svenska bolag. Med över 15 års erfarenhet av Power BI, datamodellering och affärssystem har han lett hundratals BI-projekt för ekonomichefer och controllers. Han är känd för att kombinera teknisk precision med djup affärsförståelse.',
+    bio: 'Konrad grundade Kugghuset 2013 med övertygelsen att svenska bolag förtjänar affärssystem som faktiskt speglar verkligheten. Med 15+ år som finansiell domänexpert och full-stack systemarkitekt har han genomfört 200+ uppdrag för allt från snabbväxande SaaS-bolag till börsnoterade koncerner. Hans referensuppdrag inkluderar ett realtids-koncernredovisningssystem för Humana (60 juridiska enheter, 5 Mdr SEK), en subscription billing-motor för Formpipe och en ESG-dataplattform för Sagax. De senaste åren har han kompletterat sin finansiella djupexpertis med AI-native fullstackutveckling — React 19, FastAPI, Supabase och Anthropic Claude SDK — och bygger nu Toolora, ett modernt ERP/CRM för hantverksbranschen. Konrad löser problem i gränslandet mellan ekonomiavdelningen och IT: den typen av system som kräver att man förstår både kontoplan och datamodell.',
   },
   {
     name: 'Tobias Törnblom',
