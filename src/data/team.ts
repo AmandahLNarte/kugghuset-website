@@ -54,7 +54,7 @@ export const team: TeamMember[] = [
     name: 'Daniel Brooks',
     slug: 'daniel-brooks',
     profilePath: '/team/daniel-brooks',
-    roleSv: 'Chief of Staff & strategisk operatör',
+    roleSv: 'Stabschef & strategisk operatör',
     roleEn: 'Chief of Staff & Strategic Operator',
     skills: ['Gruppdynamik & facilitation', 'AI-native arbetsflöden', 'Governance design', 'Kunskapshantering', 'Claude Code', 'Konfliktmedling', 'Sociokrati', 'Antifragil professionalitet'],
     photo: '/images/team-daniel.webp',
