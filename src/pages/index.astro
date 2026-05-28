@@ -1,8 +1,10 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { team } from '../data/team';
+import heroImage from '../assets/hero/kugghuset-consultant-bi-ai-sql-data-magic.webp';
 const serviceSchema = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Service",
@@ -78,7 +80,7 @@ const testimonials = [
     quote: 'Kugghuset kan faktiskt trolla med data. På nolltid bygger de avancerade och skräddarsydda BI-miljöer.',
     name: 'Mattias Elfgren',
     title: 'VD, Tiego',
-    photo: '/images/Mattias_Elfgren.png',
+    photo: '/images/Mattias_Elfgren.webp',
   },
   {
     quote: 'Enkel koppling mellan ekonomisystem och rapportering i Excel. Snabbt och enkelt.',
@@ -94,7 +96,7 @@ const testimonials = [
   description="Power BI och AI-konsult i Stockholm. Kugghuset hjälper ekonomichefer och controllers med business intelligence, AI-integrering och datamodellering – 15+ års erfarenhet, 200+ kunder."
   schemaJson={serviceSchema}
 >
-  <link slot="head" rel="preload" as="image" href="/images/kugghuset-consultant-bi-ai-sql-data-magic.webp" fetchpriority="high" />
+  <link slot="head" rel="preload" as="image" href={heroImage.src} fetchpriority="high" />
   <Header />
 
   <!-- ═══════════════════════════════════════════
@@ -102,13 +104,15 @@ const testimonials = [
   ═══════════════════════════════════════════ -->
   <section id="hem" class="relative min-h-screen flex flex-col justify-between overflow-hidden bg-navy-dark">
     <!-- full-bleed background image -->
-    <img
-      src="/images/kugghuset-consultant-bi-ai-sql-data-magic.webp"
+    <Image
+      src={heroImage}
       alt="BI-konsult med datadashboards – Kugghuset Power BI Stockholm"
       class="absolute inset-0 w-full h-full object-cover object-center"
       loading="eager"
       decoding="async"
       fetchpriority="high"
+      widths={[640, 1024, 1600, 2400]}
+      sizes="100vw"
       style="object-position: center center;"
     />
     <!-- dark overlay for text legibility -->
@@ -348,12 +352,14 @@ const testimonials = [
         {team.slice(0, 3).map(member => (
           <a href={member.profilePath} class="group block">
             <div class="aspect-[3/4] overflow-hidden bg-fg/5 mb-4 relative">
-              <img
+              <Image
                 src={member.photo}
                 alt={`${member.name}, ${member.roleSv} – Kugghuset`}
                 class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
                 loading="lazy"
                 decoding="async"
+                widths={[240, 480, 720]}
+                sizes="(min-width: 1024px) 33vw, 50vw"
               />
               <div class="absolute inset-0 bg-navy/20 group-hover:bg-navy/0 transition-colors"></div>
             </div>
@@ -373,12 +379,14 @@ const testimonials = [
         {team.slice(3).map(member => (
           <a href={member.profilePath} class="group block">
             <div class="aspect-[3/4] overflow-hidden bg-fg/5 mb-4 relative">
-              <img
+              <Image
                 src={member.photo}
                 alt={`${member.name}, ${member.roleSv} – Kugghuset`}
                 class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
                 loading="lazy"
                 decoding="async"
+                widths={[240, 480, 720]}
+                sizes="(min-width: 1024px) 33vw, 50vw"
               />
               <div class="absolute inset-0 bg-navy/20 group-hover:bg-navy/0 transition-colors"></div>
             </div>

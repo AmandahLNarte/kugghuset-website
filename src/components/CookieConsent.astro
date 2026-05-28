@@ -95,6 +95,9 @@
       if (typeof gtag !== 'undefined') {
         gtag('consent', 'update', { analytics_storage: decision });
       }
+      if (decision === 'granted' && typeof window.__loadGA === 'function') {
+        window.__loadGA();
+      }
     }
 
     var btnAccept = document.getElementById('cookie-accept');

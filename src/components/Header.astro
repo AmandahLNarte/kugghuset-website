@@ -101,8 +101,12 @@ const navLinks = [
   });
 
   // Scroll behaviour: transparent → solid
+  let scrolled: boolean | null = null;
   function updateHeader() {
-    if (window.scrollY > 60) {
+    const next = window.scrollY > 60;
+    if (next === scrolled) return;
+    scrolled = next;
+    if (next) {
       header.style.background = '#0E1530';
       header.style.borderBottom = '1px solid rgba(240,239,250,0.08)';
     } else {

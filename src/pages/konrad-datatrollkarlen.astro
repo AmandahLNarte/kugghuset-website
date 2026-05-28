@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -14,7 +15,7 @@ const personSchema = JSON.stringify({
   "name": member.name,
   "jobTitle": member.roleSv,
   "url": "https://kugghuset.se/konrad-datatrollkarlen",
-  "image": `https://kugghuset.se${member.photo}`,
+  "image": `https://kugghuset.se${member.photo.src}`,
   "worksFor": { "@id": "https://kugghuset.se/#organization" },
   "knowsAbout": member.skills
 });
@@ -22,7 +23,7 @@ const personSchema = JSON.stringify({
 <Layout
   title={`${member.name} – ${member.roleSv} | Kugghuset`}
   description={`${member.name} är grundare och ${member.roleSv} på Kugghuset i Stockholm. ${member.bio.slice(0, 120)}…`}
-  ogImage={member.photo}
+  ogImage={member.photo.src}
   schemaJson={personSchema}
 >
   <Header />
@@ -45,12 +46,14 @@ const personSchema = JSON.stringify({
         </div>
       </div>
       <div class="aspect-[3/4] overflow-hidden">
-        <img
+        <Image
           src={member.photo}
           alt={`${member.name}, ${member.roleSv} – Kugghuset`}
           class="w-full h-full object-cover"
           loading="eager"
           decoding="async"
+          widths={[400, 700, 1000]}
+          sizes="(min-width: 768px) 50vw, 100vw"
         />
       </div>
     </div>
