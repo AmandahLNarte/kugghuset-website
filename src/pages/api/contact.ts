@@ -232,7 +232,7 @@ export const POST: APIRoute = async ({ request }) => {
     return json({ ok: true }, 200);
   }
 
-  const namn = String(data.get('namn') ?? '');
+  const namn = String(data.get('namn') ?? '').replace(/[\r\n]/g, ' ');
 
   // Check 4a: URL in name field — near-perfect spam signal
   if (/https?:\/\/|www\.|\.com|\.net|\.ru|\.cn|\.xyz|\.top|\.tk|\.shop/i.test(namn)) {

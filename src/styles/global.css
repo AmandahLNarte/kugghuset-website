@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy-dark: #0E1530;
+  --color-navy-deep: #1A2046;
+  --color-navy: #2C3464;
+  --color-pink: #E5B8CB;
+  --color-pink-deep: #D49AB4;
+  --color-powder: #B5CCE0;
+  --color-powder-deep: #7FA6C9;
+  --color-glow: #5BA8E0;
+  --color-cream: #F6F2EA;
+  --color-paper: #EDE7DA;
+  --color-ink: #11163A;
+  --color-fg: #F0EFFA;
+
+  --font-family-display: "Cormorant Garamond", serif;
+  --font-family-body: "Hanken Grotesk", sans-serif;
+  --font-family-mono: "JetBrains Mono", monospace;
+}

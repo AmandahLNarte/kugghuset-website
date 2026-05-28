@@ -14,7 +14,7 @@
         { "key": "Referrer-Policy",           "value": "strict-origin-when-cross-origin" },
         { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains" },
         { "key": "Permissions-Policy",        "value": "camera=(), microphone=(), geolocation=()" },
-        { "key": "Content-Security-Policy",   "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://sibforms.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://sibforms.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; frame-src https://www.google.com https://maps.google.com; form-action 'self';" }
+        { "key": "Content-Security-Policy",   "value": "default-src 'self'; script-src 'self' 'sha256-JcWkQsBa5GuJXSOv5yFBbGnhbPzNAzgfxwSKmlY/KYE=' 'sha256-JJ6lSuzDK2+iqZlUkv1ibOXbI9B4Xedj5qSdTLaHa6Y=' 'sha256-YEkRHWyN7rVjwiO3yHVrFjTw1Ynq/RKkMMfyplPFNcs=' 'sha256-O9UCY4YWbklpoOepPFLJRmlSc+6NyuOEVAIigCm3+QE=' 'sha256-j2bs9h7YMWymXNhWo2Zwv1xH8tg1TvzdULzK0XT/8AY=' 'sha256-nrllEfPWOCx6CzCNw4xlAg75N4aqJvQiMIkADSg1q2o=' 'sha256-gMzLebqCZMckOYOL+alNqP1r1iYujYq4VHpg+SvmjQg=' 'sha256-CLoASPuymdSNQYKeWW2hYurfI21/UQd746DX5vs3a1Y=' https://sibforms.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://sibforms.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com; frame-src https://www.google.com https://maps.google.com; form-action 'self';" }
       ]
     },
     {

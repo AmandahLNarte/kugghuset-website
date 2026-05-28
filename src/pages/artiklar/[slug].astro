@@ -30,11 +30,21 @@ const authorProfile = authorProfiles[article.author] ?? null;
 
 const firstParaIndex = paragraphs.findIndex(p => !p.startsWith('## ') && !isCTA(p));
 
+function safeHref(href: string): string | null {
+  return /^https?:\/\//i.test(href) || href.startsWith('/') ? href : null;
+}
+
 function processInline(text: string): string {
   return text
-    .replace(/\[\*\*([^\]]+)\*\*\]\(([^)]+)\)/g, '<a href="$2" class="font-semibold underline hover:opacity-70 transition-opacity">$1</a>')
+    .replace(/\[\*\*([^\]]+)\*\*\]\(([^)]+)\)/g, (_, label, href) => {
+      const safe = safeHref(href);
+      return safe ? `<a href="${safe}" class="font-semibold underline hover:opacity-70 transition-opacity">${label}</a>` : label;
+    })
     .replace(/\[([^\]]+)\]\(#\)/g, '$1')
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="underline hover:opacity-70 transition-opacity">$1</a>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, href) => {
+      const safe = safeHref(href);
+      return safe ? `<a href="${safe}" class="underline hover:opacity-70 transition-opacity">${label}</a>` : label;
+    })
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
 }
 
@@ -47,7 +57,14 @@ function extractLink(p: string): { text: string; href: string } | null {
   return m ? { text: m[1], href: m[2] } : null;
 }
 
-const articleSchema = JSON.stringify({
+function safeJson(obj: unknown): string {
+  return JSON.stringify(obj)
+    .replace(/</g, '\\u003c')
+    .replace(/>/g, '\\u003e')
+    .replace(/\//g, '\\u002f');
+}
+
+const articleSchema = safeJson({
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": article.title,
