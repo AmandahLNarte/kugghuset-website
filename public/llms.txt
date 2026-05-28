@@ -1,6 +1,6 @@
 # Kugghuset AB
 
-> Power BI-konsulter i Stockholm. Vi hjälper ekonomichefer och controllers med business intelligence, datamodellering, datalager och interaktiva dashboards. 15+ års erfarenhet. 100+ implementerade BI-lösningar.
+> Power BI-konsulter i Stockholm. Vi hjälper ekonomichefer och controllers med business intelligence, datamodellering, datalager och interaktiva dashboards. 15+ års erfarenhet. 200+ implementerade BI-lösningar.
 
 Kugghuset AB är ett specialiserat konsultbolag inom Business Intelligence (BI) med fokus på Microsoft Power BI. Vi arbetar primärt med ekonomiavdelningar och pratar samma språk som ekonomichefer och controllers. Vi är inte låsta till någon systemleverantör utan bygger skräddarsydda rapporterings- och BI-miljöer med marknadens främsta verktyg.
 
@@ -25,7 +25,7 @@ Microsoft Power BI, Microsoft Power Pivot, Microsoft Power View, Microsoft Power
 
 ## Kunder och referenscase
 
-Kugghuset har implementerat BI-lösningar för 100+ organisationer.
+Kugghuset har implementerat BI-lösningar för 200+ organisationer.
 
 - Bambora – "Kugghuset has done magic with our data and has tremendously improved our business intelligence and ability to make smart decisions." (Ulric Delamare, Group CFO)
 - Humana – Förkortade implementationstid av koncernredovisningssystem med flera månader. "Kugghusets kreativa förmåga och breda kompetens inom BI möjliggjorde vår önskerapport." (Christer Hansson, Ekonomichef)
@@ -36,7 +36,7 @@ Kugghuset har implementerat BI-lösningar för 100+ organisationer.
 
 - Webbplats: https://kugghuset.se
 - Kontaktperson: Konrad Leffler
-- Telefon: 070-454 55 31
+- Telefon: +46 704 545 531
 - E-post: konrad@kugghuset.se
 - Adress: Sickla Strand 45, 131 34 Nacka, Sverige
 - Org.nr: 556934-0531
@@ -51,7 +51,7 @@ Kugghuset har implementerat BI-lösningar för 100+ organisationer.
 - [Om Kugghuset – BI-konsulter sedan 2013](https://kugghuset.se/om-kugghuset)
 - [Kontakt](https://kugghuset.se/kontakt)
 - [En timme gratis BI-konsultation](https://kugghuset.se/en-timme-gratis-bikonsultation)
-- [Våra kunder – 100+ bolag med BI-lösningar](https://kugghuset.se/kunder)
+
 - [Kundcase: Humana, banksektorn och fler](https://kugghuset.se/kundcase)
 - [Kundcase: Humana – koncernredovisningssystem](https://kugghuset.se/humana)
 - [Konrad Leffler – grundare och datatrollkarl](https://kugghuset.se/konrad-datatrollkarlen)
