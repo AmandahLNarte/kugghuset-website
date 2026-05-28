@@ -146,6 +146,10 @@ async function getAccessToken(): Promise<string> {
   const clientId = import.meta.env.AZURE_CLIENT_ID;
   const clientSecret = import.meta.env.AZURE_CLIENT_SECRET;
 
+  if (!tenantId || !clientId || !clientSecret) {
+    throw new Error('Missing Azure env vars (AZURE_TENANT_ID / AZURE_CLIENT_ID / AZURE_CLIENT_SECRET)');
+  }
+
   const res = await fetch(
     `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/token`,
     {
@@ -175,6 +179,10 @@ async function sendMail(
   replyToName?: string
 ): Promise<void> {
   const sender = import.meta.env.MAIL_SENDER; // e.g. info@kugghuset.se
+
+  if (!sender) {
+    throw new Error('Missing env var: MAIL_SENDER');
+  }
   const token = await getAccessToken();
 
   const message: Record<string, unknown> = {
@@ -331,7 +339,7 @@ export const POST: APIRoute = async ({ request }) => {
       namn || undefined
     );
   } catch (err) {
-    console.error('[contact API] Email send error:', err);
+    console.error('[contact API] Email send error:', err instanceof Error ? err.message : 'unknown');
     return json({ error: 'email_failed' }, 500);
   }
 

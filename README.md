@@ -52,8 +52,26 @@ Du kan ladda ned befintliga bilder direkt från kugghuset.se via webbläsarens D
 
 ---
 
+## Miljövariabler (krävs i produktion)
+
+Kontaktformuläret skickar e-post via Microsoft Graph API. Sätt dessa i Vercel under
+*Project → Settings → Environment Variables*:
+
+| Variabel | Beskrivning |
+|---|---|
+| `AZURE_TENANT_ID` | Azure AD tenant-ID |
+| `AZURE_CLIENT_ID` | App-registreringens klient-ID |
+| `AZURE_CLIENT_SECRET` | Klienthemlighet för app-registreringen |
+| `MAIL_SENDER` | Avsändaradress, t.ex. `info@kugghuset.se` |
+
+Se `.env.example` för exempelformat. Utan dessa variabler returnerar kontaktformuläret
+ett fel vid inskickning.
+
+---
+
 ## Deploy till Vercel (gratis)
 1. Pusha projektet till GitHub
 2. Gå till https://vercel.com/new
 3. Importera ditt repo – Vercel hittar Astro automatiskt
-4. Klicka Deploy!
+4. Sätt miljövariablerna ovan under *Environment Variables*
+5. Klicka Deploy!
