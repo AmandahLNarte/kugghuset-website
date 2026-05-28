@@ -35,7 +35,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   --color-ink: #11163A;
   --color-fg: #F0EFFA;
 
-  --font-family-display: "Cormorant Garamond", serif;
-  --font-family-body: "Hanken Grotesk", sans-serif;
-  --font-family-mono: "JetBrains Mono", monospace;
+  --font-display: "Cormorant Garamond", serif;
+  --font-body: "Hanken Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 }
