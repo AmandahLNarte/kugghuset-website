@@ -1,11 +1,3 @@
-import type { ImageMetadata } from 'astro';
-import konradPhoto from '../assets/team/team-konrad.webp';
-import tobiasPhoto from '../assets/team/team-tobias.webp';
-import alexanderPhoto from '../assets/team/team-alexander.webp';
-import evgeniaPhoto from '../assets/team/team-evgenia.webp';
-import danielPhoto from '../assets/team/team-daniel.webp';
-import amandahPhoto from '../assets/team/team-amandah.webp';
-
 export interface TeamMember {
   name: string;
   slug: string;
@@ -13,7 +5,7 @@ export interface TeamMember {
   roleSv: string;
   roleEn: string;
   skills: string[];
-  photo: ImageMetadata;
+  photo: string;
   bio: string;
 }
 
@@ -25,7 +17,7 @@ export const team: TeamMember[] = [
     roleSv: 'Grundare & senior datatrollkarl inom BI & AI',
     roleEn: 'Founder & Senior BI & AI Expert',
     skills: ['Power BI', 'DAX', 'Datamodellering', 'SQL/T-SQL', 'Koncernredovisning', 'React', 'TypeScript', 'FastAPI', 'Supabase', 'Claude SDK', 'Multi-tenant SaaS', 'ETL/ELT', 'Python', 'Datatrollkarl'],
-    photo: konradPhoto,
+    photo: '/images/team-konrad.webp',
     bio: 'Konrad grundade Kugghuset 2013 med övertygelsen att svenska bolag förtjänar affärssystem som faktiskt speglar verkligheten. Med 15+ år som finansiell domänexpert och full-stack systemarkitekt har han genomfört 200+ uppdrag för allt från snabbväxande SaaS-bolag till börsnoterade koncerner. Hans referensuppdrag inkluderar ett realtids-koncernredovisningssystem för Humana (60 juridiska enheter, 5 Mdr SEK), en subscription billing-motor för Formpipe och en ESG-dataplattform för Sagax. De senaste åren har han kompletterat sin finansiella djupexpertis med AI-native fullstackutveckling — React 19, FastAPI, Supabase och Anthropic Claude SDK — och bygger nu Toolora, ett modernt ERP/CRM för hantverksbranschen. Konrad löser problem i gränslandet mellan ekonomiavdelningen och IT: den typen av system som kräver att man förstår både kontoplan och datamodell.',
   },
   {
@@ -35,7 +27,7 @@ export const team: TeamMember[] = [
     roleSv: 'Dataanalytiker & AI-driven fullstackutvecklare',
     roleEn: 'Data Analyst & AI-driven Full-stack Developer',
     skills: ['Python', 'SQL', 'TypeScript', 'React', 'Supabase', 'Claude API', 'Power BI', 'Agentisk AI', 'SaaS-arkitektur', 'Datatrollkarl'],
-    photo: tobiasPhoto,
+    photo: '/images/team-tobias.webp',
     bio: 'Tobias specialiserar sig på fastighetssystem och AI-driven SaaS-utveckling. Han hjälper bolag som driver mötesplatser, coworking och fastigheter att ta ut mer värde ur sina befintliga system — och bygger när det behövs kompletta SaaS-lösningar från grunden. Med Python, SQL och React som primära verktyg kombinerar han dataextrahering, automatisering och agentisk AI för att skapa lösningar som faktiskt används i driften.',
   },
   {
@@ -45,7 +37,7 @@ export const team: TeamMember[] = [
     roleSv: 'BI-analytiker & AI-konsult',
     roleEn: 'BI Analyst & AI Consultant',
     skills: ['SQL', 'Power BI', 'Datamodellering', 'DAX', 'Datatrollkarl', 'BI-konsult'],
-    photo: alexanderPhoto,
+    photo: '/images/team-alexander.webp',
     bio: 'Alexander specialiserar sig på skärningspunkten mellan traditionell BI och modern AI. Han hjälper företag att bygga datamodeller i Power BI och integrera AI-driven analys i befintliga rapporteringsmiljöer.',
   },
   {
@@ -55,7 +47,7 @@ export const team: TeamMember[] = [
     roleSv: 'BI-utvecklare & dataanalytiker',
     roleEn: 'BI Developer & Data Analyst',
     skills: ['Power BI', 'DAX', 'T-SQL', 'Python', 'ETL/ELT', 'Microsoft Fabric', 'Snowflake', 'API-integration', 'Datamodellering', 'Datakvalitetsdesign'],
-    photo: evgeniaPhoto,
+    photo: '/images/team-evgenia.webp',
     bio: 'Evgenia utvecklar BI-lösningar genom hela kedjan — från SQL och ETL till datamodeller, Power BI och API-integrationer. Med en bakgrund inom verksamhetskoordinering och en magisterexamen i Management ser hon till att en rapport har värde först när användarna litar på siffrorna. Hon är van att översätta mellan verksamhetens behov och tekniska lösningar, och har bland annat byggt API-baserade integrationer mot Agda PS, Microsoft Fabric-pipelines och interaktiva HR-rapporter som används dagligen av ledning och chefer.',
   },
   {
@@ -65,7 +57,7 @@ export const team: TeamMember[] = [
     roleSv: 'Stabschef & strategisk operatör',
     roleEn: 'Chief of Staff & Strategic Operator',
     skills: ['Gruppdynamik & facilitation', 'AI-native arbetsflöden', 'Governance design', 'Kunskapshantering', 'Claude Code', 'Konfliktmedling', 'Sociokrati', 'Antifragil professionalitet'],
-    photo: danielPhoto,
+    photo: '/images/team-daniel.webp',
     bio: 'Daniel är Kugghusets stabschef, en strategisk operatör för team under press. Han leder mötena som håller ett litet konsultteam funktionellt, designar system som ser till att strategi överlever gapet mellan beslut och genomförande. Daniels expertis är gruppdynamik och facilitation: att styra möten i flera riktningar simultant, balansera relationer mot resultat och integrera individuellt syfte i kollektivt arbete. En förmåga han kallar antifragil professionalitet. Med bakgrund från danska armén (underrättelsetjänst i Kosovo, Irak och Afghanistan), ett kandidatexamen i fysik från Niels Bohrs Institut och 14 år av community governance på The Borderland (80→5 000+ deltagare, 5M SEK participatory budget per år) kombinerar han strukturtänkande med djup mänsklig förståelse. AI-native sedan dag ett: han arbetar med Claude Code och multi-LLM-strategier som en naturlig del av sin operativa verktygslåda.',
   },
   {
@@ -75,7 +67,7 @@ export const team: TeamMember[] = [
     roleSv: 'CFO & kommunikation',
     roleEn: 'CFO & Communication',
     skills: ['Finansiell styrning', 'Budgetarbete', 'Visuell kommunikation', 'Kreativ ledning', 'Varumärkesbyggande', 'AI & kreativt skapande'],
-    photo: amandahPhoto,
+    photo: '/images/team-amandah.webp',
     bio: 'Som CFO på Kugghuset ansvarar Amandah för bolagets ekonomiska styrning — budgetarbete, finansiella översikter och löpande uppföljning av bolagets ekonomiska ställning. Med erfarenhet av att ha grundat och drivit 6+ egna varumärken och företag vet hon vad ekonomisk kontroll betyder i praktiken. Parallellt ansvarar hon för Kugghusets kommunikation, och tar med sig ett konstnärligt öga från sin bakgrund som illustratör, art director och kreativ ledare med utbildning från Beckmans designhögskola och Konstfack — för att göra komplex data begriplig och användbar.',
   },
 ];

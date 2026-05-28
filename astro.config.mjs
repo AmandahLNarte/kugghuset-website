@@ -1,16 +1,14 @@
 import { defineConfig } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
+import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
-import vercel from '@astrojs/vercel';
+import vercel from '@astrojs/vercel/serverless';
 
 export default defineConfig({
-  output: 'static',
+  output: 'hybrid',
   adapter: vercel(),
   site: 'https://kugghuset.se',
-  vite: {
-    plugins: [tailwindcss()],
-  },
   integrations: [
+    tailwind(),
     sitemap({ filter: (page) => !page.includes('/tack') }),
   ],
 });

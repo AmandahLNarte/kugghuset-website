@@ -3,7 +3,6 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { articles } from '../../data/articles';
-import tobiasPhoto from '../../assets/team/team-tobias.webp';
 
 const siteUrl = Astro.site?.href.replace(/\/$/, '') ?? 'https://kugghuset.se';
 
@@ -19,8 +18,8 @@ const article = articles.find(a => a.slug === slug)!;
 const paragraphs = article.fullText.split('\n\n').filter(p => p.trim());
 
 const authorPhotos: Record<string, string> = {
-  'Alexander Öhberg': '/images/ProfilePhoto-Alexander-Ohberg-bw.webp',
-  'Tobias Törnblom': tobiasPhoto.src,
+  'Alexander Öhberg': '/images/ProfilePhoto-Alexander-Ohberg-bw_03_small.jpg',
+  'Tobias Törnblom': '/images/team-tobias.webp',
 };
 const authorProfiles: Record<string, string> = {
   'Alexander Öhberg': '/team/alexander-ohberg',
@@ -31,21 +30,11 @@ const authorProfile = authorProfiles[article.author] ?? null;
 
 const firstParaIndex = paragraphs.findIndex(p => !p.startsWith('## ') && !isCTA(p));
 
-function safeHref(href: string): string | null {
-  return /^https?:\/\//i.test(href) || href.startsWith('/') ? href : null;
-}
-
 function processInline(text: string): string {
   return text
-    .replace(/\[\*\*([^\]]+)\*\*\]\(([^)]+)\)/g, (_, label, href) => {
-      const safe = safeHref(href);
-      return safe ? `<a href="${safe}" class="font-semibold underline hover:opacity-70 transition-opacity">${label}</a>` : label;
-    })
+    .replace(/\[\*\*([^\]]+)\*\*\]\(([^)]+)\)/g, '<a href="$2" class="font-semibold underline hover:opacity-70 transition-opacity">$1</a>')
     .replace(/\[([^\]]+)\]\(#\)/g, '$1')
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, href) => {
-      const safe = safeHref(href);
-      return safe ? `<a href="${safe}" class="underline hover:opacity-70 transition-opacity">${label}</a>` : label;
-    })
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="underline hover:opacity-70 transition-opacity">$1</a>')
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
 }
 
@@ -58,14 +47,7 @@ function extractLink(p: string): { text: string; href: string } | null {
   return m ? { text: m[1], href: m[2] } : null;
 }
 
-function safeJson(obj: unknown): string {
-  return JSON.stringify(obj)
-    .replace(/</g, '\\u003c')
-    .replace(/>/g, '\\u003e')
-    .replace(/\//g, '\\u002f');
-}
-
-const articleSchema = safeJson({
+const articleSchema = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": article.title,

@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -46,14 +45,12 @@ const pageSchema = JSON.stringify({
         {team.map(member => (
           <a href={member.profilePath} class="group block">
             <div class="aspect-[3/4] overflow-hidden bg-fg/5 mb-4 relative">
-              <Image
+              <img
                 src={member.photo}
                 alt={`${member.name}, ${member.roleSv} – Kugghuset`}
                 class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
                 loading="lazy"
                 decoding="async"
-                widths={[240, 480, 720]}
-                sizes="(min-width: 1024px) 33vw, 50vw"
               />
               <div class="absolute inset-0 bg-navy/20 group-hover:bg-navy/0 transition-colors"></div>
             </div>
