@@ -1,4 +1,5 @@
 ---
+import globalCss from '../styles/global.css?url';
 import '../styles/global.css';
 import CookieConsent from '../components/CookieConsent.astro';
 
@@ -117,6 +118,7 @@ const organizationSchema = safeJson({
 <!doctype html>
 <html lang="sv">
   <head>
+    <link rel="stylesheet" href={globalCss} />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
