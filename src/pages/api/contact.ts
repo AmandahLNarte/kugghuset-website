@@ -21,7 +21,35 @@ function checkRateLimit(ip: string): boolean {
 }
 
 // ---------------------------------------------------------------------------
-// 2. Spam / URL-count filter
+// 2a. Prompt-injection filter
+// ---------------------------------------------------------------------------
+const INJECTION_PATTERNS = [
+  'ignore previous instructions',
+  'ignore all previous',
+  'disregard previous',
+  'forget your instructions',
+  'new instructions:',
+  'system prompt',
+  'you are now',
+  'act as if',
+  'pretend you are',
+  'pretend to be',
+  'roleplay as',
+  'jailbreak',
+  'override instructions',
+  'instructions have changed',
+  'from now on you',
+  'your new role',
+  'your true self',
+].map((p) => p.toLowerCase());
+
+function hasPromptInjection(text: string): boolean {
+  const lower = text.toLowerCase();
+  return INJECTION_PATTERNS.some((p) => lower.includes(p));
+}
+
+// ---------------------------------------------------------------------------
+// 2b. Spam / URL-count filter
 // ---------------------------------------------------------------------------
 // Keywords organised by category for easier maintenance.
 // Each phrase is something a legitimate B2B BI-consulting prospect
@@ -117,6 +145,10 @@ async function getAccessToken(): Promise<string> {
   const clientId = import.meta.env.AZURE_CLIENT_ID;
   const clientSecret = import.meta.env.AZURE_CLIENT_SECRET;
 
+  if (!tenantId || !clientId || !clientSecret) {
+    throw new Error('Missing Azure env vars (AZURE_TENANT_ID / AZURE_CLIENT_ID / AZURE_CLIENT_SECRET)');
+  }
+
   const res = await fetch(
     `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/token`,
     {
@@ -132,8 +164,7 @@ async function getAccessToken(): Promise<string> {
   );
 
   if (!res.ok) {
-    const err = await res.text();
-    throw new Error(`Token request failed (${res.status}): ${err}`);
+    throw new Error(`Token request failed (${res.status})`);
   }
 
   const data = (await res.json()) as { access_token: string };
@@ -147,6 +178,11 @@ async function sendMail(
   replyToName?: string
 ): Promise<void> {
   const sender = import.meta.env.MAIL_SENDER; // e.g. info@kugghuset.se
+
+  if (!sender) {
+    throw new Error('Missing env var: MAIL_SENDER');
+  }
+
   const token = await getAccessToken();
 
   const message: Record<string, unknown> = {
@@ -179,8 +215,7 @@ async function sendMail(
   );
 
   if (!res.ok) {
-    const err = await res.text();
-    throw new Error(`sendMail failed (${res.status}): ${err}`);
+    throw new Error(`sendMail failed (${res.status})`);
   }
 }
 
@@ -206,7 +241,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   // Check 1: Rate limit
   if (!checkRateLimit(ip)) {
-    console.log('Spam rejected — rate limit exceeded:', ip);
+    console.log('Spam rejected — rate limit exceeded');
     return json({ ok: true }, 200);
   }
 
@@ -221,7 +256,7 @@ export const POST: APIRoute = async ({ request }) => {
   // Check 2: Honeypot  — bots fill every input; real users never touch _hp
   const hp = String(data.get('_hp') ?? '').trim();
   if (hp !== '') {
-    console.log('Spam rejected — honeypot filled:', hp);
+    console.log('Spam rejected — honeypot filled');
     return json({ ok: true }, 200);
   }
 
@@ -232,11 +267,11 @@ export const POST: APIRoute = async ({ request }) => {
     return json({ ok: true }, 200);
   }
 
-  const namn = String(data.get('namn') ?? '');
+  const namn = String(data.get('namn') ?? '').replace(/[\r\n]/g, ' ');
 
   // Check 4a: URL in name field — near-perfect spam signal
   if (/https?:\/\/|www\.|\.com|\.net|\.ru|\.cn|\.xyz|\.top|\.tk|\.shop/i.test(namn)) {
-    console.log('Spam rejected — URL in name field:', namn);
+    console.log('Spam rejected — URL in name field');
     return json({ ok: true }, 200);
   }
 
@@ -253,6 +288,12 @@ export const POST: APIRoute = async ({ request }) => {
     String(data.get('utmaning') ?? '');
   if (isSpam(freeText)) {
     console.log('Spam rejected — keyword/URL match in free-text fields');
+    return json({ ok: true }, 200);
+  }
+
+  // Check 4d: Prompt injection
+  if (hasPromptInjection(freeText)) {
+    console.log('Spam rejected — prompt injection pattern detected');
     return json({ ok: true }, 200);
   }
 
@@ -297,7 +338,7 @@ export const POST: APIRoute = async ({ request }) => {
       namn || undefined
     );
   } catch (err) {
-    console.error('[contact API] Email send error:', err);
+    console.error('[contact API] Email send error:', err instanceof Error ? err.message : 'unknown');
     return json({ error: 'email_failed' }, 500);
   }
 
