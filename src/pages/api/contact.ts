@@ -264,8 +264,9 @@ export const POST: APIRoute = async ({ request }) => {
     return json({ error: 'invalid_email' }, 422);
   }
 
-  // Check 6: Bikonsultation form requires at least one contact method
-  if (data.get('_form') === 'bikonsultation') {
+  // Check 6: These forms require at least one contact method (email or phone)
+  const formId = String(data.get('_form') ?? '');
+  if (formId === 'bikonsultation' || formId === 'kontakt-hem') {
     const hasPhone = String(data.get('telefon') ?? '').trim().length > 0;
     if (!customerEmail && !hasPhone) {
       return json({ error: 'contact_info_required' }, 422);
@@ -276,6 +277,8 @@ export const POST: APIRoute = async ({ request }) => {
   const formLabel =
     data.get('_form') === 'bikonsultation'
       ? 'Gratis BI-konsultation'
+      : data.get('_form') === 'kontakt-hem'
+      ? 'Kontaktformulär (startsidan)'
       : 'Kontaktformulär';
 
   const lines: string[] = [
