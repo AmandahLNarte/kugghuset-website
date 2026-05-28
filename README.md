@@ -52,15 +52,6 @@ Du kan ladda ned befintliga bilder direkt från kugghuset.se via webbläsarens D
 
 ---
 
-## Formspree (kontaktformulär)
-1. Gå till https://formspree.io och skapa ett gratis konto
-2. Skapa ett nytt formulär – kopiera ditt form-ID (t.ex. xpznqkjd)
-3. Ersätt DITT_FORMSPREE_ID i:
-   - src/pages/index.astro
-   - src/pages/en-timme-gratis-bikonsultation.astro
-
----
-
 ## Deploy till Vercel (gratis)
 1. Pusha projektet till GitHub
 2. Gå till https://vercel.com/new
