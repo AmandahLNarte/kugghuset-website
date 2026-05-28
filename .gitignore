@@ -10,3 +10,10 @@ dist/
 
 # Claude Code per-project settings
 .claude/
+
+# Lighthouse audit reports
+lh-*.json
+
+# SEO audit artifacts
+screenshots/
+scripts/
