@@ -15,7 +15,6 @@ const authors = ['Alla', ...new Set(sorted.map(a => a.author))];
   description="Insikter och nyheter från Kugghusets konsulter – om Power BI, AI-integrering, datamodellering och smart planering för ekonomichefer och controllers."
   breadcrumbs={[{ name: "Artiklar", url: "/artiklar" }]}
 >
-  <link slot="head" rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css" />
   <Header />
 
   <!-- Hero -->
@@ -111,6 +110,8 @@ const authors = ['Alla', ...new Set(sorted.map(a => a.author))];
                   src={a.image}
                   alt={a.imageAlt ?? a.title}
                   class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  decoding="async"
                 />
               )}
               {a.gridLines && !a.image && (
@@ -187,10 +188,10 @@ const authors = ['Alla', ...new Set(sorted.map(a => a.author))];
       </div>
 
       <div id="sib-form-container" class="sib-form-container w-full max-w-md">
-        <div id="error-message" class="sib-form-message-panel mb-4 px-4 py-3 font-body text-sm text-red-300 border border-red-500/40" style="background:rgba(180,30,30,0.2);">
+        <div id="error-message" class="sib-form-message-panel hidden mb-4 px-4 py-3 font-body text-sm text-red-300 border border-red-500/40" style="background:rgba(180,30,30,0.2);">
           Prenumerationen misslyckades. Försök igen.
         </div>
-        <div id="success-message" class="sib-form-message-panel mb-4 px-4 py-3 font-body text-sm text-green-300 border border-green-500/40" style="background:rgba(20,120,60,0.2);">
+        <div id="success-message" class="sib-form-message-panel hidden mb-4 px-4 py-3 font-body text-sm text-green-300 border border-green-500/40" style="background:rgba(20,120,60,0.2);">
           Tack! Du är nu prenumerant.
         </div>
         <div id="sib-container">
@@ -202,7 +203,7 @@ const authors = ['Alla', ...new Set(sorted.map(a => a.author))];
             class="flex flex-col sm:flex-row gap-3"
           >
             <input
-              class="input flex-1 bg-fg/5 border border-fg/15 text-navy placeholder-navy/40 font-body text-sm px-4 py-3 focus:outline-none focus:border-glow transition-colors"
+              class="input flex-1 bg-white/5 border border-fg/20 text-fg placeholder-fg/40 font-body text-sm px-4 py-3 focus:outline-none focus:border-glow transition-colors"
               type="text"
               id="EMAIL"
               name="EMAIL"
@@ -240,18 +241,43 @@ const authors = ['Alla', ...new Set(sorted.map(a => a.author))];
     window.translation = { common: { selectedList: '{quantity} list selected', selectedLists: '{quantity} lists selected', selectedOption: '{quantity} selected', selectedOptions: '{quantity} selected' } };
     var AUTOHIDE = Boolean(0);
   </script>
-  <script is:inline defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+  <script is:inline>
+    // Load Sibforms script only when user scrolls near the newsletter section
+    const sibTarget = document.getElementById('sib-form-container');
+    if (sibTarget) {
+      const sibObserver = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          const s = document.createElement('script');
+          s.src = 'https://sibforms.com/forms/end-form/build/main.js';
+          s.defer = true;
+          document.body.appendChild(s);
+          sibObserver.disconnect();
+        }
+      }, { rootMargin: '200px' });
+      sibObserver.observe(sibTarget);
+    }
+  </script>
 </Layout>
 
 <style>
-  .article-card {
-    opacity: 0;
-    transform: translateY(100px) scale(0.97);
-    transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+  /* Reset any lingering Sibforms default styles */
+  #sib-form-container, #sib-container, #sib-form {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
   }
-  .article-card.visible {
+  .input--hidden { display: none !important; }
+
+  .article-card.will-animate {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  .article-card.will-animate.visible {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 </style>
 
@@ -268,11 +294,15 @@ const authors = ['Alla', ...new Set(sorted.map(a => a.author))];
         }
       });
     },
-    { threshold: 0.05 }
+    { threshold: 0, rootMargin: '0px 0px -60px 0px' }
   );
   cards.forEach((card, i) => {
-    card.style.transitionDelay = `${i * 0.2}s`;
-    observer.observe(card);
+    const rect = card.getBoundingClientRect();
+    if (rect.top >= window.innerHeight) {
+      card.classList.add('will-animate');
+      card.style.transitionDelay = `${i * 0.05}s`;
+      observer.observe(card);
+    }
   });
 
   let activeFilter = 'alla';

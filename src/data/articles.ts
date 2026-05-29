@@ -58,7 +58,7 @@ Du behöver inte byta hela systemlandskapet för att börja. De flesta organisat
 Jag heter Tobias Törnblom och hjälper gärna er att utforska hur xP&A kan se ut i just er organisation. Hör av dig så pratar vi om var ni står idag och vart ni vill.
 
 [**Kontakta oss →**](/kontakt)`,
-    image: '/images/artiklar/xp&a_analys.jpg',
+    image: '/images/artiklar/xp&a_analys.webp',
     imageAlt: 'xP&A – Extended Planning & Analysis',
     gradient: 'radial-gradient(ellipse 90% 80% at 70% 30%, #3a2a5a 0%, #1e1535 55%, #080510 100%)',
     gridLines: false,
@@ -311,7 +311,7 @@ SQL Server (trots sitt något daterade gränssnitt) och Power BI är en kraftful
 Abrakadabra!
 
 /Elis`,
-    image: '/images/artiklar/historisk_orderstock.jpg',
+    image: '/images/artiklar/historisk_orderstock.webp',
     imageAlt: 'Historisk orderstock – SQL Server och Power BI',
     gradient: 'radial-gradient(ellipse 70% 80% at 30% 55%, #4C7BC0 0%, #1a3a7a 45%, #060c1e 100%)',
     gridLines: false,
