@@ -15,7 +15,6 @@ const authors = ['Alla', ...new Set(sorted.map(a => a.author))];
   description="Insikter och nyheter från Kugghusets konsulter – om Power BI, AI-integrering, datamodellering och smart planering för ekonomichefer och controllers."
   breadcrumbs={[{ name: "Artiklar", url: "/artiklar" }]}
 >
-  <link slot="head" rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css" />
   <Header />
 
   <!-- Hero -->
@@ -202,7 +201,7 @@ const authors = ['Alla', ...new Set(sorted.map(a => a.author))];
             class="flex flex-col sm:flex-row gap-3"
           >
             <input
-              class="input flex-1 bg-fg/5 border border-fg/15 text-navy placeholder-navy/40 font-body text-sm px-4 py-3 focus:outline-none focus:border-glow transition-colors"
+              class="input flex-1 bg-white/5 border border-fg/20 text-fg placeholder-fg/40 font-body text-sm px-4 py-3 focus:outline-none focus:border-glow transition-colors"
               type="text"
               id="EMAIL"
               name="EMAIL"
@@ -244,6 +243,16 @@ const authors = ['Alla', ...new Set(sorted.map(a => a.author))];
 </Layout>
 
 <style>
+  /* Reset any lingering Sibforms default styles */
+  #sib-form-container, #sib-container, #sib-form {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+  }
+  .input--hidden { display: none !important; }
+
   .article-card {
     opacity: 0;
     transform: translateY(100px) scale(0.97);
