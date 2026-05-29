@@ -28,7 +28,7 @@ const services = [
   },
   {
     title: '15 års erfarenhet av BI',
-    body: 'Tack vare 15+ års erfarenhet och nördigt bra koll på Power BI, Excel och marknadens affärssystem hittar vi tillsammans en passande lösning och levererar med korta ledtider.',
+    body: 'Tack vare 20+ års erfarenhet och nördigt bra koll på Power BI, Excel och marknadens affärssystem hittar vi tillsammans en passande lösning och levererar med korta ledtider.',
   },
   {
     title: 'Auto-magiska rapporter',
@@ -91,7 +91,7 @@ const testimonials = [
 
 <Layout
   title="Power BI & AI-konsult Stockholm | Business Intelligence | Kugghuset"
-  description="Power BI och AI-konsult i Stockholm. Kugghuset hjälper ekonomichefer och controllers med business intelligence, AI-integrering och datamodellering – 15+ års erfarenhet, 200+ kunder."
+  description="Power BI och AI-konsult i Stockholm. Kugghuset hjälper ekonomichefer och controllers med business intelligence, AI-integrering och datamodellering – 20+ års erfarenhet, 200+ kunder."
   schemaJson={serviceSchema}
 >
   <link slot="head" rel="preload" as="image" href="/images/kugghuset-consultant-bi-ai-sql-data-magic.webp" fetchpriority="high" />
@@ -171,7 +171,7 @@ const testimonials = [
           Vi trollar <br /><em class="font-normal" style="font-style:italic; color:#D49AB4; letter-spacing:0.04em;">med data.</em>
         </h2>
         <p class="mt-6 font-body text-navy text-lg leading-relaxed max-w-xl mx-auto">
-          Vi är ett konsultföretag specialiserade på Business Intelligence, framförallt Power BI — 15+ år av datatrolleri i svenska bolag.
+          Vi är ett konsultföretag specialiserade på Business Intelligence, framförallt Power BI — 20+ år av datatrolleri i svenska bolag.
         </p>
       </div>
 
@@ -191,7 +191,7 @@ const testimonials = [
         </p>
         <p class="font-body font-semibold text-navy mb-6">Kostnadsfri första telefongenomgång</p>
         <a href="tel:+46704545531" class="inline-block border-2 border-pink text-navy font-body font-semibold uppercase tracking-widest text-sm px-10 py-3.5 hover:bg-pink transition-colors">
-          Ring +46 704 545 531
+          Ring +46(0)70-454 55 31
         </a>
       </div>
     </div>
@@ -207,7 +207,7 @@ const testimonials = [
     <div class="relative max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-10">
       {[
         { value: '200+', label: 'Implementationer', sub: 'i svenska bolag' },
-        { value: '15+',  label: 'Års erfarenhet',   sub: 'av BI sedan 2013' },
+        { value: '20+',  label: 'Års erfarenhet',   sub: 'av BI sedan 2013' },
         { value: '6',    label: 'Experter',          sub: 'i teamet' },
         { value: '40h',  label: 'Sparade/mån',       sub: 'typisk tidsvinst' },
       ].map(s => (
@@ -343,34 +343,8 @@ const testimonials = [
         </p>
       </a>
 
-      <!-- rad 1: 3 personer -->
-      <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mb-8">
-        {team.slice(0, 3).map(member => (
-          <a href={member.profilePath} class="group block">
-            <div class="aspect-[3/4] overflow-hidden bg-fg/5 mb-4 relative">
-              <img
-                src={member.photo}
-                alt={`${member.name}, ${member.roleSv} – Kugghuset`}
-                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
-                loading="lazy"
-                decoding="async"
-              />
-              <div class="absolute inset-0 bg-navy/20 group-hover:bg-navy/0 transition-colors"></div>
-            </div>
-            <h3 class="font-display font-medium text-fg text-xl group-hover:text-pink transition-colors">{member.name}</h3>
-            <p class="font-mono text-xs tracking-widest uppercase text-pink mt-0.5 mb-3" data-lang-sv={member.roleSv} data-lang-en={member.roleEn}>{member.roleSv}</p>
-            <div class="flex flex-wrap gap-1.5">
-              {member.skills.map(skill => (
-                <span class="font-mono text-[10px] tracking-wide text-fg/60 border border-fg/20 px-2 py-0.5">{skill}</span>
-              ))}
-            </div>
-          </a>
-        ))}
-      </div>
-
-      <!-- rad 2: 3 personer -->
       <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-        {team.slice(3).map(member => (
+        {team.map(member => (
           <a href={member.profilePath} class="group block">
             <div class="aspect-[3/4] overflow-hidden bg-fg/5 mb-4 relative">
               <img
@@ -414,7 +388,7 @@ const testimonials = [
           Skicka ett meddelande eller boka en timme kostnadsfri BI-konsultation.
         </p>
         <div class="mt-8 space-y-3 font-mono text-sm text-fg/50">
-          <p><a href="tel:+46704545531" class="hover:text-glow transition-colors">+46 704 545 531</a></p>
+          <p><a href="tel:+46704545531" class="hover:text-glow transition-colors">+46(0)70-454 55 31</a></p>
           <p><a href="mailto:info@kugghuset.se" class="hover:text-glow transition-colors">info@kugghuset.se</a></p>
           <p class="text-fg/30">Sickla Strand 45, 131 34 Nacka</p>
         </div>

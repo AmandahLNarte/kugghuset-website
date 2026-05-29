@@ -13,7 +13,7 @@ export interface Props {
 
 const {
   title,
-  description = 'Power BI konsult i Stockholm. Kugghuset hjälper ekonomichefer och controllers med business intelligence, datamodellering och interaktiva dashboards – 15+ års erfarenhet och 100+ kunder.',
+  description = 'Power BI konsult i Stockholm. Kugghuset hjälper ekonomichefer och controllers med business intelligence, datamodellering och interaktiva dashboards – 20+ års erfarenhet och 100+ kunder.',
   ogImage = '/images/reference-hands.png',
   ogType = 'website',
   noindex = false,
@@ -40,7 +40,7 @@ const organizationSchema = JSON.stringify({
         "width": 512,
         "height": 512
       },
-      "description": "Power BI-konsulter i Stockholm med 15+ års erfarenhet av business intelligence, datamodellering och interaktiva dashboards för ekonomichefer och controllers.",
+      "description": "Power BI-konsulter i Stockholm med 20+ års erfarenhet av business intelligence, datamodellering och interaktiva dashboards för ekonomichefer och controllers.",
       "foundingDate": "2013",
       "numberOfEmployees": { "@type": "QuantitativeValue", "value": 6 },
       "address": {
@@ -113,6 +113,7 @@ const organizationSchema = JSON.stringify({
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+    <link rel="icon" type="image/svg+xml" href="/Kugghuset-favicon.svg" />
     <link rel="canonical" href={canonicalURL} />
     <link rel="alternate" hreflang="sv" href={canonicalURL} />
     <link rel="alternate" hreflang="x-default" href={canonicalURL} />

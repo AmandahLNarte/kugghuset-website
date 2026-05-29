@@ -48,7 +48,7 @@ const contactSchema = JSON.stringify({
           </div>
           <div>
             <p class="font-mono text-xs tracking-widest uppercase text-navy/70 mb-1">Telefon</p>
-            <a href="tel:+46704545531" class="text-navy hover:underline">+46 704 545 531</a>
+            <a href="tel:+46704545531" class="text-navy hover:underline">+46(0)70-454 55 31</a>
           </div>
           <div>
             <p class="font-mono text-xs tracking-widest uppercase text-navy/70 mb-1">E-post</p>
@@ -136,10 +136,10 @@ const contactSchema = JSON.stringify({
                   contact_info_required: 'Vänligen ange minst e-postadress.',
                   invalid_email:         'Kontrollera att e-postadressen är korrekt.',
                   bad_request:           'Formuläret kunde inte tolkas. Ladda om sidan och försök igen.',
-                  email_failed:          'Meddelandet kunde inte skickas just nu. Försök igen om en stund eller ring oss direkt på +46 704 545 531.',
+                  email_failed:          'Meddelandet kunde inte skickas just nu. Försök igen om en stund eller ring oss direkt på +46(0)70-454 55 31.',
                 };
                 const msg = (payload.error && ERROR_MESSAGES[payload.error])
-                  ?? 'Något gick fel. Försök igen eller ring oss direkt på +46 704 545 531.';
+                  ?? 'Något gick fel. Försök igen eller ring oss direkt på +46(0)70-454 55 31.';
                 if (errorEl) { errorEl.textContent = msg; errorEl.classList.remove('hidden'); }
               } catch {
                 if (errorEl) {
