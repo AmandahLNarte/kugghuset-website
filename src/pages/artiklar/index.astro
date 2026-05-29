@@ -110,7 +110,7 @@ const authors = ['Alla', ...new Set(sorted.map(a => a.author))];
                   src={a.image}
                   alt={a.imageAlt ?? a.title}
                   class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                  loading="lazy"
+                  loading={i === 0 ? 'eager' : 'lazy'}
                   decoding="async"
                 />
               )}
@@ -241,7 +241,22 @@ const authors = ['Alla', ...new Set(sorted.map(a => a.author))];
     window.translation = { common: { selectedList: '{quantity} list selected', selectedLists: '{quantity} lists selected', selectedOption: '{quantity} selected', selectedOptions: '{quantity} selected' } };
     var AUTOHIDE = Boolean(0);
   </script>
-  <script is:inline defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+  <script is:inline>
+    // Load Sibforms script only when user scrolls near the newsletter section
+    const sibTarget = document.getElementById('sib-form-container');
+    if (sibTarget) {
+      const sibObserver = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          const s = document.createElement('script');
+          s.src = 'https://sibforms.com/forms/end-form/build/main.js';
+          s.defer = true;
+          document.body.appendChild(s);
+          sibObserver.disconnect();
+        }
+      }, { rootMargin: '200px' });
+      sibObserver.observe(sibTarget);
+    }
+  </script>
 </Layout>
 
 <style>
