@@ -255,12 +255,12 @@ const authors = ['Alla', ...new Set(sorted.map(a => a.author))];
   }
   .input--hidden { display: none !important; }
 
-  .article-card {
+  .article-card.will-animate {
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
   }
-  .article-card.visible {
+  .article-card.will-animate.visible {
     opacity: 1;
     transform: translateY(0);
   }
@@ -283,9 +283,8 @@ const authors = ['Alla', ...new Set(sorted.map(a => a.author))];
   );
   cards.forEach((card, i) => {
     const rect = card.getBoundingClientRect();
-    if (rect.top < window.innerHeight) {
-      card.classList.add('visible');
-    } else {
+    if (rect.top >= window.innerHeight) {
+      card.classList.add('will-animate');
       card.style.transitionDelay = `${i * 0.05}s`;
       observer.observe(card);
     }
