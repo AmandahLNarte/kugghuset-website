@@ -282,8 +282,13 @@ const authors = ['Alla', ...new Set(sorted.map(a => a.author))];
     { threshold: 0, rootMargin: '0px 0px -60px 0px' }
   );
   cards.forEach((card, i) => {
-    card.style.transitionDelay = `${i * 0.05}s`;
-    observer.observe(card);
+    const rect = card.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      card.classList.add('visible');
+    } else {
+      card.style.transitionDelay = `${i * 0.05}s`;
+      observer.observe(card);
+    }
   });
 
   let activeFilter = 'alla';
