@@ -400,25 +400,43 @@ const testimonials = [
         </a>
       </div>
 
-      <form action="https://formspree.io/f/mzdwaqep" method="POST" class="space-y-5">
-        <input type="hidden" name="_next" value="https://kugghuset.se/tack" />
+      <form id="contact-form-home" action="/api/contact" method="POST" class="space-y-5" novalidate>
+        <!-- Internal fields (not visible to users) -->
+        <input type="hidden" name="_form" value="kontakt-hem" />
+        <input type="hidden" name="_lt" id="home-form-lt" value="" />
+        <!-- Honeypot: real users never see or fill this -->
+        <input
+          type="text"
+          name="_hp"
+          tabindex="-1"
+          autocomplete="off"
+          aria-hidden="true"
+          style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;"
+        />
+
         <div>
-          <label for="email" class="block font-mono text-xs tracking-widest uppercase text-fg/40 mb-2">E-postadress</label>
-          <input id="email" type="email" name="email" placeholder="din@epost.se" required
+          <label for="home-namn" class="block font-mono text-xs tracking-widest uppercase text-fg/40 mb-2">Namn</label>
+          <input id="home-namn" type="text" name="namn" required
             class="w-full bg-fg/5 border border-fg/15 text-fg placeholder-fg/20 font-body text-sm px-4 py-3 focus:outline-none focus:border-glow transition-colors"/>
         </div>
         <div>
-          <label for="phone" class="block font-mono text-xs tracking-widest uppercase text-fg/40 mb-2">Telefon</label>
-          <input id="phone" type="tel" name="telefon" placeholder="070-000 00 00"
+          <label for="home-email" class="block font-mono text-xs tracking-widest uppercase text-fg/40 mb-2">E-postadress</label>
+          <input id="home-email" type="email" name="email" placeholder="din@epost.se"
             class="w-full bg-fg/5 border border-fg/15 text-fg placeholder-fg/20 font-body text-sm px-4 py-3 focus:outline-none focus:border-glow transition-colors"/>
         </div>
         <div>
-          <label for="message" class="block font-mono text-xs tracking-widest uppercase text-fg/40 mb-2">Hur kan vi hjälpa dig?</label>
-          <textarea id="message" name="meddelande" rows="4" required
+          <label for="home-phone" class="block font-mono text-xs tracking-widest uppercase text-fg/40 mb-2">Telefon</label>
+          <input id="home-phone" type="tel" name="telefon" placeholder="070-000 00 00"
+            class="w-full bg-fg/5 border border-fg/15 text-fg placeholder-fg/20 font-body text-sm px-4 py-3 focus:outline-none focus:border-glow transition-colors"/>
+        </div>
+        <div>
+          <label for="home-message" class="block font-mono text-xs tracking-widest uppercase text-fg/40 mb-2">Hur kan vi hjälpa dig?</label>
+          <textarea id="home-message" name="meddelande" rows="4" required
             class="w-full bg-fg/5 border border-fg/15 text-fg placeholder-fg/20 font-body text-sm px-4 py-3 focus:outline-none focus:border-glow transition-colors resize-none"></textarea>
         </div>
-        <button type="submit"
-          class="w-full bg-glow text-navy-dark font-body font-semibold uppercase tracking-widest text-sm py-4 hover:bg-powder-deep transition-colors">
+        <p id="home-form-error" class="hidden font-mono text-xs text-red-400 bg-red-900/30 border border-red-700/40 px-4 py-3"></p>
+        <button type="submit" id="home-form-submit"
+          class="w-full bg-glow text-navy-dark font-body font-semibold uppercase tracking-widest text-sm py-4 hover:bg-powder-deep transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
           Skicka
         </button>
       </form>
@@ -426,6 +444,59 @@ const testimonials = [
   </section>
 
   <Footer />
+
+  <script>
+    (function () {
+      const lt = document.getElementById('home-form-lt') as HTMLInputElement | null;
+      if (lt) lt.value = String(Date.now());
+
+      const form = document.getElementById('contact-form-home') as HTMLFormElement | null;
+      const submitBtn = document.getElementById('home-form-submit') as HTMLButtonElement | null;
+      const errorEl = document.getElementById('home-form-error');
+
+      if (form && submitBtn) {
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          if (!form.checkValidity()) { form.reportValidity(); return; }
+
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Skickar…';
+          if (errorEl) errorEl.classList.add('hidden');
+
+          try {
+            const res = await fetch('/api/contact', {
+              method: 'POST',
+              body: new FormData(form),
+            });
+
+            if (res.ok) {
+              window.location.href = '/tack';
+              return;
+            }
+
+            const payload = await res.json().catch(() => ({})) as { error?: string };
+            const ERROR_MESSAGES: Record<string, string> = {
+              contact_info_required: 'Vänligen ange minst e-postadress eller telefonnummer.',
+              invalid_email:         'Kontrollera att e-postadressen är korrekt.',
+              bad_request:           'Formuläret kunde inte tolkas. Ladda om sidan och försök igen.',
+              email_failed:          'Meddelandet kunde inte skickas just nu. Försök igen om en stund eller ring oss direkt på +46 704 545 531.',
+            };
+            const msg = (payload.error && ERROR_MESSAGES[payload.error])
+              ?? 'Något gick fel. Försök igen eller ring oss direkt på +46 704 545 531.';
+            if (errorEl) { errorEl.textContent = msg; errorEl.classList.remove('hidden'); }
+          } catch {
+            if (errorEl) {
+              errorEl.textContent = 'Nätverksfel. Kontrollera din anslutning och försök igen.';
+              errorEl.classList.remove('hidden');
+            }
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Skicka';
+          }
+        });
+      }
+    })();
+  </script>
 
   <script>
     (function () {
