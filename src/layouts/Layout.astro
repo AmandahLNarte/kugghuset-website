@@ -25,7 +25,14 @@ const siteUrl = Astro.site?.href.replace(/\/$/, '') ?? 'https://kugghuset.se';
 const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
 const ogImageAbsolute = `${siteUrl}${ogImage}`;
 
-const organizationSchema = JSON.stringify({
+function safeJson(obj: unknown): string {
+  return JSON.stringify(obj)
+    .replace(/</g, '\\u003c')
+    .replace(/>/g, '\\u003e')
+    .replace(/\//g, '\\u002f');
+}
+
+const organizationSchema = safeJson({
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -137,7 +144,7 @@ const organizationSchema = JSON.stringify({
 
     <script type="application/ld+json" is:inline set:html={organizationSchema}></script>
     {schemaJson && <script type="application/ld+json" is:inline set:html={schemaJson}></script>}
-    {breadcrumbs && <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    {breadcrumbs && <script type="application/ld+json" is:inline set:html={safeJson({
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [

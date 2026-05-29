@@ -30,11 +30,16 @@ const authorProfile = authorProfiles[article.author] ?? null;
 
 const firstParaIndex = paragraphs.findIndex(p => !p.startsWith('## ') && !isCTA(p));
 
+function safeHref(url: string): string {
+  if (/^https?:\/\//i.test(url) || url.startsWith('/') || url.startsWith('#')) return url;
+  return '#';
+}
+
 function processInline(text: string): string {
   return text
-    .replace(/\[\*\*([^\]]+)\*\*\]\(([^)]+)\)/g, '<a href="$2" class="font-semibold underline hover:opacity-70 transition-opacity">$1</a>')
+    .replace(/\[\*\*([^\]]+)\*\*\]\(([^)]+)\)/g, (_, t, u) => `<a href="${safeHref(u)}" class="font-semibold underline hover:opacity-70 transition-opacity">${t}</a>`)
     .replace(/\[([^\]]+)\]\(#\)/g, '$1')
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="underline hover:opacity-70 transition-opacity">$1</a>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, t, u) => `<a href="${safeHref(u)}" class="underline hover:opacity-70 transition-opacity">${t}</a>`)
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
 }
 
@@ -47,7 +52,14 @@ function extractLink(p: string): { text: string; href: string } | null {
   return m ? { text: m[1], href: m[2] } : null;
 }
 
-const articleSchema = JSON.stringify({
+function safeJson(obj: unknown): string {
+  return JSON.stringify(obj)
+    .replace(/</g, '\\u003c')
+    .replace(/>/g, '\\u003e')
+    .replace(/\//g, '\\u002f');
+}
+
+const articleSchema = safeJson({
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": article.title,
