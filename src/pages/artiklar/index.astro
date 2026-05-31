@@ -326,7 +326,15 @@ const authors = ['Alla', ...new Set(sorted.map(a => a.author))];
     margin: 0 !important;
     box-shadow: none !important;
   }
+  /* Override Brevo's input styling to match site dark theme */
+  #sib-form input.input {
+    color: rgb(245 245 240) !important;
+    background-color: transparent !important;
+  }
 
+  #sib-form input.input::placeholder {
+    color: rgb(245 245 240 / 0.4) !important;
+  }
   .article-card {
     opacity: 0;
     transform: translateY(100px) scale(0.97);
