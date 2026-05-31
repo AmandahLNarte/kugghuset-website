@@ -353,7 +353,7 @@ const authors = ['Alla', ...new Set(sorted.map(a => a.author))];
     border: none !important;
   }
 
-  .article-card {
+  .article-card.will-animate  {
     opacity: 0;
     transform: translateY(100px) scale(0.97);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
